@@ -1,0 +1,27 @@
+{
+  "id": "C04",
+  "title": "改写后的相似问题：口语化问报销期限",
+  "acceptance": [
+    "改写后的相似问题",
+    "文档冲突"
+  ],
+  "dataset": "data/docs",
+  "today": "2026-10-28",
+  "turns": [
+    {
+      "question": "发票拿到一个多月了，还能报账吗？",
+      "expect": {
+        "status": [
+          "NEED_CONFIRMATION"
+        ],
+        "conflict_docs_include": [
+          "D01",
+          "D02"
+        ],
+        "basis_exclude": [
+          "D04"
+        ]
+      }
+    }
+  ]
+}

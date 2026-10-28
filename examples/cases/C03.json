@@ -1,0 +1,24 @@
+{
+  "id": "C03",
+  "title": "资料外问题：年终奖",
+  "acceptance": [
+    "资料外问题"
+  ],
+  "dataset": "data/docs",
+  "today": "2026-10-28",
+  "turns": [
+    {
+      "question": "公司年终奖什么时候发？",
+      "expect": {
+        "status": [
+          "NO_EVIDENCE"
+        ],
+        "no_basis": true,
+        "gaps_nonempty": true,
+        "min_calls": {
+          "search_docs": 2
+        }
+      }
+    }
+  ]
+}

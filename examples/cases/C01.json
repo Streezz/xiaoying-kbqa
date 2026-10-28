@@ -1,0 +1,25 @@
+{
+  "id": "C01",
+  "title": "明确答案：产品 FAQ",
+  "acceptance": [
+    "明确答案"
+  ],
+  "dataset": "data/docs",
+  "today": "2026-10-28",
+  "turns": [
+    {
+      "question": "星剪会员一个账号最多能在几台设备上同时登录？",
+      "expect": {
+        "status": [
+          "ANSWERED"
+        ],
+        "basis_include": [
+          "P01"
+        ],
+        "answer_contains": [
+          "3"
+        ]
+      }
+    }
+  ]
+}

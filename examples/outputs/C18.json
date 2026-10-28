@@ -1,0 +1,143 @@
+{
+  "id": "C18",
+  "title": "换话题：年假 → 笔记本电脑",
+  "turns": [
+    {
+      "question": "我工作3年了，年假有几天？",
+      "dataset": "data\\docs",
+      "fault": null,
+      "result": {
+        "status": "ANSWERED",
+        "answer": "按现行制度，你累计工作满1年不满10年，年休假为5天。另外，公司《年休假制度（2026修订版）》已发布但尚未生效（2027年1月1日起施行），届时同一档（满1年不满10年）将调整为7天。年假需提前3个工作日在OA系统提交申请，经直属上级审批后方可休假。",
+        "citations": [
+          {
+            "doc_id": "D05",
+            "section_id": "§2",
+            "title": "年休假制度（2025版）",
+            "heading": "年假天数",
+            "version_date": "2025-01-01",
+            "status": "现行",
+            "quote": "员工累计工作已满1年不满10年的，年休假5天；已满10年不满20年的，年休假10天；已满20年的，年休假15天。"
+          },
+          {
+            "doc_id": "D06",
+            "section_id": "§2",
+            "title": "年休假制度（2026修订版）",
+            "heading": "年假天数",
+            "version_date": "2026-09-01",
+            "status": "待生效",
+            "quote": "员工累计工作已满1年不满10年的，年休假7天；已满10年不满20年的，年休假12天；已满20年的，年休假15天。"
+          },
+          {
+            "doc_id": "D06",
+            "section_id": "§1",
+            "title": "年休假制度（2026修订版）",
+            "heading": "修订说明",
+            "version_date": "2026-09-01",
+            "status": "待生效",
+            "quote": "本次修订仅调整年假天数，其余条款仍按《年休假制度（2025版）》执行。本修订版自2027年1月1日起施行。"
+          },
+          {
+            "doc_id": "D05",
+            "section_id": "§4",
+            "title": "年休假制度（2025版）",
+            "heading": "申请流程",
+            "version_date": "2025-01-01",
+            "status": "现行",
+            "quote": "员工休年假须提前3个工作日在 OA 系统提交申请，经直属上级审批后方可休假。"
+          }
+        ],
+        "conflicts": [],
+        "gaps": [],
+        "clarify_question": "",
+        "doc_verdicts": [
+          {
+            "doc_id": "D05",
+            "verdict": "basis",
+            "reason": "现行有效的年休假制度，回答依据"
+          },
+          {
+            "doc_id": "D06",
+            "verdict": "not_applicable",
+            "reason": "2026修订版状态为待生效，2027年1月1日起才施行，今天不适用，仅作提示"
+          }
+        ],
+        "question": "我工作3年了，年假有几天？",
+        "session_id": "C18",
+        "turn_no": 1,
+        "steps_used": 5,
+        "tool_calls": 7,
+        "gate_rejections": 1,
+        "had_tool_error": false
+      },
+      "checks": [
+        {
+          "check": "status",
+          "ok": true,
+          "detail": "期望 ['ANSWERED']，实际 ANSWERED"
+        },
+        {
+          "check": "basis_include",
+          "ok": true,
+          "detail": "依据应包含 ['D05']，实际 ['D05']"
+        }
+      ]
+    },
+    {
+      "question": "另外，笔记本电脑用了两年坏了，能换新的吗？",
+      "dataset": "data\\docs",
+      "fault": null,
+      "result": {
+        "status": "ANSWERED",
+        "answer": "不能直接换新。按《办公设备申领规定》，笔记本电脑使用满4年才可以申请更换；你的电脑只用了2年，属于未满4年损坏，应由 IT 部评估维修，而不是直接更换。建议先在 OA/IT 报修，由 IT 部评估维修方案。",
+        "citations": [
+          {
+            "doc_id": "D08",
+            "section_id": "§1",
+            "title": "办公设备申领规定",
+            "heading": "笔记本电脑",
+            "version_date": "2025-03-01",
+            "status": "现行",
+            "quote": "新入职员工可申领一台笔记本电脑，使用满4年可申请更换；未满4年损坏的，由 IT 部评估维修。"
+          }
+        ],
+        "conflicts": [],
+        "gaps": [
+          "资料中未写明报修的具体流程、时限和 IT 部评估后的处理标准（如维修不成是否可换新）"
+        ],
+        "clarify_question": "",
+        "doc_verdicts": [
+          {
+            "doc_id": "D08",
+            "verdict": "basis",
+            "reason": "现行制度，明确写了笔记本电脑更换年限和未满年限损坏的处理方式"
+          }
+        ],
+        "question": "另外，笔记本电脑用了两年坏了，能换新的吗？",
+        "session_id": "C18",
+        "turn_no": 2,
+        "steps_used": 3,
+        "tool_calls": 4,
+        "gate_rejections": 0,
+        "had_tool_error": false
+      },
+      "checks": [
+        {
+          "check": "status",
+          "ok": true,
+          "detail": "期望 ['ANSWERED']，实际 ANSWERED"
+        },
+        {
+          "check": "basis_include",
+          "ok": true,
+          "detail": "依据应包含 ['D08']，实际 ['D08']"
+        },
+        {
+          "check": "cite_docs_exclude",
+          "ok": true,
+          "detail": "引用不应包含 ['D05', 'D06']，实际 ['D08']"
+        }
+      ]
+    }
+  ]
+}

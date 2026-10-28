@@ -1,0 +1,27 @@
+{
+  "id": "C15",
+  "title": "复合问题：一半可答一半资料外",
+  "acceptance": [
+    "明确答案",
+    "资料外问题"
+  ],
+  "dataset": "data/docs",
+  "today": "2026-10-28",
+  "turns": [
+    {
+      "question": "差旅报销要在几天内提交？报销款一般几天能到账？",
+      "expect": {
+        "status": [
+          "ANSWERED"
+        ],
+        "basis_include": [
+          "D03"
+        ],
+        "answer_contains": [
+          "10"
+        ],
+        "gaps_nonempty": true
+      }
+    }
+  ]
+}

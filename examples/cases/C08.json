@@ -1,0 +1,23 @@
+{
+  "id": "C08",
+  "title": "工具失败：冲突一方读取失败",
+  "acceptance": [
+    "工具失败",
+    "文档冲突"
+  ],
+  "dataset": "data/docs",
+  "today": "2026-10-28",
+  "turns": [
+    {
+      "question": "报销期限多久？",
+      "fault": "read:not_found@D02",
+      "expect": {
+        "status": [
+          "FAILED",
+          "INCOMPLETE"
+        ],
+        "tool_error_seen": true
+      }
+    }
+  ]
+}

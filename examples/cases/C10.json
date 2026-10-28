@@ -1,0 +1,38 @@
+{
+  "id": "C10",
+  "title": "确认后续答：用户选定财务部指引",
+  "acceptance": [
+    "上下文追问",
+    "文档冲突"
+  ],
+  "dataset": "data/docs",
+  "today": "2026-10-28",
+  "turns": [
+    {
+      "question": "报销期限多久？",
+      "expect": {
+        "status": [
+          "NEED_CONFIRMATION"
+        ],
+        "conflict_docs_include": [
+          "D01",
+          "D02"
+        ]
+      }
+    },
+    {
+      "question": "我们部门以财务部的报销操作指引为准。",
+      "expect": {
+        "status": [
+          "ANSWERED"
+        ],
+        "basis_include": [
+          "D02"
+        ],
+        "answer_contains": [
+          "15"
+        ]
+      }
+    }
+  ]
+}

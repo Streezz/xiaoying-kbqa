@@ -1,0 +1,22 @@
+{
+  "id": "C07",
+  "title": "工具失败无法完成：读取原文全部超时",
+  "acceptance": [
+    "工具失败"
+  ],
+  "dataset": "data/docs",
+  "today": "2026-10-28",
+  "turns": [
+    {
+      "question": "差旅住宿标准是多少？",
+      "fault": "read:timeout@*",
+      "expect": {
+        "status": [
+          "FAILED"
+        ],
+        "no_basis": true,
+        "tool_error_seen": true
+      }
+    }
+  ]
+}

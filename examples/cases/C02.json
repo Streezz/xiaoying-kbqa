@@ -1,0 +1,29 @@
+{
+  "id": "C02",
+  "title": "文档冲突：报销期限（题目参考实例）",
+  "acceptance": [
+    "文档冲突"
+  ],
+  "dataset": "data/docs",
+  "today": "2026-10-28",
+  "turns": [
+    {
+      "question": "报销期限多久？",
+      "expect": {
+        "status": [
+          "NEED_CONFIRMATION"
+        ],
+        "conflict_docs_include": [
+          "D01",
+          "D02"
+        ],
+        "basis_exclude": [
+          "D04"
+        ],
+        "must_call": [
+          "get_doc_info"
+        ]
+      }
+    }
+  ]
+}

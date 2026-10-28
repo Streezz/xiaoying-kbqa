@@ -1,0 +1,92 @@
+{
+ "d731fa2e10472ad8": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_H7KvFiubaAj75zUlO5vi1185",
+    "name": "search_docs",
+    "arguments": "{\"query\": \"年终奖 发放时间\", \"reason\": \"查找年终奖发放时间的规定\"}"
+   },
+   {
+    "id": "call_01_c31Ong6BKmfIJoFIMbQ74219",
+    "name": "search_docs",
+    "arguments": "{\"query\": \"奖金 薪酬 发放\", \"reason\": \"换用制度书面用语再检索一次\"}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 2218,
+   "completion_tokens": 114
+  },
+  "latency_ms": 5870
+ },
+ "06af8ca6306cb0c1": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_h9OSNI7RB5cVO4Zj7gsX0605",
+    "name": "search_docs",
+    "arguments": "{\"query\": \"绩效奖金 年度考核 兑现\", \"reason\": \"再换关键词检索奖金兑现相关制度\"}"
+   },
+   {
+    "id": "call_01_AGJf0n3Q53vDiL14iptp5011",
+    "name": "search_docs",
+    "arguments": "{\"query\": \"工资 薪资 支付周期\", \"reason\": \"检索薪酬支付相关制度\"}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 2428,
+   "completion_tokens": 116
+  },
+  "latency_ms": 1681
+ },
+ "5b39d0392f0d8e51": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_OZBiZkyYvcc9U11fKOe17143",
+    "name": "search_docs",
+    "arguments": "{\"query\": \"年终奖金 发放办法\", \"reason\": \"尝试更接近制度名称的检索词\", \"top_k\": 10}"
+   },
+   {
+    "id": "call_01_TFtEAy6wOtkrS7WMZuWz6623",
+    "name": "search_docs",
+    "arguments": "{\"query\": \"薪酬福利 员工手册\", \"reason\": \"查找员工手册中薪酬福利章节\", \"top_k\": 10}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 2822,
+   "completion_tokens": 149
+  },
+  "latency_ms": 1892
+ },
+ "82288a11aee2150e": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_Z4fIwZ4i6olKjSRm5m869223",
+    "name": "submit_result",
+    "arguments": "{\"status\": \"NO_EVIDENCE\", \"answer\": \"资料中没有找到关于年终奖发放时间的规定。我检索了\\\"年终奖\\\"\\\"奖金发放\\\"\\\"绩效奖金兑现\\\"\\\"薪酬福利\\\"等说法，公司现有制度资料里只有费用报销、差旅费、年休假、加班调休、办公设备申领等制度，没有年终奖或奖金发放相关的制度条款。建议向人力资源部（薪酬）咨询具体发放安排。\", \"citations\": [], \"doc_verdicts\": [], \"gaps\": 缺少年终奖/奖金发放相关的制度文件，包括发放时间、发放条件、计算方式等；建议联系人力资源部（薪酬）确认。, \"reason\": \"多轮检索均未命中年终奖相关制度，按资料外处理\"}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 4644,
+   "completion_tokens": 242
+  },
+  "latency_ms": 2379
+ },
+ "91726d213d6efad0": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_h4SklTKJMOPIlQxvVr1O4967",
+    "name": "submit_result",
+    "arguments": "{\"status\": \"NO_EVIDENCE\", \"answer\": \"资料中没有找到关于年终奖发放时间的规定。我检索了\\\"年终奖\\\"\\\"奖金发放\\\"\\\"绩效奖金兑现\\\"\\\"薪酬福利\\\"等说法，公司现有制度资料里只有费用报销、差旅费、年休假、加班调休、办公设备申领等制度，没有年终奖或奖金发放相关的条款。建议向人力资源部（薪酬）咨询具体发放安排。\", \"citations\": [], \"doc_verdicts\": [], \"gaps\": [\"缺少年终奖/奖金发放相关的制度文件，包括发放时间、发放条件、计算方式等\", \"建议联系人力资源部（薪酬）确认\"], \"reason\": \"多轮检索均未命中年终奖相关制度，按资料外处理\"}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 4899,
+   "completion_tokens": 244
+  },
+  "latency_ms": 2265
+ }
+}
