@@ -30,8 +30,8 @@ def test_replay_reproduces_recorded_output(case):
     saved = _saved(case["id"])
     assert len(run.turns) == len(saved["turns"])
     for got, exp in zip(run.turns, saved["turns"]):
-        for key in ("status", "answer", "citations", "conflicts", "gaps", "clarify_question", "steps_used", "tool_calls"):
-            assert got["result"][key] == exp["result"][key], key
+        assert got['result'] == exp['result']
+    assert run.passed, [c for t in run.turns for c in t['checks'] if not c['ok']]
 
 
 @pytest.mark.skipif(not CASES, reason="还没有录制结果")

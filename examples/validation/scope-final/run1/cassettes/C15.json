@@ -1,0 +1,127 @@
+{
+ "a5d1b67a48714bea": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_vqVZaRYx2NtfIT7FORxb9788",
+    "name": "search_docs",
+    "arguments": "{\"query\": \"差旅报销 提交时限 天数\", \"reason\": \"查差旅报销提交时限\"}"
+   },
+   {
+    "id": "call_01_YrEet5UiLELoO9RfBUWS3921",
+    "name": "search_docs",
+    "arguments": "{\"query\": \"报销款 到账 支付时限\", \"reason\": \"查报销款到账时间\"}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 2803,
+   "completion_tokens": 118
+  },
+  "latency_ms": 2525
+ },
+ "11cfd0925855fef4": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_kt0nxXFYurtXhYejEeEF0412",
+    "name": "search_docs",
+    "arguments": "{\"query\": \"报销款支付 到账 工作日\", \"reason\": \"换书面说法查报销款到账时限\"}"
+   },
+   {
+    "id": "call_01_HSULGK2mgNG9j2QlrhZL2923",
+    "name": "get_doc_info",
+    "arguments": "{\"doc_ids\": [\"D01\", \"D02\", \"D03\", \"D04\"], \"reason\": \"判断各文档状态与适用范围，解决时限冲突\"}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 3844,
+   "completion_tokens": 135
+  },
+  "latency_ms": 1954
+ },
+ "eb242a7e755aa222": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_yV3Q4W4fci95loszzCyJ8285",
+    "name": "read_section",
+    "arguments": "{\"doc_id\": \"D03\", \"section_id\": \"§1\", \"reason\": \"确认差旅费管理规定适用范围\"}"
+   },
+   {
+    "id": "call_01_lBrpbFCM9gVrlQOF7GaP0543",
+    "name": "read_section",
+    "arguments": "{\"doc_id\": \"D03\", \"section_id\": \"§4\", \"reason\": \"读差旅报销时限原文\"}"
+   },
+   {
+    "id": "call_02_pMaTMOZrIRiDWGx0Anql1021",
+    "name": "read_section",
+    "arguments": "{\"doc_id\": \"D01\", \"section_id\": \"§1\", \"reason\": \"读通用报销办法总则，看是否有另有规定从其规定\"}"
+   },
+   {
+    "id": "call_03_kG5HpJF6eMYs5n2Po02u0721",
+    "name": "read_section",
+    "arguments": "{\"doc_id\": \"D01\", \"section_id\": \"§3\", \"reason\": \"读通用报销期限原文\"}"
+   },
+   {
+    "id": "call_04_260EkvERcDcB20kXugoV9863",
+    "name": "read_section",
+    "arguments": "{\"doc_id\": \"D02\", \"section_id\": \"§3\", \"reason\": \"读财务部操作指引时限要求原文\"}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 4958,
+   "completion_tokens": 362
+  },
+  "latency_ms": 2270
+ },
+ "fe3c118b3d55aa15": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_o33zhk4yEoWwOzG0Jcnj7940",
+    "name": "search_docs",
+    "arguments": "{\"query\": \"报销审批完成后 付款 打入 银行账户\", \"reason\": \"再换说法查报销款到账时间\"}"
+   },
+   {
+    "id": "call_01_wB0aMcBZhgkOplLakw456151",
+    "name": "read_section",
+    "arguments": "{\"doc_id\": \"D02\", \"section_id\": \"§1\", \"reason\": \"看操作指引目的段是否涉及付款时限\"}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 5800,
+   "completion_tokens": 139
+  },
+  "latency_ms": 1945
+ },
+ "0d9e6eeb13997e75": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_ekfUnYXQMwcaO1mfSBVo4538",
+    "name": "submit_result",
+    "arguments": "{\"status\": \"ANSWERED\", \"answer\": \"差旅报销提交时限：按《差旅费管理规定》，差旅费用应于出差返回后10日内提交报销。该规定写明仅适用于因公出差产生的交通、住宿及出差补助费用；《费用报销管理办法》也写明\\\"差旅费用另有专门规定的，从其规定\\\"，故差旅按10日执行（非差旅费用为费用发生后30天内，经分管领导书面批准可延至60天）。\\n\\n报销款到账时间：资料中没有找到关于报销款支付/到账时限的规定，建议咨询财务部。\", \"citations\": [{\"doc_id\": \"D03\", \"section_id\": \"§4\", \"quote\": \"差旅费用应于出差返回后10日内提交报销。\"}, {\"doc_id\": \"D03\", \"section_id\": \"§1\", \"quote\": \"本规定仅适用于员工因公出差产生的交通、住宿及出差补助费用。\"}, {\"doc_id\": \"D01\", \"section_id\": \"§1\", \"quote\": \"本办法适用于公司员工因公发生的各类费用报销。差旅费用另有专门规定的，从其规定。\"}, {\"doc_id\": \"D01\", \"section_id\": \"§3\", \"quote\": \"员工原则上应在费用发生后30天内提交报销申请；因特殊情况无法按期提交的，经分管领导书面批准，可延长至60天。\"}], \"doc_verdicts\": [{\"doc_id\": \"D03\", \"verdict\": \"basis\", \"reason\": \"差旅专用制度，写明仅适用于差旅费用，其§4给出差旅报销时限\"}, {\"doc_id\": \"D01\", \"verdict\": \"basis\", \"reason\": \"通用报销办法，总则写明差旅另有规定从其规定，§3给出非差旅报销期限\"}, {\"doc_id\": \"D02\", \"verdict\": \"not_applicable\", \"reason\": \"财务部操作指引未写明适用范围，其15日时限与差旅专用制度不一致，差旅事项按专用制度执行\"}, {\"doc_id\": \"D04\", \"verdict\": \"not_applicable\", \"reason\": \"已被D01替代，状态为废止\"}], \"gaps\": [\"报销款支付/到账时限（资料中未找到相关规定，建议咨询财务部）\"], \"reason\": \"差旅时限有专用制度依据，到账时间资料缺失，按规则分别回答并列入gaps\"}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 6512,
+   "completion_tokens": 600
+  },
+  "latency_ms": 3457
+ },
+ "d2f5aa00463e0856": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_6rurXqyYsLUiLXR1Unq30124",
+    "name": "submit_review",
+    "arguments": "{\"passed\": true, \"issues\": [], \"confirmed_doc_ids\": []}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 3136,
+   "completion_tokens": 68
+  },
+  "latency_ms": 1504
+ }
+}

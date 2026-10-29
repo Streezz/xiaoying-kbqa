@@ -1,0 +1,166 @@
+{
+  "id": "C18",
+  "title": "换话题：年假 → 笔记本电脑",
+  "turns": [
+    {
+      "question": "我工作3年了，年假有几天？",
+      "dataset": "data\\docs",
+      "fault": null,
+      "result": {
+        "status": "ANSWERED",
+        "answer": "按现行制度，累计工作满1年不满10年的员工年休假为5天，你工作3年属于这一档，即5天。注意：《年休假制度（2026修订版）》把这一档调整为7天，但该修订版自2027年1月1日起施行，目前尚未生效，从2027年1月1日起按7天执行。制度适用于与公司签订劳动合同的正式员工。",
+        "citations": [
+          {
+            "doc_id": "D05",
+            "section_id": "§2",
+            "title": "年休假制度（2025版）",
+            "heading": "年假天数",
+            "version_date": "2025-01-01",
+            "status": "现行",
+            "quote": "员工累计工作已满1年不满10年的，年休假5天；已满10年不满20年的，年休假10天；已满20年的，年休假15天。"
+          },
+          {
+            "doc_id": "D06",
+            "section_id": "§2",
+            "title": "年休假制度（2026修订版）",
+            "heading": "年假天数",
+            "version_date": "2026-09-01",
+            "status": "待生效",
+            "quote": "员工累计工作已满1年不满10年的，年休假7天；已满10年不满20年的，年休假12天；已满20年的，年休假15天。"
+          },
+          {
+            "doc_id": "D06",
+            "section_id": "§1",
+            "title": "年休假制度（2026修订版）",
+            "heading": "修订说明",
+            "version_date": "2026-09-01",
+            "status": "待生效",
+            "quote": "本次修订仅调整年假天数，其余条款仍按《年休假制度（2025版）》执行。本修订版自2027年1月1日起施行。"
+          },
+          {
+            "doc_id": "D05",
+            "section_id": "§1",
+            "title": "年休假制度（2025版）",
+            "heading": "适用范围",
+            "version_date": "2025-01-01",
+            "status": "现行",
+            "quote": "本制度适用于与公司签订劳动合同的正式员工，实习生不适用。"
+          }
+        ],
+        "conflicts": [],
+        "gaps": [],
+        "clarify_question": "",
+        "doc_verdicts": [
+          {
+            "doc_id": "D05",
+            "verdict": "basis",
+            "reason": "现行有效，回答依据其年假天数与适用范围"
+          },
+          {
+            "doc_id": "D06",
+            "verdict": "not_applicable",
+            "reason": "待生效（2027-01-01起施行），仅用于说明未来调整"
+          }
+        ],
+        "grounding": {
+          "passed": true,
+          "method": "model_review"
+        },
+        "question": "我工作3年了，年假有几天？",
+        "session_id": "C18",
+        "turn_no": 1,
+        "steps_used": 5,
+        "tool_calls": 7,
+        "gate_rejections": 0,
+        "had_tool_error": false
+      },
+      "checks": [
+        {
+          "check": "status",
+          "ok": true,
+          "detail": "期望 ['ANSWERED']，实际 ANSWERED"
+        },
+        {
+          "check": "basis_include",
+          "ok": true,
+          "detail": "依据应包含 ['D05']，实际 ['D05']"
+        }
+      ]
+    },
+    {
+      "question": "另外，笔记本电脑用了两年坏了，能换新的吗？",
+      "dataset": "data\\docs",
+      "fault": null,
+      "result": {
+        "status": "ANSWERED",
+        "answer": "按现行《办公设备申领规定》，笔记本使用满4年才可申请更换；你的电脑用了两年、未满4年，属于\"未满4年损坏\"的情形，由 IT 部评估维修，不能直接换新。若 IT 部评估后认为需要更换，具体处理方式制度中未写明，可向 IT 部或行政部确认。",
+        "citations": [
+          {
+            "doc_id": "D08",
+            "section_id": "§1",
+            "title": "办公设备申领规定",
+            "heading": "笔记本电脑",
+            "version_date": "2025-03-01",
+            "status": "现行",
+            "quote": "新入职员工可申领一台笔记本电脑，使用满4年可申请更换；未满4年损坏的，由 IT 部评估维修。"
+          }
+        ],
+        "conflicts": [],
+        "gaps": [
+          "IT 部评估维修后若判定无法维修或需更换的处理方式，制度中未写明"
+        ],
+        "clarify_question": "",
+        "doc_verdicts": [
+          {
+            "doc_id": "D08",
+            "verdict": "basis",
+            "reason": "现行制度，明确规定了笔记本更换年限和未满年限损坏的处理方式"
+          }
+        ],
+        "grounding": {
+          "passed": true,
+          "method": "model_review"
+        },
+        "question": "另外，笔记本电脑用了两年坏了，能换新的吗？",
+        "session_id": "C18",
+        "turn_no": 2,
+        "steps_used": 4,
+        "tool_calls": 4,
+        "gate_rejections": 0,
+        "had_tool_error": false
+      },
+      "checks": [
+        {
+          "check": "status",
+          "ok": true,
+          "detail": "期望 ['ANSWERED']，实际 ANSWERED"
+        },
+        {
+          "check": "basis_include",
+          "ok": true,
+          "detail": "依据应包含 ['D08']，实际 ['D08']"
+        },
+        {
+          "check": "cite_docs_exclude",
+          "ok": true,
+          "detail": "引用不应包含 ['D05', 'D06']，实际 ['D08']"
+        },
+        {
+          "check": "answer_not_contains:OA/IT",
+          "ok": true,
+          "detail": "回答不应包含「OA/IT」"
+        },
+        {
+          "check": "answer_not_contains:OA报修",
+          "ok": true,
+          "detail": "回答不应包含「OA报修」"
+        },
+        {
+          "check": "answer_not_contains:OA 报修",
+          "ok": true,
+          "detail": "回答不应包含「OA 报修」"
+        }
+      ]
+    }
+  ]
+}

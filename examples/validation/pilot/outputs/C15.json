@@ -1,0 +1,95 @@
+{
+  "id": "C15",
+  "title": "复合问题：一半可答一半资料外",
+  "turns": [
+    {
+      "question": "差旅报销要在几天内提交？报销款一般几天能到账？",
+      "dataset": "data\\docs",
+      "fault": null,
+      "result": {
+        "status": "INCOMPLETE",
+        "answer": "已达到步数上限（8 步），本轮没有得到通过核验的结果，以下只列出已读过的资料，未经核验。",
+        "citations": [],
+        "conflicts": [],
+        "gaps": [
+          "本轮未完成，资料是否充分未经核验"
+        ],
+        "clarify_question": "",
+        "doc_verdicts": [],
+        "evidence_found": [
+          {
+            "doc_id": "D03",
+            "section_id": "§4",
+            "title": "差旅费管理规定",
+            "heading": "报销时限"
+          },
+          {
+            "doc_id": "D03",
+            "section_id": "§1",
+            "title": "差旅费管理规定",
+            "heading": "适用范围"
+          },
+          {
+            "doc_id": "D01",
+            "section_id": "§3",
+            "title": "费用报销管理办法",
+            "heading": "报销期限"
+          },
+          {
+            "doc_id": "D02",
+            "section_id": "§3",
+            "title": "财务部报销操作指引",
+            "heading": "时限要求"
+          },
+          {
+            "doc_id": "D01",
+            "section_id": "§1",
+            "title": "费用报销管理办法",
+            "heading": "总则"
+          }
+        ],
+        "last_gate_problems": [
+          "冲突处理不当：D03 明确限定适用范围为差旅费用，D01 明确写明“差旅费用另有专门规定的，从其规定”，专用制度已让位通用制度，差旅报销时限应直接适用 D03 的“出差返回后10日内”，不应把 D02 的15日与 D03 并列为无法判断优先的冲突。D02 未写适用范围，不能据此推翻专用规定；应说明 D02 与差旅专门规定范围不同/不适用，或至少不将其作为对差旅问题的同等冲突。",
+          "冲突说明中“两份均现行、均未写明适用范围”与事实不符：D03 已写明适用范围为差旅费用，且 D01 已明确差旅从其专门规定。",
+          "建议部分“稳妥做法是按更严的10日提交；如需要按15日执行，请先向财务部确认”把未确认的15日口径包装成可选建议，缺乏制度依据，应删除或改为仅提示 D02 与差旅专门规定范围不同。",
+          "doc_verdicts 中 D02 标为 conflict 不准确，应标为范围不同/不适用于差旅费用（或 not_applicable），并说明其未写适用范围、不能对抗 D03 的专门规定。",
+          "报销款到账时间部分处理正确（资料无规定，列为 gap），无需修改。"
+        ],
+        "question": "差旅报销要在几天内提交？报销款一般几天能到账？",
+        "session_id": "C15",
+        "turn_no": 1,
+        "steps_used": 8,
+        "tool_calls": 12,
+        "gate_rejections": 1,
+        "had_tool_error": false
+      },
+      "checks": [
+        {
+          "check": "status",
+          "ok": false,
+          "detail": "期望 ['ANSWERED']，实际 INCOMPLETE"
+        },
+        {
+          "check": "basis_include",
+          "ok": false,
+          "detail": "依据应包含 ['D03']，实际 []"
+        },
+        {
+          "check": "conflict_docs_exclude",
+          "ok": true,
+          "detail": "冲突文档不应包含 ['D01']，实际 []"
+        },
+        {
+          "check": "answer_contains:10",
+          "ok": false,
+          "detail": "回答应包含「10」"
+        },
+        {
+          "check": "gaps_nonempty",
+          "ok": true,
+          "detail": "gaps 应非空，实际 ['本轮未完成，资料是否充分未经核验']"
+        }
+      ]
+    }
+  ]
+}

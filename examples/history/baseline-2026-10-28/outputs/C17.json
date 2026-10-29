@@ -1,0 +1,39 @@
+{
+  "id": "C17",
+  "title": "模糊问题：没有上下文的“那个”",
+  "turns": [
+    {
+      "question": "那个怎么申请？",
+      "dataset": "data\\docs",
+      "fault": null,
+      "result": {
+        "status": "NEED_CLARIFICATION",
+        "answer": "你想申请的是哪一项？公司制度里有多类申请（如年休假、加班、报销等），流程各不相同，请说明具体事项，我再帮你查对应的申请步骤。",
+        "citations": [],
+        "conflicts": [],
+        "gaps": [],
+        "clarify_question": "请说明要申请的具体事项，例如：年休假、加班/调休、费用报销，或其他事项？",
+        "doc_verdicts": [],
+        "question": "那个怎么申请？",
+        "session_id": "C17",
+        "turn_no": 1,
+        "steps_used": 2,
+        "tool_calls": 1,
+        "gate_rejections": 0,
+        "had_tool_error": false
+      },
+      "checks": [
+        {
+          "check": "status",
+          "ok": true,
+          "detail": "期望 ['NEED_CLARIFICATION']，实际 NEED_CLARIFICATION"
+        },
+        {
+          "check": "no_basis",
+          "ok": true,
+          "detail": "不应有作为依据的文档，实际 []"
+        }
+      ]
+    }
+  ]
+}

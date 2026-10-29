@@ -8,7 +8,7 @@
       "fault": null,
       "result": {
         "status": "ANSWERED",
-        "answer": "同一星剪会员账号最多可同时在 3 台设备上登录；超出时，最早登录的设备会被强制下线。（依据《星剪会员服务说明》，该文档现行有效，2026-05-20 起生效）",
+        "answer": "同一星剪会员账号最多可同时在 3 台设备上登录；超出时，最早登录的设备会被强制下线。依据《星剪会员服务说明》（2026-05-20 生效，现行）。",
         "citations": [
           {
             "doc_id": "P01",
@@ -27,13 +27,17 @@
           {
             "doc_id": "P01",
             "verdict": "basis",
-            "reason": "§1 登录设备条款直接规定了同时登录设备数量上限，文档现行有效"
+            "reason": "§1 登录设备直接规定同时登录设备上限，文档现行有效"
           }
         ],
+        "grounding": {
+          "passed": true,
+          "method": "model_review"
+        },
         "question": "星剪会员一个账号最多能在几台设备上同时登录？",
         "session_id": "C01",
         "turn_no": 1,
-        "steps_used": 3,
+        "steps_used": 4,
         "tool_calls": 4,
         "gate_rejections": 0,
         "had_tool_error": false
@@ -52,7 +56,7 @@
         {
           "check": "answer_contains:3",
           "ok": true,
-          "detail": "回答应包含「3」"
+          "detail": "回答应包含「3」（忽略排版空白）"
         }
       ]
     }

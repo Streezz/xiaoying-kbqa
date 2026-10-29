@@ -1,0 +1,28 @@
+{
+  "id": "C23",
+  "title": "留出测试：带薪休假口语问法",
+  "acceptance": [
+    "泛化验证"
+  ],
+  "dataset": "data/docs",
+  "today": "2026-10-28",
+  "turns": [
+    {
+      "question": "累计参加工作三年，每年能休多少天带薪假？",
+      "expect": {
+        "status": [
+          "ANSWERED"
+        ],
+        "basis_include": [
+          "D05"
+        ],
+        "basis_exclude": [
+          "D06"
+        ],
+        "answer_contains": [
+          "5"
+        ]
+      }
+    }
+  ]
+}

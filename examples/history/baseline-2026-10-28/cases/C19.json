@@ -1,0 +1,20 @@
+{
+  "id": "C19",
+  "title": "资料外问题：法律常识",
+  "acceptance": [
+    "资料外问题"
+  ],
+  "dataset": "data/docs",
+  "today": "2026-10-28",
+  "turns": [
+    {
+      "question": "劳动法规定年假最少几天？",
+      "expect": {
+        "status": [
+          "NO_EVIDENCE"
+        ],
+        "no_basis": true
+      }
+    }
+  ]
+}

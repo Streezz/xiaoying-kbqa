@@ -1,0 +1,27 @@
+{
+  "id": "C14",
+  "title": "错误前提：听说改成 60 天了",
+  "acceptance": [
+    "文档冲突",
+    "明确答案"
+  ],
+  "dataset": "data/docs",
+  "today": "2026-10-28",
+  "turns": [
+    {
+      "question": "听说报销期限改成60天了，是从哪天开始的？",
+      "expect": {
+        "status": [
+          "NEED_CONFIRMATION",
+          "ANSWERED"
+        ],
+        "cite_docs_include": [
+          "D01"
+        ],
+        "answer_contains": [
+          "60"
+        ]
+      }
+    }
+  ]
+}

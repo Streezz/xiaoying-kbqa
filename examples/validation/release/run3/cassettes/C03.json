@@ -1,0 +1,92 @@
+{
+ "e01648c6a3e6b909": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_hfBS3fgRpJlbeCMRZW2J8642",
+    "name": "search_docs",
+    "arguments": "{\"query\": \"年终奖 发放时间\", \"reason\": \"查找年终奖发放时间的规定\"}"
+   },
+   {
+    "id": "call_01_33mnx1SOXNBhVIMlhIgl2015",
+    "name": "search_docs",
+    "arguments": "{\"query\": \"奖金 薪酬 发放\", \"reason\": \"换用制度书面用语检索奖金发放相关制度\"}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 2723,
+   "completion_tokens": 116
+  },
+  "latency_ms": 2459
+ },
+ "ad6722da9af8a7ba": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_AJ6cgkuvfPb3LFRbtlnE8580",
+    "name": "search_docs",
+    "arguments": "{\"query\": \"年度奖金 绩效奖金 支付\", \"reason\": \"再次换说法检索年度奖金相关制度\"}"
+   },
+   {
+    "id": "call_01_SdcBHUfWTDF2kJQQawh19532",
+    "name": "search_docs",
+    "arguments": "{\"query\": \"薪酬福利制度\", \"reason\": \"检索薪酬福利制度，确认是否包含奖金发放规定\"}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 2961,
+   "completion_tokens": 119
+  },
+  "latency_ms": 1789
+ },
+ "a758e1d1908e2f64": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_Mz9ygnGJdrHvLImGg0lr3858",
+    "name": "search_docs",
+    "arguments": "{\"query\": \"工资 发放日 每月\", \"reason\": \"检索工资发放相关制度，确认是否有奖金发放时间规定\"}"
+   },
+   {
+    "id": "call_01_XpFxk6z5STBNynzht4sz7356",
+    "name": "search_docs",
+    "arguments": "{\"query\": \"绩效考核 年度考核 结果应用\", \"reason\": \"检索绩效考核制度，看是否涉及年终奖\"}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 3289,
+   "completion_tokens": 124
+  },
+  "latency_ms": 1494
+ },
+ "44a759d41e42d7b8": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_lUkcbHQsD8E2iAVcIFre9545",
+    "name": "submit_result",
+    "arguments": "{\"status\": \"NO_EVIDENCE\", \"answer\": \"资料中没有找到关于年终奖发放时间的规定。已用\\\"年终奖\\\"\\\"奖金发放\\\"\\\"年度奖金\\\"\\\"薪酬福利\\\"\\\"绩效考核\\\"等说法检索，均未命中相关制度条款。建议向人力资源部（薪酬）咨询确认。\", \"citations\": [], \"doc_verdicts\": [], \"gaps\": [\"公司制度资料中缺少年终奖（年度奖金）的发放时间、发放条件等规定，需向人力资源部/薪酬部门确认\"], \"reason\": \"多次换关键词检索均未找到年终奖发放时间的规定，按资料外处理\"}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 3719,
+   "completion_tokens": 213
+  },
+  "latency_ms": 2454
+ },
+ "d58e8cdeff6ea9b4": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_kWZfGSccPUjgdatm53J27871",
+    "name": "submit_review",
+    "arguments": "{\"passed\": true, \"issues\": [], \"confirmed_doc_ids\": []}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 1464,
+   "completion_tokens": 68
+  },
+  "latency_ms": 1441
+ }
+}

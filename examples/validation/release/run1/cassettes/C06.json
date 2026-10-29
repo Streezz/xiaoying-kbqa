@@ -1,0 +1,72 @@
+{
+ "70988ac124c693dd": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_0t8A3BHeRsGPWufuclt91794",
+    "name": "search_docs",
+    "arguments": "{\"query\": \"加班调休 有效期\", \"reason\": \"查找加班调休使用期限的规定\"}"
+   },
+   {
+    "id": "call_01_5p3waaSScUukrbYLU1Zp5644",
+    "name": "search_docs",
+    "arguments": "{\"query\": \"调休 未使用 作废\", \"reason\": \"换一种说法检索调休期限\"}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 2726,
+   "completion_tokens": 117
+  },
+  "latency_ms": 2457
+ },
+ "51eb0924ce2532c2": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_l2mfYgsirQohcxoYTXu77377",
+    "name": "read_section",
+    "arguments": "{\"doc_id\": \"D07\", \"section_id\": \"§1\", \"reason\": \"读取调休期限原文\"}"
+   },
+   {
+    "id": "call_01_h9EUiF3EsDtoMGxltnFH5740",
+    "name": "get_doc_info",
+    "arguments": "{\"doc_ids\": [\"D07\"], \"reason\": \"确认该办法状态与适用范围\"}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 3357,
+   "completion_tokens": 128
+  },
+  "latency_ms": 1659
+ },
+ "166c182bd9a955c2": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_bTgLSTF9JS0ZM9LW4zTx4882",
+    "name": "submit_result",
+    "arguments": "{\"status\": \"ANSWERED\", \"answer\": \"依据《加班与调休管理办法》（现行，2025-07-01 生效）：工作日延时加班可申请调休，调休须在加班发生后 3 个月内使用，逾期不再保留。该办法未写明其他类型加班的调休期限。\", \"citations\": [{\"doc_id\": \"D07\", \"section_id\": \"§1\", \"quote\": \"工作日延时加班可申请调休，调休须在加班发生后3个月内使用，逾期不再保留。\"}], \"doc_verdicts\": [{\"doc_id\": \"D07\", \"verdict\": \"basis\", \"reason\": \"现行制度，§1 明确调休期限\"}], \"gaps\": [\"休息日加班等其他类型加班的调休使用期限，资料中未找到明确规定\"], \"reason\": \"依据现行制度原文回答调休期限\"}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 3738,
+   "completion_tokens": 271
+  },
+  "latency_ms": 2100
+ },
+ "5457c049cd03b296": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_MQqah3JCsBbwO7S1qFwv5723",
+    "name": "submit_review",
+    "arguments": "{\"passed\": true, \"issues\": [], \"confirmed_doc_ids\": []}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 1600,
+   "completion_tokens": 68
+  },
+  "latency_ms": 1379
+ }
+}

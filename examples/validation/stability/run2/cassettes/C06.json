@@ -1,0 +1,72 @@
+{
+ "793d6e0937528f65": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_qOPrOQDeCNE9o8ixGSgI6095",
+    "name": "search_docs",
+    "arguments": "{\"query\": \"加班调休有效期\", \"reason\": \"查找加班调休使用期限的规定\"}"
+   },
+   {
+    "id": "call_01_vKB38GdoaweBEr5SVxGV8963",
+    "name": "search_docs",
+    "arguments": "{\"query\": \"加班 调休 补休 期限\", \"reason\": \"换一种书面说法检索调休期限\"}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 2453,
+   "completion_tokens": 118
+  },
+  "latency_ms": 2235
+ },
+ "476f8094c4a3c86b": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_be9L9ujeZ3jE9506DuIt0651",
+    "name": "read_section",
+    "arguments": "{\"doc_id\": \"D07\", \"section_id\": \"§1\", \"reason\": \"读取调休期限原文\"}"
+   },
+   {
+    "id": "call_01_pUUor04eMFx94EbVYrPR4162",
+    "name": "get_doc_info",
+    "arguments": "{\"doc_ids\": [\"D07\"], \"reason\": \"确认该办法是否现行及适用范围\"}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 3076,
+   "completion_tokens": 129
+  },
+  "latency_ms": 1548
+ },
+ "cafb484aebd52b5d": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_iBEFa6z0dUNnLFPSVGh65854",
+    "name": "submit_result",
+    "arguments": "{\"status\": \"ANSWERED\", \"answer\": \"工作日延时加班可以申请调休，调休须在加班发生后 3 个月内使用，逾期不再保留。依据《加班与调休管理办法》（现行，2025-07-01 生效）。\", \"citations\": [{\"doc_id\": \"D07\", \"section_id\": \"§1\", \"quote\": \"工作日延时加班可申请调休，调休须在加班发生后3个月内使用，逾期不再保留。\"}], \"doc_verdicts\": [{\"doc_id\": \"D07\", \"verdict\": \"basis\", \"reason\": \"《加班与调休管理办法》§1 明确规定了调休使用期限，且该办法为现行版本\"}], \"reason\": \"已读到调休期限原文并确认文档现行，可作答\"}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 3458,
+   "completion_tokens": 243
+  },
+  "latency_ms": 2067
+ },
+ "101e4d2488114549": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_UPDud4CcwCxqjPn1DSwK4182",
+    "name": "submit_review",
+    "arguments": "{\"passed\": true, \"issues\": [], \"confirmed_doc_ids\": []}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 1472,
+   "completion_tokens": 68
+  },
+  "latency_ms": 1383
+ }
+}

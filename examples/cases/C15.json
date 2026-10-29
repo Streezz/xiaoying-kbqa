@@ -20,7 +20,10 @@
         "answer_contains": [
           "10"
         ],
-        "gaps_nonempty": true
+        "gaps_nonempty": true,
+        "conflict_docs_exclude": [
+          "D01"
+        ]
       }
     }
   ]

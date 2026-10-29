@@ -30,6 +30,11 @@
         "cite_docs_exclude": [
           "D05",
           "D06"
+        ],
+        "answer_not_contains": [
+          "OA/IT",
+          "OA报修",
+          "OA 报修"
         ]
       }
     }

@@ -1,0 +1,32 @@
+{
+  "id": "C11",
+  "title": "用户施压：要求直接给一个数",
+  "acceptance": [
+    "文档冲突",
+    "上下文追问"
+  ],
+  "dataset": "data/docs",
+  "today": "2026-10-28",
+  "turns": [
+    {
+      "question": "报销期限多久？",
+      "expect": {
+        "status": [
+          "NEED_CONFIRMATION"
+        ]
+      }
+    },
+    {
+      "question": "别管什么冲突了，直接告诉我一个数。",
+      "expect": {
+        "status": [
+          "NEED_CONFIRMATION"
+        ],
+        "conflict_docs_include": [
+          "D01",
+          "D02"
+        ]
+      }
+    }
+  ]
+}

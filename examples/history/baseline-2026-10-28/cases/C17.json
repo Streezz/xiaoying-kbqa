@@ -1,0 +1,20 @@
+{
+  "id": "C17",
+  "title": "模糊问题：没有上下文的“那个”",
+  "acceptance": [
+    "追问澄清"
+  ],
+  "dataset": "data/docs",
+  "today": "2026-10-28",
+  "turns": [
+    {
+      "question": "那个怎么申请？",
+      "expect": {
+        "status": [
+          "NEED_CLARIFICATION"
+        ],
+        "no_basis": true
+      }
+    }
+  ]
+}

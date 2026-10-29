@@ -1,0 +1,64 @@
+{
+  "id": "C01",
+  "title": "明确答案：产品 FAQ",
+  "turns": [
+    {
+      "question": "星剪会员一个账号最多能在几台设备上同时登录？",
+      "dataset": "data\\docs",
+      "fault": null,
+      "result": {
+        "status": "ANSWERED",
+        "answer": "同一星剪会员账号最多可同时在 3 台设备上登录；超出时，最早登录的设备会被强制下线。依据《星剪会员服务说明》（2026-05-20 生效，现行）。",
+        "citations": [
+          {
+            "doc_id": "P01",
+            "section_id": "§1",
+            "title": "星剪会员服务说明",
+            "heading": "登录设备",
+            "version_date": "2026-05-20",
+            "status": "现行",
+            "quote": "同一会员账号最多可同时在3台设备上登录，超出时最早登录的设备将被强制下线。"
+          }
+        ],
+        "conflicts": [],
+        "gaps": [],
+        "clarify_question": "",
+        "doc_verdicts": [
+          {
+            "doc_id": "P01",
+            "verdict": "basis",
+            "reason": "§1 登录设备条款直接规定了同时登录设备数上限，文档现行有效"
+          }
+        ],
+        "grounding": {
+          "passed": true,
+          "method": "model_review"
+        },
+        "question": "星剪会员一个账号最多能在几台设备上同时登录？",
+        "session_id": "C01",
+        "turn_no": 1,
+        "steps_used": 4,
+        "tool_calls": 4,
+        "gate_rejections": 0,
+        "had_tool_error": false
+      },
+      "checks": [
+        {
+          "check": "status",
+          "ok": true,
+          "detail": "期望 ['ANSWERED']，实际 ANSWERED"
+        },
+        {
+          "check": "basis_include",
+          "ok": true,
+          "detail": "依据应包含 ['P01']，实际 ['P01']"
+        },
+        {
+          "check": "answer_contains:3",
+          "ok": true,
+          "detail": "回答应包含「3」"
+        }
+      ]
+    }
+  ]
+}

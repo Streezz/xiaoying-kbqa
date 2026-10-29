@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 import os
-from dataclasses import dataclass, replace
+from dataclasses import dataclass, field, replace
 from pathlib import Path
 
 from dotenv import load_dotenv
@@ -15,7 +15,7 @@ load_dotenv(ROOT / ".env")
 @dataclass(frozen=True)
 class Settings:
     llm_mode: str
-    api_key: str
+    api_key: str = field(repr=False)
     base_url: str
     model: str
     llm_timeout: float
@@ -43,7 +43,7 @@ def load_settings() -> Settings:
         model=os.getenv("DEEPSEEK_MODEL", "deepseek-chat"),
         llm_timeout=float(os.getenv("LLM_TIMEOUT", "60")),
         today=os.getenv("KBQA_TODAY", "2026-10-28"),
-        max_steps=int(os.getenv("KBQA_MAX_STEPS", "8")),
+        max_steps=int(os.getenv("KBQA_MAX_STEPS", "12")),
         max_tool_calls=int(os.getenv("KBQA_MAX_TOOL_CALLS", "15")),
         data_dir=_path(os.getenv("KBQA_DATA_DIR", "data/docs")),
         synonyms_path=_path("data/synonyms.yaml"),

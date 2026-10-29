@@ -1,0 +1,102 @@
+{
+ "793d6e0937528f65": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_hpZesLXyH18ESMWZWZuk9752",
+    "name": "search_docs",
+    "arguments": "{\"query\": \"加班调休有效期\", \"reason\": \"查找加班调休使用期限的规定\"}"
+   },
+   {
+    "id": "call_01_QoRC9Lli0dCnm1sN22ZV7391",
+    "name": "search_docs",
+    "arguments": "{\"query\": \"加班 调休 补休 期限\", \"reason\": \"换一种书面说法检索调休期限\"}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 2453,
+   "completion_tokens": 118
+  },
+  "latency_ms": 2353
+ },
+ "7b18fca3f22f1911": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_TGOF46rQlmuq1py0Dlru2376",
+    "name": "read_section",
+    "arguments": "{\"doc_id\": \"D07\", \"section_id\": \"§1\", \"reason\": \"读取调休期限原文\"}"
+   },
+   {
+    "id": "call_01_grWUEbBSTQ0ezSoUEsRa5481",
+    "name": "get_doc_info",
+    "arguments": "{\"doc_ids\": [\"D07\"], \"reason\": \"确认该办法是否现行及适用范围\"}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 3076,
+   "completion_tokens": 129
+  },
+  "latency_ms": 1762
+ },
+ "982c4b66dd14faf6": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_ddqSVVKI3m7YHVOnnDUC6121",
+    "name": "submit_result",
+    "arguments": "{\"status\": \"ANSWERED\", \"answer\": \"工作日延时加班可以申请调休，调休须在加班发生后3个月内使用，逾期不再保留。另外，休息日加班优先安排调休；无法安排调休的，按本人日工资的200%支付加班费。\", \"citations\": [{\"doc_id\": \"D07\", \"section_id\": \"§1\", \"quote\": \"工作日延时加班可申请调休，调休须在加班发生后3个月内使用，逾期不再保留。\"}, {\"doc_id\": \"D07\", \"section_id\": \"§2\", \"quote\": \"休息日加班优先安排调休；无法安排调休的，按本人日工资的200%支付加班费。\"}], \"doc_verdicts\": [{\"doc_id\": \"D07\", \"verdict\": \"basis\", \"reason\": \"现行有效的《加班与调休管理办法》，明确规定了调休使用期限\"}], \"reason\": \"依据现行《加班与调休管理办法》回答调休期限\"}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 3458,
+   "completion_tokens": 286
+  },
+  "latency_ms": 2226
+ },
+ "2403d126adcca6e2": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_AbkikjJ0E3bAI0XOeYJF6709",
+    "name": "read_section",
+    "arguments": "{\"doc_id\": \"D07\", \"section_id\": \"§2\", \"reason\": \"读取休息日加班条款原文以支持引用\"}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 3827,
+   "completion_tokens": 77
+  },
+  "latency_ms": 1745
+ },
+ "cd8c8405803f81a3": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_ppQCpT9aCtEKQpCF5HHg1590",
+    "name": "submit_result",
+    "arguments": "{\"answer\": \"工作日延时加班可以申请调休，调休须在加班发生后3个月内使用，逾期不再保留。另外，休息日加班优先安排调休；无法安排调休的，按本人日工资的200%支付加班费。\", \"citations\": [{\"doc_id\": \"D07\", \"quote\": \"工作日延时加班可申请调休，调休须在加班发生后3个月内使用，逾期不再保留。\", \"section_id\": \"§1\"}, {\"doc_id\": \"D07\", \"quote\": \"休息日加班优先安排调休；无法安排调休的，按本人日工资的200%支付加班费。\", \"section_id\": \"§2\"}], \"doc_verdicts\": [{\"doc_id\": \"D07\", \"reason\": \"现行有效的《加班与调休管理办法》，明确规定了调休使用期限\", \"verdict\": \"basis\"}], \"reason\": \"已读取§2原文，重新提交\", \"status\": \"ANSWERED\"}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 4016,
+   "completion_tokens": 282
+  },
+  "latency_ms": 2146
+ },
+ "2daf4ab75403ecac": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_pkuBqHTigjxy1YfhiPx27308",
+    "name": "submit_review",
+    "arguments": "{\"passed\": true, \"issues\": [], \"confirmed_doc_ids\": []}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 1717,
+   "completion_tokens": 68
+  },
+  "latency_ms": 1283
+ }
+}

@@ -59,6 +59,7 @@ def check_expect(r: dict, expect: dict, events: list[dict]) -> list[dict]:
     for key, getter, label in (
         ("cite_docs_exclude", _cited, "引用"),
         ("basis_exclude", lambda x: _verdict_docs(x, "basis"), "依据"),
+        ("conflict_docs_exclude", _conflict_docs, "冲突文档"),
     ):
         if key in expect:
             got = getter(r)
@@ -71,7 +72,7 @@ def check_expect(r: dict, expect: dict, events: list[dict]) -> list[dict]:
     for tool, n in expect.get("min_calls", {}).items():
         add(f"min_calls:{tool}", calls.count(tool) >= n, f"{tool} 至少 {n} 次，实际 {calls.count(tool)} 次")
     for s in expect.get("answer_contains", []):
-        add(f"answer_contains:{s}", s in r["answer"], f"回答应包含「{s}」")
+        add(f"answer_contains:{s}", ''.join(s.split()) in ''.join(r["answer"].split()), f"回答应包含「{s}」（忽略排版空白）")
     if "answer_contains_any" in expect:
         opts = expect["answer_contains_any"]
         add("answer_contains_any", any(s in r["answer"] for s in opts), f"回答应包含其一 {opts}")
@@ -81,6 +82,12 @@ def check_expect(r: dict, expect: dict, events: list[dict]) -> list[dict]:
         add("gaps_nonempty", bool(r.get("gaps")), f"gaps 应非空，实际 {r.get('gaps')}")
     if expect.get("tool_error_seen"):
         add("tool_error_seen", any(e["event"] == "tool" and not e["ok"] for e in events), "Trace 里应出现失败的工具调用")
+    for target in expect.get('must_read', []):
+        reads = {e['args'].get('doc_id', '') + e['args'].get('section_id', '') for e in events
+                 if e['event'] == 'tool' and e['tool'] == 'read_section' and e['ok']}
+        add(f'must_read:{target}', target in reads, f'必须实际读到 {target}，实际 {sorted(reads)}')
+    if expect.get('confirmation_required'):
+        add('confirmation_required', bool(r.get('confirmation')), '应记录本轮确认原话和证据版本')
     return checks
 
 
@@ -94,15 +101,18 @@ class CaseRun:
         return all(c["ok"] for t in self.turns for c in t["checks"])
 
 
-def run_case(case: dict, settings: Settings, mode: str, write: bool = True) -> CaseRun:
+def run_case(case: dict, settings: Settings, mode: str, write: bool = True,
+             output_root: Path | None = None) -> CaseRun:
+    root = output_root or ROOT / 'examples'
+    cassette_dir, out_dir, trace_dir = root / 'cassettes', root / 'outputs', root / 'traces'
     cid = case["id"]
     inner = None
     if mode != "replay":
         inner = DeepSeekLLM(settings.api_key, settings.base_url, settings.model, settings.llm_timeout)
-    llm = CassetteLLM(CASSETTE_DIR / f"{cid}.json", mode, inner, model_name=settings.model)
+    llm = CassetteLLM(cassette_dir / f"{cid}.json", mode, inner, model_name=settings.model)
     sessions = SessionStore(":memory:")
     turns_out, md_parts = [], [f"# {cid} {case['title']}", "", f"验收点：{'、'.join(case['acceptance'])}", ""]
-    trace_path = TRACE_DIR / f"{cid}.jsonl"
+    trace_path = trace_dir / f"{cid}.jsonl"
     for i, turn in enumerate(case["turns"], start=1):
         data_dir = ROOT / turn.get("dataset", case.get("dataset", "data/docs"))
         st = settings.with_overrides(data_dir=data_dir, today=case.get("today"))
@@ -116,13 +126,15 @@ def run_case(case: dict, settings: Settings, mode: str, write: bool = True) -> C
             out.tracer.write(trace_path, append=i > 1)
             md_parts += [f"## 第 {i} 轮：{turn['question']}", "",
                          f"资料：`{data_dir.relative_to(ROOT).as_posix()}`" + (f"，故障注入：`{turn['fault']}`" if turn.get("fault") else ""),
-                         "", out.tracer.markdown(), "", "回答：", "", "> " + out.result["answer"].replace("\n", "\n> "), ""]
+                         "", out.tracer.markdown(), "", "回答：", "",
+                         '\n'.join('> ' + line if line else '>' for line in out.result['answer'].splitlines()), ""]
     run = CaseRun(case, turns_out)
     if write:
-        OUT_DIR.mkdir(parents=True, exist_ok=True)
-        (OUT_DIR / f"{cid}.json").write_text(json.dumps({"id": cid, "title": case["title"], "turns": turns_out},
+        out_dir.mkdir(parents=True, exist_ok=True)
+        (out_dir / f"{cid}.json").write_text(json.dumps({"id": cid, "title": case["title"], "turns": turns_out},
                                                         ensure_ascii=False, indent=2), encoding="utf-8")
-        (TRACE_DIR / f"{cid}.md").write_text("\n".join(md_parts), encoding="utf-8")
+        (trace_dir / f"{cid}.md").write_text("\n".join(md_parts), encoding="utf-8")
+    sessions.conn.close()
     return run
 
 

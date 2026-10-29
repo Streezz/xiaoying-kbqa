@@ -8,7 +8,7 @@
       "fault": null,
       "result": {
         "status": "NEED_CONFIRMATION",
-        "answer": "分两种情况：\n\n1. 差旅费用：按《差旅费管理规定》，应于出差返回后10日内提交报销（该规定仅适用于因公出差产生的交通、住宿及出差补助费用；《费用报销管理办法》也写明\"差旅费用另有专门规定的，从其规定\"）。\n\n2. 其他一般费用：目前有两份都现行、都未写明适用范围的制度说法不一致，需要你确认以哪份为准：\n- 《费用报销管理办法》（2026-03-01 生效）：原则上费用发生后30天内提交，特殊情况经分管领导书面批准可延长至60天；超期且未获延期批准的不予受理。\n- 《财务部报销操作指引》（2026-06-15 生效）：费用发生之日起15日内完成报销申请。\n\n另外，《报销管理办法（2024版）》规定的45天已废止（已被《费用报销管理办法》替代），不再适用。\n\n请确认非差旅费用按哪份制度执行，我再给出确定答案。",
+        "answer": "分情况：\n1）差旅费用：出差返回后10日内提交报销（《差旅费管理规定》仅适用于因公出差的交通、住宿及出差补助费用）。\n2）其他费用：现行《费用报销管理办法》规定原则上费用发生后30天内提交，特殊情况经分管领导书面批准可延长至60天；但《财务部报销操作指引》规定费用发生之日起15日内完成报销申请。这两份都现行、都未写适用范围，说法不一致，需你确认适用哪份（或告知费用类型，我再核对）。另：2024版《报销管理办法》已被现行办法替代，其45天规定不再适用。",
         "citations": [
           {
             "doc_id": "D03",
@@ -30,15 +30,6 @@
           },
           {
             "doc_id": "D01",
-            "section_id": "§1",
-            "title": "费用报销管理办法",
-            "heading": "总则",
-            "version_date": "2026-03-01",
-            "status": "现行",
-            "quote": "本办法适用于公司员工因公发生的各类费用报销。差旅费用另有专门规定的，从其规定。"
-          },
-          {
-            "doc_id": "D01",
             "section_id": "§3",
             "title": "费用报销管理办法",
             "heading": "报销期限",
@@ -48,12 +39,12 @@
           },
           {
             "doc_id": "D01",
-            "section_id": "§4",
+            "section_id": "§1",
             "title": "费用报销管理办法",
-            "heading": "超期处理",
+            "heading": "总则",
             "version_date": "2026-03-01",
             "status": "现行",
-            "quote": "超过报销期限且未获延期批准的，财务部不予受理。"
+            "quote": "本办法适用于公司员工因公发生的各类费用报销。差旅费用另有专门规定的，从其规定。"
           },
           {
             "doc_id": "D02",
@@ -67,7 +58,7 @@
         ],
         "conflicts": [
           {
-            "topic": "非差旅费用的报销期限",
+            "topic": "非差旅费用的报销期限（30天/可延至60天 vs 15日）",
             "positions": [
               {
                 "doc_id": "D01",
@@ -80,38 +71,43 @@
                 "claim": "员工应于费用发生之日起15日内完成报销申请。"
               }
             ],
-            "note": "两份均现行（D01 2026-03-01 生效，D02 2026-06-15 生效），均未写明适用范围，D02 也未写明替代 D01，无法判断优先级"
+            "note": "两份均现行（D01 2026-03-01生效，D02 2026-06-15生效），均未写明适用范围，D02目的段也未限定范围，无法判断优先级",
+            "resolution": "unresolved"
           }
         ],
         "gaps": [],
-        "clarify_question": "非差旅费用报销，应按《费用报销管理办法》（30天，可批准延长至60天）还是《财务部报销操作指引》（15日）执行？",
+        "clarify_question": "你的报销属于差旅费用还是其他费用？若是其他费用，请确认按《费用报销管理办法》（30天，可批准延至60天）还是《财务部报销操作指引》（15日）执行。",
         "doc_verdicts": [
           {
             "doc_id": "D01",
             "verdict": "conflict",
-            "reason": "现行制度，规定一般费用30天（可延至60天），与D02的15日冲突；其总则写明差旅费用另有规定从其规定"
+            "reason": "现行办法，规定30天/可延至60天，与D02的15日不一致"
           },
           {
             "doc_id": "D02",
             "verdict": "conflict",
-            "reason": "现行制度，规定15日内完成报销申请，与D01的30天冲突，且未写明适用范围"
+            "reason": "现行指引，规定15日，与D01不一致"
           },
           {
             "doc_id": "D03",
             "verdict": "basis",
-            "reason": "现行制度，明确仅适用于差旅费用，规定出差返回后10日内报销"
+            "reason": "差旅费用专用制度，原文写明仅适用于因公出差费用，D01总则也写明差旅另有规定从其规定"
           },
           {
             "doc_id": "D04",
             "verdict": "not_applicable",
-            "reason": "已废止，被D01替代，其45天规定不再适用"
+            "reason": "已被D01替代，状态为废止，45天规定不再适用"
           }
         ],
+        "grounding": {
+          "passed": true,
+          "method": "model_review"
+        },
         "question": "报销期限多久？",
         "session_id": "C02",
         "turn_no": 1,
-        "steps_used": 4,
-        "tool_calls": 11,
+        "steps_used": 5,
+        "tool_calls": 10,
         "gate_rejections": 0,
         "had_tool_error": false
       },
@@ -134,7 +130,7 @@
         {
           "check": "must_call:get_doc_info",
           "ok": true,
-          "detail": "应调用 get_doc_info，实际调用 ['search_docs', 'search_docs', 'read_section', 'read_section', 'read_section', 'read_section', 'read_section', 'get_doc_info', 'read_section', 'read_section', 'read_section']"
+          "detail": "应调用 get_doc_info，实际调用 ['search_docs', 'search_docs', 'read_section', 'read_section', 'read_section', 'read_section', 'get_doc_info', 'read_section', 'read_section', 'read_section']"
         }
       ]
     }

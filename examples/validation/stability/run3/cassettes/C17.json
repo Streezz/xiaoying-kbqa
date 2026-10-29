@@ -1,0 +1,47 @@
+{
+ "5167dfb48c941d99": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_lcX0Vu5KOKNH7nWUEbzB4304",
+    "name": "search_docs",
+    "arguments": "{\"query\": \"申请流程\", \"reason\": \"用户问题过于模糊，先检索看是否有可对应的申请事项\"}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 2448,
+   "completion_tokens": 62
+  },
+  "latency_ms": 2233
+ },
+ "77c3f7ab78d2256f": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_aqyFpiyd1g9CDf5xtHYD0449",
+    "name": "submit_result",
+    "arguments": "{\"status\": \"NEED_CLARIFICATION\", \"answer\": \"你想申请的是哪一项？公司资料里涉及申请的事项有多项，例如年休假、加班、费用报销等，各自流程不同，需要你说明具体事项（以及大致情形）我才能查到对应的规定。\", \"clarify_question\": \"请说明你要申请的具体事项，例如：年休假、加班/调休、费用报销，或其他事项？\", \"citations\": [], \"doc_verdicts\": [], \"reason\": \"用户问题缺少上下文，无法确定要查哪项申请，先追问\"}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 2957,
+   "completion_tokens": 203
+  },
+  "latency_ms": 2004
+ },
+ "f49a27b5e505b001": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_kNxx28sNhovKHh6z22gr8010",
+    "name": "submit_review",
+    "arguments": "{\"passed\": true, \"issues\": [], \"confirmed_doc_ids\": []}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 1053,
+   "completion_tokens": 68
+  },
+  "latency_ms": 1189
+ }
+}

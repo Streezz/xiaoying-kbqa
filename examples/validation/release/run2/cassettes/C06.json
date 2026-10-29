@@ -1,0 +1,72 @@
+{
+ "70988ac124c693dd": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_nUxEshI5nmUfnlLgrtmA4473",
+    "name": "search_docs",
+    "arguments": "{\"query\": \"加班 调休 有效期\", \"reason\": \"查找加班调休使用期限的规定\"}"
+   },
+   {
+    "id": "call_01_WtSwvtVtPXdJ9v6OfN687705",
+    "name": "search_docs",
+    "arguments": "{\"query\": \"加班调休申请 规定\", \"reason\": \"换一种说法检索调休制度\"}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 2726,
+   "completion_tokens": 116
+  },
+  "latency_ms": 2357
+ },
+ "1237475f91876b80": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_x7MWnfGzJkccVKHVP9iv6076",
+    "name": "read_section",
+    "arguments": "{\"doc_id\": \"D07\", \"section_id\": \"§1\", \"reason\": \"读取调休期限原文\"}"
+   },
+   {
+    "id": "call_01_muf0V14dBntti9xwaWL80357",
+    "name": "get_doc_info",
+    "arguments": "{\"doc_ids\": [\"D07\"], \"reason\": \"确认该办法是否现行及适用范围\"}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 3373,
+   "completion_tokens": 129
+  },
+  "latency_ms": 1485
+ },
+ "108f03e6ac01386e": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_edNJNN0PqLFFbGjQnL6l7767",
+    "name": "submit_result",
+    "arguments": "{\"status\": \"ANSWERED\", \"answer\": \"依据《加班与调休管理办法》（现行，2025-07-01 生效）：工作日延时加班可申请调休，调休须在加班发生后 3 个月内使用，逾期不再保留。该办法未写明其他类型加班的调休期限，资料中也没有找到相关内容。\", \"citations\": [{\"doc_id\": \"D07\", \"section_id\": \"§1\", \"quote\": \"工作日延时加班可申请调休，调休须在加班发生后3个月内使用，逾期不再保留。\"}], \"doc_verdicts\": [{\"doc_id\": \"D07\", \"verdict\": \"basis\", \"reason\": \"现行制度，§1 明确调休期限\"}], \"gaps\": [\"休息日加班等其他类型加班的调休使用期限，资料中未找到\"], \"reason\": \"依据现行办法原文回答调休期限\"}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 3755,
+   "completion_tokens": 276
+  },
+  "latency_ms": 2383
+ },
+ "bf1547b90f37c537": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_d3AMHScNgbhAqXPjC3vc3872",
+    "name": "submit_review",
+    "arguments": "{\"passed\": true, \"issues\": [], \"confirmed_doc_ids\": []}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 1604,
+   "completion_tokens": 68
+  },
+  "latency_ms": 1389
+ }
+}

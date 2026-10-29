@@ -1,0 +1,107 @@
+{
+ "c81a1b5e6203f130": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_Hecx0sfDMuBCLIu4mAVU6643",
+    "name": "search_docs",
+    "arguments": "{\"query\": \"报销期限\", \"reason\": \"检索报销期限相关制度\"}"
+   },
+   {
+    "id": "call_01_OzR3oIjAueV3YDjfMFhW8912",
+    "name": "search_docs",
+    "arguments": "{\"query\": \"费用报销 提交时限 逾期\", \"reason\": \"换书面用语再检索一次报销时限规定\"}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 2631,
+   "completion_tokens": 113
+  },
+  "latency_ms": 2203
+ },
+ "c15cf8e39d22a327": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_UiyJwwpNp4PVVvxW4cTs0638",
+    "name": "read_section",
+    "arguments": "{\"doc_id\": \"D01\", \"section_id\": \"§3\", \"reason\": \"读取费用报销管理办法的报销期限原文\"}"
+   },
+   {
+    "id": "call_01_JHuc4LmAfLfOFxBuOoS02873",
+    "name": "read_section",
+    "arguments": "{\"doc_id\": \"D01\", \"section_id\": \"§4\", \"reason\": \"读取超期处理原文\"}"
+   },
+   {
+    "id": "call_02_bVzmuiL3Ff1Mw1Z5bwGD4722",
+    "name": "read_section",
+    "arguments": "{\"doc_id\": \"D04\", \"section_id\": \"§2\", \"reason\": \"读取2024版报销管理办法的报销期限原文\"}"
+   },
+   {
+    "id": "call_03_LXn3JXRmzZyiVGW2oI8c9325",
+    "name": "read_section",
+    "arguments": "{\"doc_id\": \"D03\", \"section_id\": \"§4\", \"reason\": \"读取差旅费管理规定的报销时限原文\"}"
+   },
+   {
+    "id": "call_04_1k78D0rkcR9XOQZiE4SP6106",
+    "name": "get_doc_info",
+    "arguments": "{\"doc_ids\": [\"D01\", \"D03\", \"D04\"], \"reason\": \"查三份文档的生效状态、适用范围和替代关系\"}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 3679,
+   "completion_tokens": 361
+  },
+  "latency_ms": 2445
+ },
+ "fd2114ea33ef5bc9": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_g3RV81FZprVY5PcTVFxS5181",
+    "name": "read_section",
+    "arguments": "{\"doc_id\": \"D03\", \"section_id\": \"§1\", \"reason\": \"确认差旅费管理规定的适用范围原文\"}"
+   },
+   {
+    "id": "call_01_g8wJgim7i9pdzZ8jdeOF0749",
+    "name": "read_section",
+    "arguments": "{\"doc_id\": \"D01\", \"section_id\": \"§1\", \"reason\": \"确认费用报销管理办法总则是否写明适用范围或另有规定从其规定\"}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 4801,
+   "completion_tokens": 154
+  },
+  "latency_ms": 1729
+ },
+ "6c45bba2c53422cc": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_GsDCshg9fJTRWRZFmsRR0803",
+    "name": "submit_result",
+    "arguments": "{\"status\": \"ANSWERED\", \"answer\": \"分两种情况：\\n\\n1. 一般费用报销：原则上应在费用发生后30天内提交报销申请；因特殊情况无法按期提交的，经分管领导书面批准，可延长至60天。超过报销期限且未获延期批准的，财务部不予受理。（依据《费用报销管理办法》，2026-03-01生效，现行）\\n\\n2. 差旅费用：应于出差返回后10日内提交报销。因为《费用报销管理办法》总则写明\\\"差旅费用另有专门规定的，从其规定\\\"，而《差旅费管理规定》仅适用于因公出差产生的交通、住宿及出差补助费用，所以差旅费按10日执行。\\n\\n另外提醒：原《报销管理办法（2024版）》规定的\\\"费用发生后45天内\\\"已废止，该办法已被《费用报销管理办法》替代，请按现行规定执行。\", \"citations\": [{\"doc_id\": \"D01\", \"section_id\": \"§3\", \"quote\": \"员工原则上应在费用发生后30天内提交报销申请；因特殊情况无法按期提交的，经分管领导书面批准，可延长至60天。\"}, {\"doc_id\": \"D01\", \"section_id\": \"§4\", \"quote\": \"超过报销期限且未获延期批准的，财务部不予受理。\"}, {\"doc_id\": \"D01\", \"section_id\": \"§1\", \"quote\": \"本办法适用于公司员工因公发生的各类费用报销。差旅费用另有专门规定的，从其规定。\"}, {\"doc_id\": \"D03\", \"section_id\": \"§1\", \"quote\": \"本规定仅适用于员工因公出差产生的交通、住宿及出差补助费用。\"}, {\"doc_id\": \"D03\", \"section_id\": \"§4\", \"quote\": \"差旅费用应于出差返回后10日内提交报销。\"}], \"doc_verdicts\": [{\"doc_id\": \"D01\", \"verdict\": \"basis\", \"reason\": \"现行制度，规定一般费用30天（可延至60天）及超期不予受理，并写明差旅另有规定从其规定\"}, {\"doc_id\": \"D03\", \"verdict\": \"basis\", \"reason\": \"现行制度，适用范围限于差旅费用，规定出差返回后10日内报销\"}, {\"doc_id\": \"D04\", \"verdict\": \"not_applicable\", \"reason\": \"已废止，被D01替代，其45天规定不再适用\"}], \"reason\": \"依据现行制度原文回答报销期限，并区分差旅专用规定与已废止旧版\"}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 5152,
+   "completion_tokens": 615
+  },
+  "latency_ms": 3578
+ },
+ "8b1f5203ebf18900": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_O76j7wmJOT5pqDBFwIUk4212",
+    "name": "submit_review",
+    "arguments": "{\"passed\": true, \"issues\": [], \"confirmed_doc_ids\": []}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 2963,
+   "completion_tokens": 68
+  },
+  "latency_ms": 1435
+ }
+}

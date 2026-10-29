@@ -22,30 +22,6 @@
             "section_id": "§3",
             "title": "费用报销管理办法",
             "heading": "报销期限"
-          },
-          {
-            "doc_id": "D01",
-            "section_id": "§4",
-            "title": "费用报销管理办法",
-            "heading": "超期处理"
-          },
-          {
-            "doc_id": "D02",
-            "section_id": "§3",
-            "title": "财务部报销操作指引",
-            "heading": "时限要求"
-          },
-          {
-            "doc_id": "D03",
-            "section_id": "§4",
-            "title": "差旅费管理规定",
-            "heading": "报销时限"
-          },
-          {
-            "doc_id": "D04",
-            "section_id": "§2",
-            "title": "报销管理办法（2024版）",
-            "heading": "报销期限"
           }
         ],
         "last_gate_problems": [],
@@ -53,7 +29,7 @@
         "session_id": "C09",
         "turn_no": 1,
         "steps_used": 2,
-        "tool_calls": 8,
+        "tool_calls": 4,
         "gate_rejections": 0,
         "had_tool_error": false
       },

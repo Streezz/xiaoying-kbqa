@@ -1,0 +1,270 @@
+{
+  "id": "C10",
+  "title": "确认后续答：用户选定财务部指引",
+  "turns": [
+    {
+      "question": "报销期限多久？",
+      "dataset": "data\\docs",
+      "fault": null,
+      "result": {
+        "status": "NEED_CONFIRMATION",
+        "answer": "资料里对报销期限有两套现行说法，需要你确认适用哪份：\n\n1. 《费用报销管理办法》（2026-03-01生效，现行）：员工原则上应在费用发生后30天内提交报销申请；因特殊情况无法按期提交的，经分管领导书面批准，可延长至60天。该办法适用于公司员工因公发生的各类费用报销，但\"差旅费用另有专门规定的，从其规定\"。\n2. 《财务部报销操作指引》（2026-06-15生效，现行）：员工应于费用发生之日起15日内完成报销申请。该指引未写明适用范围。\n\n另外，差旅费用按《差旅费管理规定》执行：差旅费用应于出差返回后10日内提交报销（该规定仅适用于因公出差产生的交通、住宿及出差补助费用）。\n\n《报销管理办法（2024版）》规定的45天已废止，被《费用报销管理办法》替代，不再适用。\n\n请确认你的费用属于哪类、以哪份制度为准。",
+        "citations": [
+          {
+            "doc_id": "D01",
+            "section_id": "§3",
+            "title": "费用报销管理办法",
+            "heading": "报销期限",
+            "version_date": "2026-03-01",
+            "status": "现行",
+            "quote": "员工原则上应在费用发生后30天内提交报销申请；因特殊情况无法按期提交的，经分管领导书面批准，可延长至60天。"
+          },
+          {
+            "doc_id": "D01",
+            "section_id": "§1",
+            "title": "费用报销管理办法",
+            "heading": "总则",
+            "version_date": "2026-03-01",
+            "status": "现行",
+            "quote": "本办法适用于公司员工因公发生的各类费用报销。差旅费用另有专门规定的，从其规定。"
+          },
+          {
+            "doc_id": "D02",
+            "section_id": "§3",
+            "title": "财务部报销操作指引",
+            "heading": "时限要求",
+            "version_date": "2026-06-15",
+            "status": "现行",
+            "quote": "员工应于费用发生之日起15日内完成报销申请。"
+          },
+          {
+            "doc_id": "D03",
+            "section_id": "§4",
+            "title": "差旅费管理规定",
+            "heading": "报销时限",
+            "version_date": "2026-01-10",
+            "status": "现行",
+            "quote": "差旅费用应于出差返回后10日内提交报销。"
+          },
+          {
+            "doc_id": "D03",
+            "section_id": "§1",
+            "title": "差旅费管理规定",
+            "heading": "适用范围",
+            "version_date": "2026-01-10",
+            "status": "现行",
+            "quote": "本规定仅适用于员工因公出差产生的交通、住宿及出差补助费用。"
+          }
+        ],
+        "conflicts": [
+          {
+            "topic": "非差旅费用的报销期限（30天 vs 15日）",
+            "positions": [
+              {
+                "doc_id": "D01",
+                "section_id": "§3",
+                "claim": "员工原则上应在费用发生后30天内提交报销申请；因特殊情况无法按期提交的，经分管领导书面批准，可延长至60天。"
+              },
+              {
+                "doc_id": "D02",
+                "section_id": "§3",
+                "claim": "员工应于费用发生之日起15日内完成报销申请。"
+              }
+            ],
+            "note": "两份均现行；D01写明适用于各类费用报销但未提D02，D02未写适用范围，无法判断谁优先",
+            "resolution": "unresolved"
+          }
+        ],
+        "gaps": [],
+        "clarify_question": "你的报销属于差旅费用还是其他费用？非差旅费用请确认以《费用报销管理办法》（30天，可批延至60天）还是《财务部报销操作指引》（15日）为准。",
+        "doc_verdicts": [
+          {
+            "doc_id": "D01",
+            "verdict": "conflict",
+            "reason": "现行制度，规定30天（可延至60天），与D02的15日说法不一致"
+          },
+          {
+            "doc_id": "D02",
+            "verdict": "conflict",
+            "reason": "现行制度，规定15日，与D01的30天说法不一致"
+          },
+          {
+            "doc_id": "D03",
+            "verdict": "basis",
+            "reason": "差旅费用专用制度，明确仅适用于因公出差费用，D01已让位于其专门规定"
+          },
+          {
+            "doc_id": "D04",
+            "verdict": "not_applicable",
+            "reason": "已废止，被D01替代"
+          }
+        ],
+        "grounding": {
+          "passed": true,
+          "method": "model_review"
+        },
+        "question": "报销期限多久？",
+        "session_id": "C10",
+        "turn_no": 1,
+        "steps_used": 5,
+        "tool_calls": 10,
+        "gate_rejections": 0,
+        "had_tool_error": false
+      },
+      "checks": [
+        {
+          "check": "status",
+          "ok": true,
+          "detail": "期望 ['NEED_CONFIRMATION']，实际 NEED_CONFIRMATION"
+        },
+        {
+          "check": "conflict_docs_include",
+          "ok": true,
+          "detail": "冲突文档应包含 ['D01', 'D02']，实际 ['D01', 'D02']"
+        }
+      ]
+    },
+    {
+      "question": "我们部门以财务部的报销操作指引为准。",
+      "dataset": "data\\docs",
+      "fault": null,
+      "result": {
+        "status": "ANSWERED",
+        "answer": "依据你确认的《财务部报销操作指引》（2026-06-15生效，现行）：员工应于费用发生之日起15日内完成报销申请。该指引未写明适用范围，也未规定延期或超期处理，这部分资料中没有找到。若你的费用属于因公出差的交通、住宿及出差补助，仍按《差旅费管理规定》执行（出差返回后10日内提交）。",
+        "citations": [
+          {
+            "doc_id": "D02",
+            "section_id": "§3",
+            "title": "财务部报销操作指引",
+            "heading": "时限要求",
+            "version_date": "2026-06-15",
+            "status": "现行",
+            "quote": "员工应于费用发生之日起15日内完成报销申请。"
+          },
+          {
+            "doc_id": "D03",
+            "section_id": "§4",
+            "title": "差旅费管理规定",
+            "heading": "报销时限",
+            "version_date": "2026-01-10",
+            "status": "现行",
+            "quote": "差旅费用应于出差返回后10日内提交报销。"
+          },
+          {
+            "doc_id": "D03",
+            "section_id": "§1",
+            "title": "差旅费管理规定",
+            "heading": "适用范围",
+            "version_date": "2026-01-10",
+            "status": "现行",
+            "quote": "本规定仅适用于员工因公出差产生的交通、住宿及出差补助费用。"
+          }
+        ],
+        "conflicts": [
+          {
+            "topic": "非差旅费用的报销期限（30天 vs 15日）",
+            "positions": [
+              {
+                "doc_id": "D01",
+                "section_id": "§3",
+                "claim": "员工原则上应在费用发生后30天内提交报销申请；因特殊情况无法按期提交的，经分管领导书面批准，可延长至60天。"
+              },
+              {
+                "doc_id": "D02",
+                "section_id": "§3",
+                "claim": "员工应于费用发生之日起15日内完成报销申请。"
+              }
+            ],
+            "note": "两份均现行、均未写明适用范围；用户本轮明确部门以《财务部报销操作指引》为准",
+            "resolution": "user_confirmed"
+          }
+        ],
+        "gaps": [
+          "《财务部报销操作指引》未规定延期申请或超期处理方式",
+          "《财务部报销操作指引》未写明适用范围"
+        ],
+        "clarify_question": "",
+        "doc_verdicts": [
+          {
+            "doc_id": "D02",
+            "verdict": "basis",
+            "reason": "用户确认适用，§3为报销期限依据"
+          },
+          {
+            "doc_id": "D01",
+            "verdict": "conflict",
+            "reason": "§3规定30天（可批延至60天），与用户确认适用的指引15日不一致"
+          },
+          {
+            "doc_id": "D03",
+            "verdict": "basis",
+            "reason": "差旅费用另有专门规定，按§1适用范围与§4期限回答"
+          }
+        ],
+        "grounding": {
+          "passed": true,
+          "method": "model_review"
+        },
+        "confirmation": {
+          "user_statement": "我们部门以财务部的报销操作指引为准。",
+          "scope": "本轮适用口径，不改变制度效力",
+          "session_id": "C10",
+          "turn_no": 2,
+          "documents": [
+            {
+              "doc_id": "D02",
+              "section_id": "§3",
+              "version_date": "2026-06-15",
+              "hash": "afed94fc9a74"
+            },
+            {
+              "doc_id": "D02",
+              "section_id": "§1",
+              "version_date": "2026-06-15",
+              "hash": "9bf5975c9f14"
+            }
+          ]
+        },
+        "question": "我们部门以财务部的报销操作指引为准。",
+        "session_id": "C10",
+        "turn_no": 2,
+        "steps_used": 4,
+        "tool_calls": 3,
+        "gate_rejections": 0,
+        "had_tool_error": false
+      },
+      "checks": [
+        {
+          "check": "status",
+          "ok": true,
+          "detail": "期望 ['ANSWERED']，实际 ANSWERED"
+        },
+        {
+          "check": "basis_include",
+          "ok": true,
+          "detail": "依据应包含 ['D02']，实际 ['D02', 'D03']"
+        },
+        {
+          "check": "answer_contains:15",
+          "ok": true,
+          "detail": "回答应包含「15」（忽略排版空白）"
+        },
+        {
+          "check": "answer_not_contains:风险由部门",
+          "ok": true,
+          "detail": "回答不应包含「风险由部门」"
+        },
+        {
+          "check": "answer_not_contains:自行承担",
+          "ok": true,
+          "detail": "回答不应包含「自行承担」"
+        },
+        {
+          "check": "confirmation_required",
+          "ok": true,
+          "detail": "应记录本轮确认原话和证据版本"
+        }
+      ]
+    }
+  ]
+}

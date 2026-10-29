@@ -1,0 +1,78 @@
+{
+  "id": "C06",
+  "title": "工具失败后换路：检索连续超时",
+  "turns": [
+    {
+      "question": "加班之后调休要在多久内用完？",
+      "dataset": "data\\docs",
+      "fault": "search:timeout@1,2",
+      "result": {
+        "status": "ANSWERED",
+        "answer": "加班调休须在加班发生后 3 个月内使用，逾期不再保留。依据《加班与调休管理办法》（2025-07-01 生效，现行），该期限针对工作日延时加班可申请的调休。另外，休息日加班优先安排调休，无法安排调休的按本人日工资的 200% 支付加班费。",
+        "citations": [
+          {
+            "doc_id": "D07",
+            "section_id": "§1",
+            "title": "加班与调休管理办法",
+            "heading": "调休期限",
+            "version_date": "2025-07-01",
+            "status": "现行",
+            "quote": "工作日延时加班可申请调休，调休须在加班发生后3个月内使用，逾期不再保留。"
+          },
+          {
+            "doc_id": "D07",
+            "section_id": "§2",
+            "title": "加班与调休管理办法",
+            "heading": "休息日加班",
+            "version_date": "2025-07-01",
+            "status": "现行",
+            "quote": "休息日加班优先安排调休；无法安排调休的，按本人日工资的200%支付加班费。"
+          }
+        ],
+        "conflicts": [],
+        "gaps": [],
+        "clarify_question": "",
+        "doc_verdicts": [
+          {
+            "doc_id": "D07",
+            "verdict": "basis",
+            "reason": "现行制度，明确规定了调休使用期限"
+          }
+        ],
+        "grounding": {
+          "passed": true,
+          "method": "model_review"
+        },
+        "question": "加班之后调休要在多久内用完？",
+        "session_id": "C06",
+        "turn_no": 1,
+        "steps_used": 6,
+        "tool_calls": 5,
+        "gate_rejections": 1,
+        "had_tool_error": true
+      },
+      "checks": [
+        {
+          "check": "status",
+          "ok": true,
+          "detail": "期望 ['ANSWERED']，实际 ANSWERED"
+        },
+        {
+          "check": "basis_include",
+          "ok": true,
+          "detail": "依据应包含 ['D07']，实际 ['D07']"
+        },
+        {
+          "check": "answer_contains:3个月",
+          "ok": true,
+          "detail": "回答应包含「3个月」（忽略排版空白）"
+        },
+        {
+          "check": "tool_error_seen",
+          "ok": true,
+          "detail": "Trace 里应出现失败的工具调用"
+        }
+      ]
+    }
+  ]
+}

@@ -12,7 +12,7 @@ from pathlib import Path
 
 from pydantic import ValidationError
 
-from . import gate
+from . import gate, grounding
 from .config import Settings
 from .docstore import DocStore
 from .faults import FaultPlan
@@ -84,18 +84,52 @@ class Agent:
                     break
                 if call.name == "submit_result":
                     content, final, problems = self._handle_submit(call.arguments, steps, ledger, runner, warned, tracer)
+                    if final is not None:
+                        if steps >= max_steps:
+                            final = self._program_result("INCOMPLETE", "已达到模型调用上限，回答依据核验尚未完成。", ledger)
+                            break
+                        steps += 1
+                        try:
+                            review, reply_review, payload = grounding.verify(
+                                self.llm, question, turns, final, ledger, self.store, s.today,
+                                [e for e in tracer.events if e['event'] == 'tool'],
+                            )
+                        except CassetteMiss:
+                            raise
+                        except LLMError as exc:
+                            tracer.note(steps, str(exc))
+                            final = self._program_result("FAILED", f"回答依据核验失败，本轮未完成：{exc}", ledger)
+                            break
+                        tracer.llm(steps, self.llm.name, reply_review.usage, reply_review.latency_ms, None, 1)
+                        tracer.events.append({"turn": turn_no, "step": steps, "event": "grounding",
+                                              "passed": review.passed, "issues": review.issues,
+                                              "confirmed_doc_ids": review.confirmed_doc_ids,
+                                              "input": payload})
+                        tracer.gate(steps, json.loads(call.arguments), review.passed, review.issues)
+                        if not review.passed:
+                            problems = review.issues
+                            content = json.dumps({"ok": False, "error_code": "GROUNDING_REJECTED", "problems": problems}, ensure_ascii=False)
+                            final = None
+                        else:
+                            final["grounding"] = {"passed": True, "method": "mock_review" if self.llm.name.startswith('mock:') else "model_review"}
+                            if review.confirmed_doc_ids:
+                                final["confirmation"] = {
+                                    "user_statement": question, "scope": "本轮适用口径，不改变制度效力",
+                                    "session_id": session_id, "turn_no": turn_no,
+                                    "documents": [{"doc_id": ev.doc_id, "section_id": ev.section_id,
+                                                   "version_date": ev.version_date, "hash": ev.hash}
+                                                  for ev in ledger.entries.values()
+                                                  if ev.doc_id in review.confirmed_doc_ids],
+                                }
                     if final is None:
                         rejections += 1
                         last_problems = problems
                     messages.append({"role": "tool", "tool_call_id": call.id, "content": content})
                     continue
                 if tool_calls >= s.max_tool_calls:
-                    content = json.dumps({"ok": False, "error_code": "TOOL_LIMIT",
-                                          "error_msg": f"本轮工具调用已达上限 {s.max_tool_calls} 次，请用已有结果提交"},
-                                         ensure_ascii=False)
                     tracer.note(steps, f"工具调用达到上限，{call.name} 未执行")
-                    messages.append({"role": "tool", "tool_call_id": call.id, "content": content})
-                    continue
+                    final = self._program_result("INCOMPLETE", f"已达到工具调用上限（{s.max_tool_calls} 次），本轮未完成。", ledger)
+                    break
                 tool_calls += 1
                 res, args = runner.run(call.name, call.arguments, steps)
                 tracer.tool(steps, call.name, args, res.ok, res.summary, res.error_code, res.attempts,
@@ -127,10 +161,11 @@ class Agent:
             msg = f"submit_result 参数不合法：{str(exc)[:400]}"
             tracer.gate(step, args if isinstance(args, dict) else {}, False, [msg])
             return json.dumps({"ok": False, "error_code": "BAD_ARGS", "error_msg": msg}, ensure_ascii=False), None, [msg]
-        g = gate.check(sub, ledger, self.store, self.settings.today, runner.had_error, warned, runner.failed_reads)
-        tracer.gate(step, args, g.passed, g.problems)
+        g = gate.check(sub, ledger, self.store, self.settings.today, runner.had_error, warned,
+                       runner.failed_reads, runner.failed_sections)
         if g.passed:
             return json.dumps({"ok": True}, ensure_ascii=False), g.final, []
+        tracer.gate(step, args, g.passed, g.problems)
         body = {"ok": False, "error_code": "GATE_REJECTED", "problems": g.problems,
                 "hint": "按 problems 修正：需要时继续读原文或查文档信息，然后重新 submit_result。"}
         return json.dumps(body, ensure_ascii=False), None, g.problems

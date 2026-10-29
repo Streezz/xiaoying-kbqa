@@ -17,6 +17,9 @@ SENT_END = "。！？\n"
 # 被截掉的部分里出现这些词，通常意味着例外或限定条件
 QUALIFIERS = ("原则上", "但", "除", "特殊情况", "批准", "另有", "从其规定", "仅", "不适用", "逾期")
 RULE_NUMBER_RE = re.compile(r"\d+\s*(天|日|元|%|台|个月|小时|倍|GB)")
+DATE_RE = re.compile(r"\d{4}年\d{1,2}月\d{1,2}日")
+# 保守拦截：自由改写不能给原文增加更强的前置条件或禁止；可改成原文表述。
+STRONG_RESTRICTIONS = ('事先', '必须先', '需先', '才能', '才可', '不能直接', '一律', '风险由')
 
 
 def _norm_with_map(text: str) -> tuple[str, list[int]]:
@@ -55,7 +58,8 @@ class GateResult:
 
 
 def check(sub: SubmitArgs, ledger: Ledger, store: DocStore, today: str, had_tool_error: bool,
-          warned: set[str], failed_reads: set[str] | None = None) -> GateResult:
+          warned: set[str], failed_reads: set[str] | None = None,
+          failed_sections: set[str] | None = None) -> GateResult:
     """warned：本轮已经提示过"引用被截断"的段落，同一段只提示一次，避免来回拉扯。
     failed_reads：本轮读取失败过的文档；之后成功读到过的不算。"""
     problems: list[str] = []
@@ -86,6 +90,11 @@ def check(sub: SubmitArgs, ledger: Ledger, store: DocStore, today: str, had_tool
             "doc_id": c.doc_id, "section_id": c.section_id, "title": ev.title, "heading": ev.heading,
             "version_date": ev.version_date, "status": doc.status_on(today) if doc else "不存在", "quote": sentence,
         })
+
+    source_text = ''.join(c['quote'] for c in full_citations)
+    for word in STRONG_RESTRICTIONS:
+        if word in sub.answer and word not in source_text:
+            problems.append(f'回答增加了原文未出现的强限定词「{word}」，请删除该限制或直接使用引用原文，不推断新的前置条件或禁止。')
 
     # 规则 4：本轮读过的、以及被引用的文档，都要表态
     must_judge = set(ledger.read_this_turn) | {c.doc_id for c in sub.citations}
@@ -126,8 +135,10 @@ def check(sub: SubmitArgs, ledger: Ledger, store: DocStore, today: str, had_tool
 
     # 规则 6：状态和字段要对得上
     s = sub.status
-    unverified = sorted((failed_reads or set()) - ledger.read_this_turn)
+    unverified = sorted(((failed_reads or set()) - ledger.read_this_turn) | (failed_sections or set()))
     if s == "ANSWERED":
+        if any(cf.resolution == 'unresolved' for cf in sub.conflicts):
+            problems.append('存在未解决冲突时不能 ANSWERED：请用 NEED_CONFIRMATION；用户本轮明确选定制度才可标 user_confirmed；范围不同的文档应移出 conflicts。')
         if not any(verdicts.get(c.doc_id) == "basis" for c in sub.citations):
             problems.append("ANSWERED 至少要有一条引用来自 verdict=basis 的文档。")
         # 第一次录制 C08 发现：只靠规则 5，读不到的一方会被模型标成 not_applicable，结果以 ANSWERED 出去
@@ -147,7 +158,7 @@ def check(sub: SubmitArgs, ledger: Ledger, store: DocStore, today: str, had_tool
             problems.append("NO_EVIDENCE 需要在 gaps 里写明缺什么资料。")
         if any(verdicts.get(c.doc_id) == "basis" for c in sub.citations):
             problems.append("NO_EVIDENCE 不应有作为依据的引用；如果资料能回答，请用 ANSWERED。")
-        if RULE_NUMBER_RE.search(sub.answer):
+        if RULE_NUMBER_RE.search(DATE_RE.sub('', sub.answer)):
             problems.append("NO_EVIDENCE 的回答里出现了具体规定（数字+单位），资料外问题不要给出具体规定。")
     elif s == "FAILED":
         if not had_tool_error:

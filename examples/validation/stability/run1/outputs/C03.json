@@ -1,0 +1,67 @@
+{
+  "id": "C03",
+  "title": "资料外问题：年终奖",
+  "turns": [
+    {
+      "question": "公司年终奖什么时候发？",
+      "dataset": "data\\docs",
+      "fault": null,
+      "result": {
+        "status": "NO_EVIDENCE",
+        "answer": "资料中没有找到关于年终奖发放时间的规定。我用\"年终奖\"\"奖金/薪酬发放\"\"绩效奖金兑现\"\"薪酬福利制度\"\"工资发放日期\"等多种说法检索了公司制度库，均未检索到年终奖或年度奖金相关的制度条款（只命中加班费、年休假折算等无关内容）。建议向人力资源部（薪酬）咨询年终奖的具体发放安排。",
+        "citations": [],
+        "conflicts": [],
+        "gaps": [
+          "公司制度库中没有年终奖/年度奖金发放时间的规定，缺少年终奖发放时间、发放条件、计算方式等制度依据",
+          "建议联系人力资源部（薪酬）确认年终奖发放安排"
+        ],
+        "clarify_question": "",
+        "doc_verdicts": [
+          {
+            "doc_id": "D07",
+            "verdict": "not_applicable",
+            "reason": "加班与调休管理办法，仅涉及加班费，与年终奖无关"
+          },
+          {
+            "doc_id": "D05",
+            "verdict": "not_applicable",
+            "reason": "年休假制度，仅涉及年假结转与工资折算，与年终奖无关"
+          }
+        ],
+        "grounding": {
+          "passed": true,
+          "method": "model_review"
+        },
+        "question": "公司年终奖什么时候发？",
+        "session_id": "C03",
+        "turn_no": 1,
+        "steps_used": 5,
+        "tool_calls": 5,
+        "gate_rejections": 0,
+        "had_tool_error": false
+      },
+      "checks": [
+        {
+          "check": "status",
+          "ok": true,
+          "detail": "期望 ['NO_EVIDENCE']，实际 NO_EVIDENCE"
+        },
+        {
+          "check": "no_basis",
+          "ok": true,
+          "detail": "不应有作为依据的文档，实际 []"
+        },
+        {
+          "check": "min_calls:search_docs",
+          "ok": true,
+          "detail": "search_docs 至少 2 次，实际 5 次"
+        },
+        {
+          "check": "gaps_nonempty",
+          "ok": true,
+          "detail": "gaps 应非空，实际 ['公司制度库中没有年终奖/年度奖金发放时间的规定，缺少年终奖发放时间、发放条件、计算方式等制度依据', '建议联系人力资源部（薪酬）确认年终奖发放安排']"
+        }
+      ]
+    }
+  ]
+}

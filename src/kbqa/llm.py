@@ -162,6 +162,16 @@ class RuleMockLLM:
     name = "mock:rule"
 
     def chat(self, messages: list[dict], tools: list[dict]) -> LLMReply:
+        if tools[0]['function']['name'] == 'submit_review':
+            candidate = json.loads(messages[1]['content'])['candidate']
+            # 离线仅接受逐字摘录或固定的无证据说明，不模拟语义判断能力。
+            exact = candidate['answer'] in [c['quote'] for c in candidate['citations']]
+            empty = candidate['status'] == 'NO_EVIDENCE' and candidate['answer'] == '资料中没有找到相关规定。'
+            passed = exact or empty
+            return LLMReply(None, [ToolCall('mock_review', 'submit_review', json.dumps({
+                'passed': passed, 'issues': [] if passed else ['离线 Mock 仅能验证原文摘录。'],
+                'confirmed_doc_ids': [],
+            }, ensure_ascii=False))])
         question = messages[1]["content"].split("[本轮问题]")[-1].strip()
         tool_msgs = [json.loads(m["content"]) for m in messages if m["role"] == "tool"]
         n = len(tool_msgs)

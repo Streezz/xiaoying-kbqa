@@ -1,0 +1,21 @@
+{
+  "id": "C22",
+  "title": "留出测试：其他公司制度不在企业资料中",
+  "acceptance": [
+    "泛化验证"
+  ],
+  "dataset": "data/docs",
+  "today": "2026-10-28",
+  "turns": [
+    {
+      "question": "其他公司的会员退款期限是几天？",
+      "expect": {
+        "status": [
+          "NO_EVIDENCE"
+        ],
+        "gaps_nonempty": true,
+        "no_basis": true
+      }
+    }
+  ]
+}

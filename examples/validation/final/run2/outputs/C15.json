@@ -1,0 +1,101 @@
+{
+  "id": "C15",
+  "title": "复合问题：一半可答一半资料外",
+  "turns": [
+    {
+      "question": "差旅报销要在几天内提交？报销款一般几天能到账？",
+      "dataset": "data\\docs",
+      "fault": null,
+      "result": {
+        "status": "INCOMPLETE",
+        "answer": "已达到模型调用上限，回答依据核验尚未完成。",
+        "citations": [],
+        "conflicts": [],
+        "gaps": [
+          "本轮未完成，资料是否充分未经核验"
+        ],
+        "clarify_question": "",
+        "doc_verdicts": [],
+        "evidence_found": [
+          {
+            "doc_id": "D03",
+            "section_id": "§4",
+            "title": "差旅费管理规定",
+            "heading": "报销时限"
+          },
+          {
+            "doc_id": "D01",
+            "section_id": "§3",
+            "title": "费用报销管理办法",
+            "heading": "报销期限"
+          },
+          {
+            "doc_id": "D02",
+            "section_id": "§3",
+            "title": "财务部报销操作指引",
+            "heading": "时限要求"
+          },
+          {
+            "doc_id": "D04",
+            "section_id": "§2",
+            "title": "报销管理办法（2024版）",
+            "heading": "报销期限"
+          },
+          {
+            "doc_id": "D03",
+            "section_id": "§1",
+            "title": "差旅费管理规定",
+            "heading": "适用范围"
+          },
+          {
+            "doc_id": "D01",
+            "section_id": "§1",
+            "title": "费用报销管理办法",
+            "heading": "总则"
+          },
+          {
+            "doc_id": "D02",
+            "section_id": "§1",
+            "title": "财务部报销操作指引",
+            "heading": "目的"
+          }
+        ],
+        "last_gate_problems": [],
+        "question": "差旅报销要在几天内提交？报销款一般几天能到账？",
+        "session_id": "C15",
+        "turn_no": 1,
+        "steps_used": 12,
+        "tool_calls": 12,
+        "gate_rejections": 3,
+        "had_tool_error": false
+      },
+      "checks": [
+        {
+          "check": "status",
+          "ok": false,
+          "detail": "期望 ['ANSWERED']，实际 INCOMPLETE"
+        },
+        {
+          "check": "basis_include",
+          "ok": false,
+          "detail": "依据应包含 ['D03']，实际 []"
+        },
+        {
+          "check": "conflict_docs_exclude",
+          "ok": true,
+          "detail": "冲突文档不应包含 ['D01']，实际 []"
+        },
+        {
+          "check": "answer_contains:10",
+          "ok": false,
+          "detail": "回答应包含「10」（忽略排版空白）"
+        },
+        {
+          "check": "gaps_nonempty",
+          "ok": true,
+          "detail": "gaps 应非空，实际 ['本轮未完成，资料是否充分未经核验']"
+        }
+      ]
+    }
+  ]
+}

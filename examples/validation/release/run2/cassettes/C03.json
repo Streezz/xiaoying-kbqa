@@ -1,0 +1,92 @@
+{
+ "e01648c6a3e6b909": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_XAx9ypRZvnnrciiCfF6S3656",
+    "name": "search_docs",
+    "arguments": "{\"query\": \"年终奖 发放时间\", \"reason\": \"查找年终奖发放时间的规定\"}"
+   },
+   {
+    "id": "call_01_eSusBy91jcDWbcQJqHUy8834",
+    "name": "search_docs",
+    "arguments": "{\"query\": \"奖金 薪酬 发放\", \"reason\": \"换用制度书面用语检索奖金发放相关制度\"}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 2723,
+   "completion_tokens": 116
+  },
+  "latency_ms": 2570
+ },
+ "a7d0585d87643c26": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_4zUOJlUZbCt4K1WcnzKZ8857",
+    "name": "search_docs",
+    "arguments": "{\"query\": \"年度奖金 绩效奖金 支付\", \"reason\": \"再次换说法检索奖金相关制度\"}"
+   },
+   {
+    "id": "call_01_UllxGcfloGmewg274NC27277",
+    "name": "search_docs",
+    "arguments": "{\"query\": \"薪酬福利制度\", \"reason\": \"检索薪酬类制度文档\"}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 2961,
+   "completion_tokens": 112
+  },
+  "latency_ms": 1762
+ },
+ "698ce7d40721ae31": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_DecsOWDowDVCcFeeCwCV1408",
+    "name": "search_docs",
+    "arguments": "{\"query\": \"工资 发放日 每月\", \"reason\": \"确认是否有薪酬发放相关制度可参考\"}"
+   },
+   {
+    "id": "call_01_a4VTkqbOxoZsnau6XXsF7404",
+    "name": "search_docs",
+    "arguments": "{\"query\": \"年终 考核 奖励\", \"reason\": \"换关键词检索年终奖励相关条款\"}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 3282,
+   "completion_tokens": 116
+  },
+  "latency_ms": 1781
+ },
+ "7f9ff74224e33f93": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_BVudBlUnQpGII4PeGwDp6498",
+    "name": "submit_result",
+    "arguments": "{\"status\": \"NO_EVIDENCE\", \"answer\": \"资料中没有找到关于年终奖发放时间的规定。已用\\\"年终奖\\\"\\\"奖金/薪酬发放\\\"\\\"年度奖金/绩效奖金\\\"\\\"年终考核奖励\\\"等说法多次检索，均未命中相关制度条款。建议向人力资源部（薪酬）咨询确认。\", \"citations\": [], \"doc_verdicts\": [{\"doc_id\": \"D07\", \"verdict\": \"not_applicable\", \"reason\": \"加班与调休管理办法，仅涉及加班费支付，与年终奖无关\"}, {\"doc_id\": \"D05\", \"verdict\": \"not_applicable\", \"reason\": \"年休假制度，仅涉及年假结转与工资折算，与年终奖无关\"}], \"gaps\": [\"公司年终奖的发放时间、发放条件及计算方式在现有资料中均未找到，需联系人力资源部（薪酬）确认\"], \"reason\": \"多次换关键词检索均未找到年终奖相关制度，按资料外处理\"}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 3698,
+   "completion_tokens": 296
+  },
+  "latency_ms": 2611
+ },
+ "1574821e01a970ad": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_ukFgK3LOyf450oMZ7OaB6212",
+    "name": "submit_review",
+    "arguments": "{\"passed\": true, \"issues\": [], \"confirmed_doc_ids\": []}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 1545,
+   "completion_tokens": 68
+  },
+  "latency_ms": 1517
+ }
+}

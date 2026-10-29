@@ -36,6 +36,7 @@ def _norm_section(v: str) -> str:
 class SearchArgs(BaseModel):
     query: str = Field(min_length=1)
     top_k: int = Field(default=5, ge=1, le=10)
+    offset: int = Field(default=0, ge=0)
     category: Literal["制度", "产品"] | None = None
     reason: str = ""
 
@@ -82,6 +83,7 @@ class Conflict(BaseModel):
     topic: str
     positions: list[Position]
     note: str = ""
+    resolution: Literal['unresolved', 'user_confirmed'] = 'unresolved'
 
 
 class Verdict(BaseModel):
@@ -114,6 +116,7 @@ TOOL_SPECS = [
                 "properties": {
                     "query": {"type": "string", "description": "检索词，建议用制度里的书面说法"},
                     "top_k": {"type": "integer", "description": "返回条数，默认 5，最多 10"},
+                    "offset": {"type": "integer", "minimum": 0, "description": "分页偏移，默认0；用返回的 next_offset 继续查同一查询"},
                     "category": {"type": "string", "enum": ["制度", "产品"], "description": "可选，只搜某类资料"},
                     "reason": REASON,
                 },
@@ -182,6 +185,8 @@ TOOL_SPECS = [
                             "type": "object",
                             "properties": {
                                 "topic": {"type": "string"},
+                                "resolution": {"type": "string", "enum": ["unresolved", "user_confirmed"],
+                                               "description": "默认未解决；只有本轮用户明确选定制度才可 user_confirmed。范围已区分则不要列为冲突。"},
                                 "positions": {
                                     "type": "array",
                                     "items": {
@@ -265,6 +270,7 @@ class ToolRunner:
     _seen: dict[str, int] = field(default_factory=dict)
     had_error: bool = False
     failed_reads: set[str] = field(default_factory=set)  # 本轮 read_section 失败过的 doc_id
+    failed_sections: set[str] = field(default_factory=set)  # 真实存在但未读到的段落，其他段落成功不能解除
 
     ARG_MODELS = {"search_docs": SearchArgs, "read_section": ReadArgs, "get_doc_info": InfoArgs}
 
@@ -273,8 +279,10 @@ class ToolRunner:
         started = time.perf_counter()
         try:
             args = json.loads(raw_args) if isinstance(raw_args, str) else dict(raw_args)
-        except json.JSONDecodeError as exc:
+        except (json.JSONDecodeError, TypeError, ValueError) as exc:
             return self._err("BAD_ARGS", f"参数不是合法 JSON：{exc}", started), {}
+        if not isinstance(args, dict):
+            return self._err("BAD_ARGS", "参数必须是 JSON 对象", started), {}
         model = self.ARG_MODELS.get(name)
         if model is None:
             return self._err("UNKNOWN_TOOL", f"没有叫 {name} 的工具", started), args
@@ -287,11 +295,12 @@ class ToolRunner:
 
         key = f"{name}:{json.dumps(clean, ensure_ascii=False, sort_keys=True)}"
         count = self._seen[key] = self._seen.get(key, 0) + 1
+        if count >= 3:
+            res = self._err("DUPLICATE_CALL", "相同参数已调用两次（包括失败），本次不执行。请换参数、翻页或提交未完成原因。", started)
+            res.attempts = 0
+            return res, parsed.model_dump()
         if key in self._cache:
             first, first_step = self._cache[key]
-            if count >= 3:
-                res = self._err("DUPLICATE_CALL", f"同样的参数已经调用 {count - 1} 次（第一次在第 {first_step} 步），本次不执行。请换参数，或用已有结果提交。", started)
-                return res, parsed.model_dump()
             dup = ToolResult(**{**first.__dict__})
             dup.note = f"重复调用：参数与第 {first_step} 步相同，结果相同。"
             dup.attempts = 0
@@ -313,10 +322,14 @@ class ToolRunner:
         res.latency_ms = int((time.perf_counter() - started) * 1000)
         if res.ok:
             self._cache[key] = (res, step)
+            if name == 'read_section':
+                self.failed_sections.discard(clean['doc_id'] + clean['section_id'])
         else:
             self.had_error = True
             if name == "read_section":
                 self.failed_reads.add(clean["doc_id"])
+                if self.store.section(clean['doc_id'], clean['section_id']) is not None:
+                    self.failed_sections.add(clean['doc_id'] + clean['section_id'])
         return res, parsed.model_dump()
 
     def _err(self, code: str, msg: str, started: float) -> ToolResult:
@@ -327,9 +340,13 @@ class ToolRunner:
     # ----- 三个查资料工具 -----
 
     def _search_docs(self, a: SearchArgs) -> ToolResult:
-        hits, quality, terms = self.retriever.search(a.query, a.top_k, a.category)
+        hits, quality, terms = self.retriever.search(a.query, a.top_k + 1, a.category, a.offset)
+        has_more = len(hits) > a.top_k
+        hits = hits[:a.top_k]
         data = {
             "hit_quality": quality,
+            "has_more": has_more,
+            "next_offset": a.offset + a.top_k if has_more else None,
             "query_terms": terms,
             "hits": [
                 {"doc_id": h.doc_id, "section_id": h.section_id, "title": h.title, "heading": h.heading,

@@ -1,62 +1,77 @@
 {
- "ab3cc5e6d5f81788": {
+ "03ade2ddeb5dcaec": {
   "content": "",
   "tool_calls": [
    {
-    "id": "call_00_nHiEALH8NQgY8jOx7q5Z4470",
+    "id": "call_00_a3dCbwStK8AgXStPNrju0237",
     "name": "search_docs",
-    "arguments": "{\"query\": \"加班调休 有效期\", \"reason\": \"查找加班调休使用期限的规定\"}"
+    "arguments": "{\"query\": \"加班调休有效期\", \"reason\": \"查找加班调休使用期限的制度规定\"}"
    },
    {
-    "id": "call_01_x14R4ccMEJQZOQ372UQl4311",
+    "id": "call_01_GRQW5xf8an9EgsCZVNV38526",
     "name": "search_docs",
-    "arguments": "{\"query\": \"加班 补休 调休申请\", \"reason\": \"换一种说法检索调休相关制度\"}"
+    "arguments": "{\"query\": \"调休 使用期限 未休完\", \"reason\": \"换一种书面说法检索调休期限\"}"
    }
   ],
   "usage": {
-   "prompt_tokens": 2221,
-   "completion_tokens": 118
+   "prompt_tokens": 2796,
+   "completion_tokens": 119
   },
-  "latency_ms": 8265
+  "latency_ms": 2436
  },
- "0776654e1fab7e12": {
+ "da9cccd7f82540e9": {
   "content": "",
   "tool_calls": [
    {
-    "id": "call_00_aG1Ix16MVfJ8ijQI9fLJ2854",
+    "id": "call_00_hjNqW6hkQsG6x6lMFwl10944",
     "name": "read_section",
-    "arguments": "{\"doc_id\": \"D07\", \"section_id\": \"§1\", \"reason\": \"读取调休期限的完整原文\"}"
+    "arguments": "{\"doc_id\": \"D07\", \"section_id\": \"§1\", \"reason\": \"读取调休期限原文\"}"
    },
    {
-    "id": "call_01_Pc5Blv6gOStDXNaqQARc5767",
+    "id": "call_01_r1yThUmRjZfo4knYGz8O0753",
     "name": "read_section",
-    "arguments": "{\"doc_id\": \"D07\", \"section_id\": \"§2\", \"reason\": \"读取休息日加班调休规定的完整原文\"}"
+    "arguments": "{\"doc_id\": \"D07\", \"section_id\": \"§2\", \"reason\": \"读取休息日加班调休规定原文\"}"
    },
    {
-    "id": "call_02_DaY5cgJIcfip4vdbq9iq9461",
+    "id": "call_02_d7mQdsFCLZ8jrx48AaMH6798",
     "name": "get_doc_info",
-    "arguments": "{\"doc_ids\": [\"D07\"], \"reason\": \"确认该办法的生效状态和适用范围\"}"
+    "arguments": "{\"doc_ids\": [\"D07\"], \"reason\": \"确认该办法状态与适用范围\"}"
    }
   ],
   "usage": {
-   "prompt_tokens": 2847,
-   "completion_tokens": 205
+   "prompt_tokens": 3430,
+   "completion_tokens": 200
   },
-  "latency_ms": 2862
+  "latency_ms": 1820
  },
- "74ffdb0f6d0c1fac": {
+ "29874de2567c10c4": {
   "content": "",
   "tool_calls": [
    {
-    "id": "call_00_4DrHB9ZiTegcUn0pzarl1689",
+    "id": "call_00_uawxvCW3RxByvwnW95bD2321",
     "name": "submit_result",
-    "arguments": "{\"status\": \"ANSWERED\", \"answer\": \"加班调休须在加班发生后 3 个月内使用，逾期不再保留。依据《加班与调休管理办法》（2025-07-01 生效，现行）：工作日延时加班可申请调休，调休须在加班发生后3个月内使用，逾期不再保留。另外，休息日加班优先安排调休；无法安排调休的，按本人日工资的200%支付加班费。注意：加班须事先在 OA 系统提交加班申请，未经审批的加班不予认定。\", \"citations\": [{\"doc_id\": \"D07\", \"section_id\": \"§1\", \"quote\": \"工作日延时加班可申请调休，调休须在加班发生后3个月内使用，逾期不再保留。\"}, {\"doc_id\": \"D07\", \"section_id\": \"§2\", \"quote\": \"休息日加班优先安排调休；无法安排调休的，按本人日工资的200%支付加班费。\"}], \"doc_verdicts\": [{\"doc_id\": \"D07\", \"verdict\": \"basis\", \"reason\": \"现行有效的《加班与调休管理办法》，明确规定了调休期限和休息日加班处理方式\"}], \"reason\": \"已读到调休期限原文，可依据现行制度回答\"}"
+    "arguments": "{\"status\": \"ANSWERED\", \"answer\": \"按《加班与调休管理办法》（现行，2025-07-01 生效）：工作日延时加班可申请调休，调休须在加班发生后 3 个月内使用，逾期不再保留。另外，休息日加班优先安排调休；无法安排调休的，按本人日工资的 200% 支付加班费。\", \"citations\": [{\"doc_id\": \"D07\", \"section_id\": \"§1\", \"quote\": \"工作日延时加班可申请调休，调休须在加班发生后3个月内使用，逾期不再保留。\"}, {\"doc_id\": \"D07\", \"section_id\": \"§2\", \"quote\": \"休息日加班优先安排调休；无法安排调休的，按本人日工资的200%支付加班费。\"}], \"doc_verdicts\": [{\"doc_id\": \"D07\", \"verdict\": \"basis\", \"reason\": \"现行有效的加班与调休管理办法，明确调休期限\"}], \"reason\": \"依据现行《加班与调休管理办法》回答调休期限\"}"
    }
   ],
   "usage": {
-   "prompt_tokens": 3408,
-   "completion_tokens": 346
+   "prompt_tokens": 3986,
+   "completion_tokens": 306
   },
-  "latency_ms": 2254
+  "latency_ms": 1970
+ },
+ "f231fc8d4f3eef02": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_vi5TlxkavAcQrcmrq0e46514",
+    "name": "submit_review",
+    "arguments": "{\"passed\": true, \"issues\": [], \"confirmed_doc_ids\": []}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 1927,
+   "completion_tokens": 68
+  },
+  "latency_ms": 1621
  }
 }

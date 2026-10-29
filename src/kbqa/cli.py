@@ -82,30 +82,59 @@ def ask(
 def eval_cmd(
     mode: str = typer.Option("replay", "--mode", help="replay：回放录制结果（不联网）；record：调真实模型并重新录制；auto：有录像就回放"),
     only: list[str] = typer.Option([], "--only", help="只跑某些用例，如 --only C02"),
+    output: Optional[Path] = typer.Option(None, "--output", help="录制/回放目录；默认 examples"),
+    repeat: int = typer.Option(1, "--repeat", min=1, help="独立运行次数；多次结果隔离保存在 run1、run2 等目录"),
+    jobs: int = typer.Option(1, "--jobs", min=1, max=4, help="独立用例并发数"),
 ):
     """跑 examples/cases 下的全部用例。record / auto 会写出 outputs、traces 和 eval_report.md；replay 只核对不写文件。"""
     from .evaluate import load_cases, run_case, write_report
 
+    from concurrent.futures import ThreadPoolExecutor
+
+    if mode not in ('record', 'replay', 'auto'):
+        raise typer.BadParameter('mode 必须是 record、replay 或 auto')
     settings = load_settings()
     cases = load_cases(only or None)
+    if not cases or (set(only) - {c['id'] for c in cases}):
+        raise typer.BadParameter('未找到指定用例')
     write = mode != "replay"  # 回放只核对，不覆盖录制时留下的输出和 Trace
-    runs = []
-    for case in cases:
-        run = run_case(case, settings, mode, write=write)
-        runs.append(run)
-        statuses = " → ".join(t["result"]["status"] for t in run.turns)
-        mark = "PASS" if run.passed else "FAIL"
-        typer.echo(f"{mark}  {case['id']}  {case['title']}  [{statuses}]")
-        for i, t in enumerate(run.turns, 1):
-            for c in t["checks"]:
-                if not c["ok"]:
-                    typer.echo(f"        第 {i} 轮 {c['check']}：{c['detail']}")
-    summary = f"\n通过 {sum(r.passed for r in runs)}/{len(runs)}"
-    if write:
-        report = ROOT / "examples" / ("eval_report.md" if not only else "eval_report_partial.md")
-        write_report(runs, mode, report)
-        summary += f"，报告：{report}"
-    typer.echo(summary)
+    root = output or ROOT / 'examples'
+    all_runs = []
+    for repetition in range(1, repeat + 1):
+        destination = root if repeat == 1 else root / f'run{repetition}'
+        def execute(case):
+            return run_case(case, settings, mode, write=write, output_root=destination)
+        with ThreadPoolExecutor(max_workers=jobs) as pool:
+            runs = list(pool.map(execute, cases))
+        all_runs.append(runs)
+        for run in runs:
+            statuses = ' → '.join(t['result']['status'] for t in run.turns)
+            typer.echo(f"{'PASS' if run.passed else 'FAIL'} run{repetition} {run.case['id']} [{statuses}]")
+            for i, t in enumerate(run.turns, 1):
+                for c in t['checks']:
+                    if not c['ok']:
+                        typer.echo(f"  第{i}轮 {c['check']}：{c['detail']}")
+        if write:
+            destination.mkdir(parents=True, exist_ok=True)
+            write_report(runs, mode, destination / ('eval_report_partial.md' if only else 'eval_report.md'))
+    flat = [r for runs in all_runs for r in runs]
+    typer.echo(f"通过 {sum(r.passed for r in flat)}/{len(flat)}")
+    if repeat > 1 and write:
+        report = {'mode': mode, 'repeat': repeat, 'model': settings.model,
+                  'passed_runs': sum(r.passed for r in flat), 'total_runs': len(flat),
+                  'cases': [{'id': c['id'], 'passed': [runs[i].passed for runs in all_runs],
+                             'statuses': [[t['result']['status'] for t in runs[i].turns] for runs in all_runs]}
+                            for i, c in enumerate(cases)]}
+        (root / 'stability_report.json').write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding='utf-8')
+    if not all(r.passed for r in flat):
+        raise typer.Exit(1)
+
+
+@app.command()
+def confirmations(session: str = typer.Option("default", "--session", "-s")):
+    """导出会话的确认审计 JSON；清空对话历史不会清除此记录。"""
+    sessions = SessionStore(load_settings().db_path)
+    typer.echo(json.dumps(sessions.confirmations(session), ensure_ascii=False, indent=2))
 
 
 @app.command()

@@ -1,0 +1,62 @@
+{
+ "77acedfaffa7a996": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_DYNxvLpVqQuVBZdHid0l5271",
+    "name": "search_docs",
+    "arguments": "{\"query\": \"报销期限\", \"reason\": \"查找公司报销制度中关于报销时限的规定\"}"
+   },
+   {
+    "id": "call_01_BeVhhVUuNwvzqqW61Rnn5951",
+    "name": "search_docs",
+    "arguments": "{\"query\": \"费用报销 提交时限 跨月 跨年\", \"reason\": \"换用制度书面用语检索报销时限规定\"}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 2448,
+   "completion_tokens": 121
+  },
+  "latency_ms": 2972
+ },
+ "74621668c6cd08b8": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_UTeFnyGfHMlrwyftNzJv3282",
+    "name": "read_section",
+    "arguments": "{\"doc_id\": \"D01\", \"section_id\": \"§3\", \"reason\": \"读取费用报销管理办法的报销期限原文\"}"
+   },
+   {
+    "id": "call_01_nlIbAwzs4mHobyTluFcf9556",
+    "name": "read_section",
+    "arguments": "{\"doc_id\": \"D01\", \"section_id\": \"§4\", \"reason\": \"读取超期处理原文\"}"
+   },
+   {
+    "id": "call_02_B2w3IhWBujl76vNEydNg0000",
+    "name": "read_section",
+    "arguments": "{\"doc_id\": \"D02\", \"section_id\": \"§3\", \"reason\": \"读取财务部报销操作指引的时限要求原文\"}"
+   },
+   {
+    "id": "call_03_jAXdNew3pvnTCof9y0AK8294",
+    "name": "read_section",
+    "arguments": "{\"doc_id\": \"D03\", \"section_id\": \"§4\", \"reason\": \"读取差旅费管理规定的报销时限原文\"}"
+   },
+   {
+    "id": "call_04_wCz30huca4Tez8NBeAjc2640",
+    "name": "read_section",
+    "arguments": "{\"doc_id\": \"D04\", \"section_id\": \"§2\", \"reason\": \"读取报销管理办法（2024版）的报销期限原文\"}"
+   },
+   {
+    "id": "call_05_kq8WgGmIm5vKDyFGUbZe0777",
+    "name": "get_doc_info",
+    "arguments": "{\"doc_ids\": [\"D01\", \"D02\", \"D03\", \"D04\"], \"reason\": \"查四份文档的状态、生效日期和适用范围以判断优先级\"}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 3500,
+   "completion_tokens": 442
+  },
+  "latency_ms": 2404
+ }
+}

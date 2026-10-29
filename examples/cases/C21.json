@@ -1,0 +1,26 @@
+{
+  "id": "C21",
+  "title": "留出测试：收票时间不能代替费用发生时间",
+  "acceptance": [
+    "泛化验证"
+  ],
+  "dataset": "data/docs",
+  "today": "2026-10-28",
+  "turns": [
+    {
+      "question": "电子发票收到35天了，是不是一定不能报销了？",
+      "expect": {
+        "status": [
+          "NEED_CONFIRMATION"
+        ],
+        "answer_contains": [
+          "费用发生"
+        ],
+        "conflict_docs_include": [
+          "D01",
+          "D02"
+        ]
+      }
+    }
+  ]
+}

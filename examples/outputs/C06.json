@@ -8,7 +8,7 @@
       "fault": "search:timeout@1,2",
       "result": {
         "status": "ANSWERED",
-        "answer": "加班调休须在加班发生后 3 个月内使用，逾期不再保留。依据《加班与调休管理办法》（2025-07-01 生效，现行）：工作日延时加班可申请调休，调休须在加班发生后3个月内使用，逾期不再保留。另外，休息日加班优先安排调休；无法安排调休的，按本人日工资的200%支付加班费。注意：加班须事先在 OA 系统提交加班申请，未经审批的加班不予认定。",
+        "answer": "按《加班与调休管理办法》（现行，2025-07-01 生效）：工作日延时加班可申请调休，调休须在加班发生后 3 个月内使用，逾期不再保留。另外，休息日加班优先安排调休；无法安排调休的，按本人日工资的 200% 支付加班费。",
         "citations": [
           {
             "doc_id": "D07",
@@ -36,13 +36,17 @@
           {
             "doc_id": "D07",
             "verdict": "basis",
-            "reason": "现行有效的《加班与调休管理办法》，明确规定了调休期限和休息日加班处理方式"
+            "reason": "现行有效的加班与调休管理办法，明确调休期限"
           }
         ],
+        "grounding": {
+          "passed": true,
+          "method": "model_review"
+        },
         "question": "加班之后调休要在多久内用完？",
         "session_id": "C06",
         "turn_no": 1,
-        "steps_used": 3,
+        "steps_used": 4,
         "tool_calls": 5,
         "gate_rejections": 0,
         "had_tool_error": true
@@ -61,7 +65,7 @@
         {
           "check": "answer_contains:3个月",
           "ok": true,
-          "detail": "回答应包含「3个月」"
+          "detail": "回答应包含「3个月」（忽略排版空白）"
         },
         {
           "check": "tool_error_seen",

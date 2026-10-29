@@ -76,6 +76,10 @@ class Tracer:
                             f"{e['reason'].replace('|', '/')} | {e.get('next_action', '')} |")
             elif e["event"] == "note":
                 rows.append(f"| {e['step']} | （提示） |  | {e['summary']} |  |  |")
+            elif e["event"] == "grounding":
+                summary = "通过" if e["passed"] else "；".join(e["issues"])
+                rows.append(f"| {e['step']} | 回答依据核验 | 独立上下文 | {summary.replace('|', '/').replace(chr(10), ' ')} | 对照已读原文 | "
+                            f"{'允许提交' if e['passed'] else '退回模型修正'} |")
             elif e["event"] == "final":
                 rows.append("")
                 rows.append(f"最终状态：{e['status']}，模型调用 {e['steps_used']} 次，工具调用 {e['tool_calls']} 次，"

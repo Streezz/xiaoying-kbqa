@@ -1,0 +1,113 @@
+{
+  "id": "C21",
+  "title": "留出测试：收票时间不能代替费用发生时间",
+  "turns": [
+    {
+      "question": "电子发票收到35天了，是不是一定不能报销了？",
+      "dataset": "data\\docs",
+      "fault": null,
+      "result": {
+        "status": "INCOMPLETE",
+        "answer": "已达到步数上限（12 步），本轮没有得到通过核验的结果，以下只列出已读过的资料，未经核验。",
+        "citations": [],
+        "conflicts": [],
+        "gaps": [
+          "本轮未完成，资料是否充分未经核验"
+        ],
+        "clarify_question": "",
+        "doc_verdicts": [],
+        "evidence_found": [
+          {
+            "doc_id": "D02",
+            "section_id": "§3",
+            "title": "财务部报销操作指引",
+            "heading": "时限要求"
+          },
+          {
+            "doc_id": "D04",
+            "section_id": "§2",
+            "title": "报销管理办法（2024版）",
+            "heading": "报销期限"
+          },
+          {
+            "doc_id": "D03",
+            "section_id": "§4",
+            "title": "差旅费管理规定",
+            "heading": "报销时限"
+          },
+          {
+            "doc_id": "D01",
+            "section_id": "§3",
+            "title": "费用报销管理办法",
+            "heading": "报销期限"
+          },
+          {
+            "doc_id": "D01",
+            "section_id": "§4",
+            "title": "费用报销管理办法",
+            "heading": "超期处理"
+          },
+          {
+            "doc_id": "D01",
+            "section_id": "§1",
+            "title": "费用报销管理办法",
+            "heading": "总则"
+          },
+          {
+            "doc_id": "D02",
+            "section_id": "§1",
+            "title": "财务部报销操作指引",
+            "heading": "目的"
+          },
+          {
+            "doc_id": "D02",
+            "section_id": "§2",
+            "title": "财务部报销操作指引",
+            "heading": "提交方式"
+          },
+          {
+            "doc_id": "D02",
+            "section_id": "§4",
+            "title": "财务部报销操作指引",
+            "heading": "发票要求"
+          },
+          {
+            "doc_id": "D03",
+            "section_id": "§1",
+            "title": "差旅费管理规定",
+            "heading": "适用范围"
+          }
+        ],
+        "last_gate_problems": [
+          "回答称“35天已超过一般时限”，但问题只给出“收到发票35天”，而制度按费用发生之日/出差返回日起算，费用发生日期未知，无法据此断定已超期；应改为“收到发票35天不能直接判断是否超期，需以费用发生日或出差返回日计算”。",
+          "回答称“该指引未规定延期规则，不能套用《费用报销管理办法》的60天延期条款”，属于在D02与D01关系未明时自行作出排除性判断；D02未写适用范围与层级关系，应仅说明需确认，不应断言不能适用D01延期条款。",
+          "回答称“电子发票报销须上传 PDF 原件，截图、照片无效”作为结论性要求，但该条出自D02，而D02与D01的适用关系本身未确认；应标注该要求来自D02并说明其适用范围待确认，或至少不作为无条件结论。"
+        ],
+        "question": "电子发票收到35天了，是不是一定不能报销了？",
+        "session_id": "C21",
+        "turn_no": 1,
+        "steps_used": 12,
+        "tool_calls": 13,
+        "gate_rejections": 4,
+        "had_tool_error": false
+      },
+      "checks": [
+        {
+          "check": "status",
+          "ok": false,
+          "detail": "期望 ['NEED_CONFIRMATION']，实际 INCOMPLETE"
+        },
+        {
+          "check": "conflict_docs_include",
+          "ok": false,
+          "detail": "冲突文档应包含 ['D01', 'D02']，实际 []"
+        },
+        {
+          "check": "answer_contains:费用发生",
+          "ok": false,
+          "detail": "回答应包含「费用发生」（忽略排版空白）"
+        }
+      ]
+    }
+  ]
+}

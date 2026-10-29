@@ -1,0 +1,145 @@
+{
+  "id": "C15",
+  "title": "复合问题：一半可答一半资料外",
+  "turns": [
+    {
+      "question": "差旅报销要在几天内提交？报销款一般几天能到账？",
+      "dataset": "data\\docs",
+      "fault": null,
+      "result": {
+        "status": "NEED_CONFIRMATION",
+        "answer": "提交时限：差旅费用按《差旅费管理规定》，应于出差返回后10日内提交报销；《费用报销管理办法》写明\"差旅费用另有专门规定的，从其规定\"，故差旅适用10日这一专门规定（通用办法的30天、可延至60天适用于其他费用）。但《财务部报销操作指引》另写\"费用发生之日起15日内完成报销申请\"，与上述不一致，且未写明适用范围，需确认以哪份为准。\n\n到账时间：资料中没有找到关于报销款到账/付款时限的规定，无法给出天数，建议咨询财务部。",
+        "citations": [
+          {
+            "doc_id": "D03",
+            "section_id": "§4",
+            "title": "差旅费管理规定",
+            "heading": "报销时限",
+            "version_date": "2026-01-10",
+            "status": "现行",
+            "quote": "差旅费用应于出差返回后10日内提交报销。"
+          },
+          {
+            "doc_id": "D03",
+            "section_id": "§1",
+            "title": "差旅费管理规定",
+            "heading": "适用范围",
+            "version_date": "2026-01-10",
+            "status": "现行",
+            "quote": "本规定仅适用于员工因公出差产生的交通、住宿及出差补助费用。"
+          },
+          {
+            "doc_id": "D01",
+            "section_id": "§1",
+            "title": "费用报销管理办法",
+            "heading": "总则",
+            "version_date": "2026-03-01",
+            "status": "现行",
+            "quote": "本办法适用于公司员工因公发生的各类费用报销。差旅费用另有专门规定的，从其规定。"
+          },
+          {
+            "doc_id": "D01",
+            "section_id": "§3",
+            "title": "费用报销管理办法",
+            "heading": "报销期限",
+            "version_date": "2026-03-01",
+            "status": "现行",
+            "quote": "员工原则上应在费用发生后30天内提交报销申请；因特殊情况无法按期提交的，经分管领导书面批准，可延长至60天。"
+          },
+          {
+            "doc_id": "D02",
+            "section_id": "§3",
+            "title": "财务部报销操作指引",
+            "heading": "时限要求",
+            "version_date": "2026-06-15",
+            "status": "现行",
+            "quote": "员工应于费用发生之日起15日内完成报销申请。"
+          }
+        ],
+        "conflicts": [
+          {
+            "topic": "差旅报销提交时限",
+            "positions": [
+              {
+                "doc_id": "D03",
+                "section_id": "§4",
+                "claim": "差旅费用应于出差返回后10日内提交报销。"
+              },
+              {
+                "doc_id": "D02",
+                "section_id": "§3",
+                "claim": "员工应于费用发生之日起15日内完成报销申请。"
+              }
+            ],
+            "note": "两份均现行；D03写明仅适用差旅费用，D02未写适用范围，无法判断谁优先",
+            "resolution": "unresolved"
+          }
+        ],
+        "gaps": [
+          "报销款到账/付款时限：资料中未找到相关规定，建议咨询财务部"
+        ],
+        "clarify_question": "差旅报销提交时限，你们部门以《差旅费管理规定》（返回后10日内）还是《财务部报销操作指引》（费用发生之日起15日内）为准？",
+        "doc_verdicts": [
+          {
+            "doc_id": "D03",
+            "verdict": "basis",
+            "reason": "差旅费专门规定，写明仅适用差旅费用，给出10日提交时限"
+          },
+          {
+            "doc_id": "D01",
+            "verdict": "basis",
+            "reason": "通用报销办法，总则写明差旅费用另有专门规定的从其规定，故其30天期限不适用于差旅"
+          },
+          {
+            "doc_id": "D02",
+            "verdict": "conflict",
+            "reason": "现行操作指引规定15日内完成报销申请，与差旅专门规定10日不一致，且未写适用范围"
+          },
+          {
+            "doc_id": "D04",
+            "verdict": "not_applicable",
+            "reason": "已被D01替代，状态为废止"
+          }
+        ],
+        "grounding": {
+          "passed": true,
+          "method": "model_review"
+        },
+        "question": "差旅报销要在几天内提交？报销款一般几天能到账？",
+        "session_id": "C15",
+        "turn_no": 1,
+        "steps_used": 7,
+        "tool_calls": 12,
+        "gate_rejections": 1,
+        "had_tool_error": false
+      },
+      "checks": [
+        {
+          "check": "status",
+          "ok": false,
+          "detail": "期望 ['ANSWERED']，实际 NEED_CONFIRMATION"
+        },
+        {
+          "check": "basis_include",
+          "ok": true,
+          "detail": "依据应包含 ['D03']，实际 ['D01', 'D03']"
+        },
+        {
+          "check": "conflict_docs_exclude",
+          "ok": true,
+          "detail": "冲突文档不应包含 ['D01']，实际 ['D02', 'D03']"
+        },
+        {
+          "check": "answer_contains:10",
+          "ok": true,
+          "detail": "回答应包含「10」（忽略排版空白）"
+        },
+        {
+          "check": "gaps_nonempty",
+          "ok": true,
+          "detail": "gaps 应非空，实际 ['报销款到账/付款时限：资料中未找到相关规定，建议咨询财务部']"
+        }
+      ]
+    }
+  ]
+}

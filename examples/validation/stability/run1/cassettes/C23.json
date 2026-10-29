@@ -1,0 +1,82 @@
+{
+ "2d0f4dd72c42e101": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_uO1gQYilQNPvPC6GwztM7429",
+    "name": "search_docs",
+    "arguments": "{\"query\": \"带薪年休假 天数 累计工作年限\", \"reason\": \"查公司年休假制度中按累计工作年限确定的天数\"}"
+   },
+   {
+    "id": "call_01_yhxOmFY1oiqoPKAoKOUJ7405",
+    "name": "search_docs",
+    "arguments": "{\"query\": \"年休假 工龄 满一年不满十年\", \"reason\": \"换书面说法再搜一次年休假天数规定\"}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 2457,
+   "completion_tokens": 133
+  },
+  "latency_ms": 2237
+ },
+ "23b55d1694e1d758": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_xkFzsalrZzOvXl0bdY4J8280",
+    "name": "read_section",
+    "arguments": "{\"doc_id\": \"D05\", \"section_id\": \"§2\", \"reason\": \"读2025版年假天数原文\"}"
+   },
+   {
+    "id": "call_01_yqaeqaaYwTWimdMt2sXx2771",
+    "name": "read_section",
+    "arguments": "{\"doc_id\": \"D06\", \"section_id\": \"§2\", \"reason\": \"读2026修订版年假天数原文\"}"
+   },
+   {
+    "id": "call_02_zlTfE2MZcEcOFHRGXFt53712",
+    "name": "read_section",
+    "arguments": "{\"doc_id\": \"D06\", \"section_id\": \"§1\", \"reason\": \"读修订说明确认生效时间与替代关系\"}"
+   },
+   {
+    "id": "call_03_dhbQDiqTS247HtOxqhhx2444",
+    "name": "get_doc_info",
+    "arguments": "{\"doc_ids\": [\"D05\", \"D06\"], \"reason\": \"确认两份年休假制度的状态、生效日期和替代关系\"}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 3671,
+   "completion_tokens": 287
+  },
+  "latency_ms": 2295
+ },
+ "4fc6bbc8d24df7b9": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_pvoIy6z1Ljcwyyk00Vtm0468",
+    "name": "submit_result",
+    "arguments": "{\"status\": \"ANSWERED\", \"answer\": \"按今天（2026-10-28）现行有效的《年休假制度（2025版）》，你累计工作已满1年不满10年，每年年休假为 5 天。\\n\\n另外提醒：公司已发布《年休假制度（2026修订版）》，该版本自 2027年1月1日起施行，届时同一档（累计工作满1年不满10年）的年休假调整为 7 天。也就是说，2027年起你的年假会变成 7 天。\", \"citations\": [{\"doc_id\": \"D05\", \"section_id\": \"§2\", \"quote\": \"员工累计工作已满1年不满10年的，年休假5天；已满10年不满20年的，年休假10天；已满20年的，年休假15天。\"}, {\"doc_id\": \"D06\", \"section_id\": \"§2\", \"quote\": \"员工累计工作已满1年不满10年的，年休假7天；已满10年不满20年的，年休假12天；已满20年的，年休假15天。\"}, {\"doc_id\": \"D06\", \"section_id\": \"§1\", \"quote\": \"本次修订仅调整年假天数，其余条款仍按《年休假制度（2025版）》执行。本修订版自2027年1月1日起施行。\"}], \"doc_verdicts\": [{\"doc_id\": \"D05\", \"verdict\": \"basis\", \"reason\": \"现行有效，按累计工作满1年不满10年档给出5天\"}, {\"doc_id\": \"D06\", \"verdict\": \"not_applicable\", \"reason\": \"状态为待生效，2027年1月1日起才施行，今天不适用；仅用于说明后续调整\"}], \"reason\": \"依据现行2025版回答，并说明2026修订版待生效的调整\"}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 4589,
+   "completion_tokens": 485
+  },
+  "latency_ms": 3443
+ },
+ "f9f6c1ff565b296f": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_lbKOF56rwl7uie9qfR5s4557",
+    "name": "submit_review",
+    "arguments": "{\"passed\": true, \"issues\": [], \"confirmed_doc_ids\": []}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 2262,
+   "completion_tokens": 68
+  },
+  "latency_ms": 1390
+ }
+}

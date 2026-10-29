@@ -1,0 +1,66 @@
+{
+  "id": "C22",
+  "title": "留出测试：其他公司制度不在企业资料中",
+  "turns": [
+    {
+      "question": "其他公司的会员退款期限是几天？",
+      "dataset": "data\\docs",
+      "fault": null,
+      "result": {
+        "status": "NO_EVIDENCE",
+        "answer": "资料里没有其他公司的会员退款期限信息，无法回答。公司资料中只有本公司《星剪会员退款规则》，涉及的是本公司会员的退款条件；如需了解本公司规则可另行提问。",
+        "citations": [
+          {
+            "doc_id": "P02",
+            "section_id": "§1",
+            "title": "星剪会员退款规则",
+            "heading": "退款条件",
+            "version_date": "2026-05-20",
+            "status": "现行",
+            "quote": "首次开通会员7天内且未使用会员专属功能的，可申请全额退款。"
+          }
+        ],
+        "conflicts": [],
+        "gaps": [
+          "其他公司（外部企业）的会员退款期限：公司资料中无此类内容，建议联系相关业务或法务部门了解"
+        ],
+        "clarify_question": "",
+        "doc_verdicts": [
+          {
+            "doc_id": "P02",
+            "verdict": "not_applicable",
+            "reason": "该文档是本公司会员退款规则，不涉及其他公司的做法，不能回答用户所问"
+          }
+        ],
+        "grounding": {
+          "passed": true,
+          "method": "model_review"
+        },
+        "question": "其他公司的会员退款期限是几天？",
+        "session_id": "C22",
+        "turn_no": 1,
+        "steps_used": 5,
+        "tool_calls": 3,
+        "gate_rejections": 1,
+        "had_tool_error": false
+      },
+      "checks": [
+        {
+          "check": "status",
+          "ok": true,
+          "detail": "期望 ['NO_EVIDENCE']，实际 NO_EVIDENCE"
+        },
+        {
+          "check": "no_basis",
+          "ok": true,
+          "detail": "不应有作为依据的文档，实际 []"
+        },
+        {
+          "check": "gaps_nonempty",
+          "ok": true,
+          "detail": "gaps 应非空，实际 ['其他公司（外部企业）的会员退款期限：公司资料中无此类内容，建议联系相关业务或法务部门了解']"
+        }
+      ]
+    }
+  ]
+}

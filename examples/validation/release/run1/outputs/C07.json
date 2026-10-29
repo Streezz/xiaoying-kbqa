@@ -1,0 +1,61 @@
+{
+  "id": "C07",
+  "title": "工具失败无法完成：读取原文全部超时",
+  "turns": [
+    {
+      "question": "差旅住宿标准是多少？",
+      "dataset": "data\\docs",
+      "fault": "read:timeout@*",
+      "result": {
+        "status": "FAILED",
+        "answer": "暂时无法给出住宿标准：检索已定位到《差旅费管理规定》§3「住宿标准」段落，但读取原文的工具连续超时，未能取得可引用的完整原文，因此不能据此回答。请稍后重试，或联系行政部确认。",
+        "citations": [],
+        "conflicts": [],
+        "gaps": [
+          "《差旅费管理规定》§3住宿标准原文未能读取（工具超时），无法确认具体金额与适用条件"
+        ],
+        "clarify_question": "",
+        "doc_verdicts": [
+          {
+            "doc_id": "D03",
+            "verdict": "not_applicable",
+            "reason": "检索定位到§3住宿标准，但read_section多次超时，未读到原文，不能作为回答依据"
+          },
+          {
+            "doc_id": "D01",
+            "verdict": "not_applicable",
+            "reason": "仅检索到总则预览，read_section超时未读到原文"
+          }
+        ],
+        "grounding": {
+          "passed": true,
+          "method": "model_review"
+        },
+        "question": "差旅住宿标准是多少？",
+        "session_id": "C07",
+        "turn_no": 1,
+        "steps_used": 8,
+        "tool_calls": 11,
+        "gate_rejections": 0,
+        "had_tool_error": true
+      },
+      "checks": [
+        {
+          "check": "status",
+          "ok": true,
+          "detail": "期望 ['FAILED']，实际 FAILED"
+        },
+        {
+          "check": "no_basis",
+          "ok": true,
+          "detail": "不应有作为依据的文档，实际 []"
+        },
+        {
+          "check": "tool_error_seen",
+          "ok": true,
+          "detail": "Trace 里应出现失败的工具调用"
+        }
+      ]
+    }
+  ]
+}

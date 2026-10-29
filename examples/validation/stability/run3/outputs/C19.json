@@ -1,0 +1,64 @@
+{
+  "id": "C19",
+  "title": "资料外问题：法律常识",
+  "turns": [
+    {
+      "question": "劳动法规定年假最少几天？",
+      "dataset": "data\\docs",
+      "fault": null,
+      "result": {
+        "status": "INCOMPLETE",
+        "answer": "已达到步数上限（12 步），本轮没有得到通过核验的结果，以下只列出已读过的资料，未经核验。",
+        "citations": [],
+        "conflicts": [],
+        "gaps": [
+          "本轮未完成，资料是否充分未经核验"
+        ],
+        "clarify_question": "",
+        "doc_verdicts": [],
+        "evidence_found": [
+          {
+            "doc_id": "D05",
+            "section_id": "§2",
+            "title": "年休假制度（2025版）",
+            "heading": "年假天数"
+          },
+          {
+            "doc_id": "D06",
+            "section_id": "§2",
+            "title": "年休假制度（2026修订版）",
+            "heading": "年假天数"
+          },
+          {
+            "doc_id": "D06",
+            "section_id": "§1",
+            "title": "年休假制度（2026修订版）",
+            "heading": "修订说明"
+          }
+        ],
+        "last_gate_problems": [
+          "NO_EVIDENCE 的回答里出现了具体规定（数字+单位），资料外问题不要给出具体规定。"
+        ],
+        "question": "劳动法规定年假最少几天？",
+        "session_id": "C19",
+        "turn_no": 1,
+        "steps_used": 12,
+        "tool_calls": 6,
+        "gate_rejections": 10,
+        "had_tool_error": false
+      },
+      "checks": [
+        {
+          "check": "status",
+          "ok": false,
+          "detail": "期望 ['NO_EVIDENCE']，实际 INCOMPLETE"
+        },
+        {
+          "check": "no_basis",
+          "ok": true,
+          "detail": "不应有作为依据的文档，实际 []"
+        }
+      ]
+    }
+  ]
+}

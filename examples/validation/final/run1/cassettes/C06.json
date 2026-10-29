@@ -1,0 +1,72 @@
+{
+ "48c298dbcd94cd8f": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_ECxdtZIsYtFVQf53o2t49803",
+    "name": "search_docs",
+    "arguments": "{\"query\": \"加班调休 使用期限\", \"reason\": \"查找加班调休有效期的制度规定\"}"
+   },
+   {
+    "id": "call_01_jc1CqiN7rdN4IMx2hILX9208",
+    "name": "search_docs",
+    "arguments": "{\"query\": \"加班 补休 调休 有效期 个月内\", \"reason\": \"换一种书面说法再检索调休期限\"}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 2636,
+   "completion_tokens": 124
+  },
+  "latency_ms": 2475
+ },
+ "a035df621e0e3688": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_noDQRc6kkmfvD4SN4kGt4961",
+    "name": "read_section",
+    "arguments": "{\"doc_id\": \"D07\", \"section_id\": \"§1\", \"reason\": \"读取调休期限原文\"}"
+   },
+   {
+    "id": "call_01_o2ZUKk4GPqv6fpdTCKbs3109",
+    "name": "get_doc_info",
+    "arguments": "{\"doc_ids\": [\"D07\"], \"reason\": \"确认该办法是否现行及适用范围\"}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 3303,
+   "completion_tokens": 129
+  },
+  "latency_ms": 1551
+ },
+ "fee6670bf30def06": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_Sgz7cqAO5xf30d26x0Ti5572",
+    "name": "submit_result",
+    "arguments": "{\"status\": \"ANSWERED\", \"answer\": \"加班调休须在加班发生后 3 个月内使用，逾期不再保留。该规定针对工作日延时加班（可申请调休）。\", \"citations\": [{\"doc_id\": \"D07\", \"section_id\": \"§1\", \"quote\": \"工作日延时加班可申请调休，调休须在加班发生后3个月内使用，逾期不再保留。\"}], \"doc_verdicts\": [{\"doc_id\": \"D07\", \"verdict\": \"basis\", \"reason\": \"《加班与调休管理办法》§1 明确调休期限，文档现行有效\"}], \"gaps\": [\"休息日加班调休是否有单独的期限要求，资料中未写明（§2 只规定优先安排调休、无法安排时按200%支付加班费）\"], \"reason\": \"依据现行《加班与调休管理办法》§1 回答调休期限\"}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 3685,
+   "completion_tokens": 280
+  },
+  "latency_ms": 2541
+ },
+ "96c1dea5779f9b10": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_ZCirlg80b2rS9U4TvPhU4452",
+    "name": "submit_review",
+    "arguments": "{\"passed\": true, \"issues\": [], \"confirmed_doc_ids\": []}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 1628,
+   "completion_tokens": 68
+  },
+  "latency_ms": 1507
+ }
+}

@@ -1,0 +1,127 @@
+{
+ "504188bbc489d57a": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_PEMLwoU0A7UIRDVyyXcM1500",
+    "name": "search_docs",
+    "arguments": "{\"query\": \"差旅住宿标准\", \"reason\": \"查找差旅住宿费标准相关制度\"}"
+   },
+   {
+    "id": "call_01_oTdlmORHnVhvbAdyuiOC8815",
+    "name": "search_docs",
+    "arguments": "{\"query\": \"住宿费 限额 报销\", \"reason\": \"换用制度书面用语检索住宿费限额\"}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 2723,
+   "completion_tokens": 117
+  },
+  "latency_ms": 2332
+ },
+ "d7f4de05c1ebfb19": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_vvmd8PXCsiuADxEgO02I3975",
+    "name": "read_section",
+    "arguments": "{\"doc_id\": \"D03\", \"section_id\": \"§3\", \"reason\": \"读取住宿标准原文\"}"
+   },
+   {
+    "id": "call_01_zdL0AscWO1KaLhtJ7d0n8247",
+    "name": "read_section",
+    "arguments": "{\"doc_id\": \"D03\", \"section_id\": \"§1\", \"reason\": \"确认适用范围\"}"
+   },
+   {
+    "id": "call_02_kQaj1buVYqJaWz8GlwnX2739",
+    "name": "get_doc_info",
+    "arguments": "{\"doc_ids\": [\"D03\", \"D01\"], \"reason\": \"确认差旅规定与报销办法的现行状态和适用范围\"}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 3742,
+   "completion_tokens": 203
+  },
+  "latency_ms": 1746
+ },
+ "d411743369668754": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_yqTn47QArNfm8JgEEQzA5496",
+    "name": "read_section",
+    "arguments": "{\"doc_id\": \"D03\", \"section_id\": \"§3\", \"reason\": \"重试读取住宿标准原文\"}"
+   },
+   {
+    "id": "call_01_Fvbs0z0BVxuvPTU8NTjj5699",
+    "name": "read_section",
+    "arguments": "{\"doc_id\": \"D03\", \"section_id\": \"§1\", \"reason\": \"重试读取适用范围原文\"}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 4290,
+   "completion_tokens": 143
+  },
+  "latency_ms": 1567
+ },
+ "2bc246b643ee2a65": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_iAo9vq4caJOUHha1qGzY7687",
+    "name": "read_section",
+    "arguments": "{\"doc_id\": \"D03\", \"section_id\": \"§3\", \"reason\": \"第三次尝试读取住宿标准段落原文\"}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 4506,
+   "completion_tokens": 75
+  },
+  "latency_ms": 1635
+ },
+ "d7924ee60ffc934e": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_KSJZcqpPLJXBu8QH3MG35097",
+    "name": "search_docs",
+    "arguments": "{\"query\": \"一线城市住宿费每晚不超过500元\", \"reason\": \"read_section 超时，尝试通过检索获取住宿标准段落\", \"top_k\": 3}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 4645,
+   "completion_tokens": 86
+  },
+  "latency_ms": 1683
+ },
+ "c1eb7da4abd00914": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_CbLPrSqddpld5AsfyiZH7641",
+    "name": "submit_result",
+    "arguments": "{\"status\": \"FAILED\", \"answer\": \"暂时无法给出住宿标准：检索到《差旅费管理规定》§3「住宿标准」段落，但读取该段完整原文的 read_section 调用连续超时（重试后仍失败），按规则不能仅凭检索预览作答。已确认该文档为现行版本（生效日期 2026-01-10，适用范围：差旅费用）。请稍后重试，或联系行政部确认住宿标准。\", \"citations\": [], \"doc_verdicts\": [{\"doc_id\": \"D03\", \"verdict\": \"not_applicable\", \"reason\": \"检索命中住宿标准段落，但 read_section 连续超时，未能读到原文，无法作为回答依据\"}, {\"doc_id\": \"D01\", \"verdict\": \"not_applicable\", \"reason\": \"仅用于确认差旅费用另有专门规定，未读到住宿标准相关原文\"}], \"gaps\": [\"《差旅费管理规定》§3 住宿标准段落原文读取失败（工具超时），无法确认具体金额与适用条件\"], \"reason\": \"住宿标准段落原文多次读取超时，无法依据原文作答，按规则提交 FAILED\"}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 5060,
+   "completion_tokens": 340
+  },
+  "latency_ms": 2792
+ },
+ "4fc1dcad6ac1c93d": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_5DiZb57zDPVQwPw2w4ar0085",
+    "name": "submit_review",
+    "arguments": "{\"passed\": true, \"issues\": [], \"confirmed_doc_ids\": []}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 1806,
+   "completion_tokens": 68
+  },
+  "latency_ms": 1279
+ }
+}

@@ -1,0 +1,20 @@
+{
+  "id": "C09",
+  "title": "步数上限",
+  "acceptance": [
+    "步数上限"
+  ],
+  "dataset": "data/docs",
+  "today": "2026-10-28",
+  "turns": [
+    {
+      "question": "报销期限多久？",
+      "max_steps": 2,
+      "expect": {
+        "status": [
+          "INCOMPLETE"
+        ]
+      }
+    }
+  ]
+}

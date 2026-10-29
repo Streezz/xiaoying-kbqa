@@ -1,0 +1,72 @@
+{
+ "70988ac124c693dd": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_Gq198Qn4rPQc1IaYsSBP5584",
+    "name": "search_docs",
+    "arguments": "{\"query\": \"加班调休有效期\", \"reason\": \"查找加班调休使用期限的规定\"}"
+   },
+   {
+    "id": "call_01_Y2GobzJprI1sB7t8qyKy2555",
+    "name": "search_docs",
+    "arguments": "{\"query\": \"调休 未使用 作废\", \"reason\": \"换一种说法检索调休期限\"}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 2726,
+   "completion_tokens": 116
+  },
+  "latency_ms": 2505
+ },
+ "dfd45dd12e5f262c": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_arq936jlGu1uenHRy8w94514",
+    "name": "read_section",
+    "arguments": "{\"doc_id\": \"D07\", \"section_id\": \"§1\", \"reason\": \"读取调休期限原文\"}"
+   },
+   {
+    "id": "call_01_GSfz3AO0EG6SR8GsIYd14632",
+    "name": "get_doc_info",
+    "arguments": "{\"doc_ids\": [\"D07\"], \"reason\": \"确认该办法状态与适用范围\"}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 3356,
+   "completion_tokens": 128
+  },
+  "latency_ms": 1723
+ },
+ "57ab0e8387dc0e3a": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_Yo6JjSHlVvXa81D1LDNJ5622",
+    "name": "submit_result",
+    "arguments": "{\"status\": \"ANSWERED\", \"answer\": \"工作日延时加班可申请调休，调休须在加班发生后3个月内使用，逾期不再保留。依据《加班与调休管理办法》（2025-07-01生效，现行）。\", \"citations\": [{\"doc_id\": \"D07\", \"section_id\": \"§1\", \"quote\": \"工作日延时加班可申请调休，调休须在加班发生后3个月内使用，逾期不再保留。\"}], \"doc_verdicts\": [{\"doc_id\": \"D07\", \"verdict\": \"basis\", \"reason\": \"现行制度，§1明确调休期限\"}], \"reason\": \"依据现行制度原文回答调休期限\"}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 3737,
+   "completion_tokens": 221
+  },
+  "latency_ms": 2015
+ },
+ "6633e52476ecb30e": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_nAt21FH7WmpN2LZTbzXy4293",
+    "name": "submit_review",
+    "arguments": "{\"passed\": true, \"issues\": [], \"confirmed_doc_ids\": []}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 1565,
+   "completion_tokens": 68
+  },
+  "latency_ms": 1249
+ }
+}

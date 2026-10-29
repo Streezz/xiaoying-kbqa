@@ -1,0 +1,62 @@
+{
+ "263aceb54727942f": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_FGeVi2hHOteWlEcZPJcg2870",
+    "name": "search_docs",
+    "arguments": "{\"query\": \"报销期限\", \"reason\": \"查找报销期限相关制度\"}"
+   },
+   {
+    "id": "call_01_3XZJFuPjTjgRDplgSjst3429",
+    "name": "search_docs",
+    "arguments": "{\"query\": \"费用报销 提交时限 逾期\", \"reason\": \"换书面用语再搜一次报销时限规定\"}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 2216,
+   "completion_tokens": 113
+  },
+  "latency_ms": 2756
+ },
+ "84d10fbafdeb509f": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_gqBLvBYNHUYQKIIYDG1X0624",
+    "name": "read_section",
+    "arguments": "{\"doc_id\": \"D01\", \"section_id\": \"§3\", \"reason\": \"读取费用报销管理办法的报销期限原文\"}"
+   },
+   {
+    "id": "call_01_NM1DYCSgsKqqWOESNGY59578",
+    "name": "read_section",
+    "arguments": "{\"doc_id\": \"D01\", \"section_id\": \"§4\", \"reason\": \"读取超期处理原文\"}"
+   },
+   {
+    "id": "call_02_4XcksS8QPuRf4seCAWoJ3929",
+    "name": "read_section",
+    "arguments": "{\"doc_id\": \"D02\", \"section_id\": \"§3\", \"reason\": \"读取财务部报销操作指引时限要求原文\"}"
+   },
+   {
+    "id": "call_03_RpgsK7iIUd5QFrQ18Y9k1833",
+    "name": "read_section",
+    "arguments": "{\"doc_id\": \"D03\", \"section_id\": \"§4\", \"reason\": \"读取差旅费管理规定报销时限原文\"}"
+   },
+   {
+    "id": "call_04_VdDaTc0gv2VbezfkBhRN0046",
+    "name": "read_section",
+    "arguments": "{\"doc_id\": \"D04\", \"section_id\": \"§2\", \"reason\": \"读取报销管理办法（2024版）报销期限原文\"}"
+   },
+   {
+    "id": "call_05_Oi8q0CaLtcgzU9gziI8B5030",
+    "name": "get_doc_info",
+    "arguments": "{\"doc_ids\": [\"D01\", \"D02\", \"D03\", \"D04\"], \"reason\": \"查四份文档的状态、生效日期和适用范围以判断优先级\"}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 3225,
+   "completion_tokens": 439
+  },
+  "latency_ms": 2287
+ }
+}

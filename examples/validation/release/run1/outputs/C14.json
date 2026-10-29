@@ -1,0 +1,135 @@
+{
+  "id": "C14",
+  "title": "错误前提：听说改成 60 天了",
+  "turns": [
+    {
+      "question": "听说报销期限改成60天了，是从哪天开始的？",
+      "dataset": "data\\docs",
+      "fault": null,
+      "result": {
+        "status": "NEED_CONFIRMATION",
+        "answer": "资料里没有\"报销期限改成60天\"的规定，也没有找到任何\"从某天起改为60天\"的生效说明。现行规定是：一般费用原则上应在费用发生后30天内提交，特殊情况经分管领导书面批准可延长至60天（《费用报销管理办法》，2026-03-01起施行，替代2024版）；差旅费用按专门规定，应于出差返回后10日内提交。另外《财务部报销操作指引》写的是费用发生之日起15日内完成报销申请，与上述30天不一致，两份都现行、都未写适用范围，需你确认适用哪份。",
+        "citations": [
+          {
+            "doc_id": "D01",
+            "section_id": "§3",
+            "title": "费用报销管理办法",
+            "heading": "报销期限",
+            "version_date": "2026-03-01",
+            "status": "现行",
+            "quote": "员工原则上应在费用发生后30天内提交报销申请；因特殊情况无法按期提交的，经分管领导书面批准，可延长至60天。"
+          },
+          {
+            "doc_id": "D01",
+            "section_id": "§1",
+            "title": "费用报销管理办法",
+            "heading": "总则",
+            "version_date": "2026-03-01",
+            "status": "现行",
+            "quote": "本办法适用于公司员工因公发生的各类费用报销。差旅费用另有专门规定的，从其规定。"
+          },
+          {
+            "doc_id": "D03",
+            "section_id": "§4",
+            "title": "差旅费管理规定",
+            "heading": "报销时限",
+            "version_date": "2026-01-10",
+            "status": "现行",
+            "quote": "差旅费用应于出差返回后10日内提交报销。"
+          },
+          {
+            "doc_id": "D03",
+            "section_id": "§1",
+            "title": "差旅费管理规定",
+            "heading": "适用范围",
+            "version_date": "2026-01-10",
+            "status": "现行",
+            "quote": "本规定仅适用于员工因公出差产生的交通、住宿及出差补助费用。"
+          },
+          {
+            "doc_id": "D02",
+            "section_id": "§3",
+            "title": "财务部报销操作指引",
+            "heading": "时限要求",
+            "version_date": "2026-06-15",
+            "status": "现行",
+            "quote": "员工应于费用发生之日起15日内完成报销申请。"
+          }
+        ],
+        "conflicts": [
+          {
+            "topic": "一般费用报销提交时限（30天 vs 15日）",
+            "positions": [
+              {
+                "doc_id": "D01",
+                "section_id": "§3",
+                "claim": "员工原则上应在费用发生后30天内提交报销申请；因特殊情况无法按期提交的，经分管领导书面批准，可延长至60天。"
+              },
+              {
+                "doc_id": "D02",
+                "section_id": "§3",
+                "claim": "员工应于费用发生之日起15日内完成报销申请。"
+              }
+            ],
+            "note": "两份均现行（D01 2026-03-01生效，D02 2026-06-15生效），均未写明适用范围，D02也未写明替代或优先关系，无法判断谁优先",
+            "resolution": "unresolved"
+          }
+        ],
+        "gaps": [
+          "资料中没有“报销期限改为60天”的规定，也没有任何关于该调整生效日期的说明"
+        ],
+        "clarify_question": "一般费用报销的提交时限，你们部门按《费用报销管理办法》（30天，特殊情况可批延至60天）还是《财务部报销操作指引》（15日）执行？",
+        "doc_verdicts": [
+          {
+            "doc_id": "D01",
+            "verdict": "basis",
+            "reason": "现行制度，报销期限与总则原文作为回答依据"
+          },
+          {
+            "doc_id": "D02",
+            "verdict": "conflict",
+            "reason": "现行指引规定15日，与D01的30天不一致且未写适用范围"
+          },
+          {
+            "doc_id": "D03",
+            "verdict": "basis",
+            "reason": "现行差旅专门规定，D01总则写明差旅另有规定从其规定，故差旅按10日"
+          },
+          {
+            "doc_id": "D04",
+            "verdict": "not_applicable",
+            "reason": "已被D01替代，状态为废止"
+          }
+        ],
+        "grounding": {
+          "passed": true,
+          "method": "model_review"
+        },
+        "question": "听说报销期限改成60天了，是从哪天开始的？",
+        "session_id": "C14",
+        "turn_no": 1,
+        "steps_used": 6,
+        "tool_calls": 10,
+        "gate_rejections": 0,
+        "had_tool_error": false
+      },
+      "checks": [
+        {
+          "check": "status",
+          "ok": true,
+          "detail": "期望 ['NEED_CONFIRMATION', 'ANSWERED']，实际 NEED_CONFIRMATION"
+        },
+        {
+          "check": "cite_docs_include",
+          "ok": true,
+          "detail": "引用应包含 ['D01']，实际 ['D01', 'D02', 'D03']"
+        },
+        {
+          "check": "answer_contains:60",
+          "ok": true,
+          "detail": "回答应包含「60」（忽略排版空白）"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,92 @@
+{
+ "30dd52baa5ff1fc2": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_8Nx5Dvt7TBQQLQuaIT0E5872",
+    "name": "search_docs",
+    "arguments": "{\"query\": \"年终奖 发放时间\", \"reason\": \"查找年终奖发放时间的规定\"}"
+   },
+   {
+    "id": "call_01_ynU7hEiajVcN1ecxfT4Y3566",
+    "name": "search_docs",
+    "arguments": "{\"query\": \"奖金 薪酬 发放\", \"reason\": \"换用制度书面用语检索奖金发放相关制度\"}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 2450,
+   "completion_tokens": 116
+  },
+  "latency_ms": 2047
+ },
+ "e62b77d1cc77f631": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_YfLmBpWiLZPyQmeQOsfl5971",
+    "name": "search_docs",
+    "arguments": "{\"query\": \"绩效奖金 年度考核 兑现\", \"reason\": \"再换关键词检索年度奖金兑现规定\"}"
+   },
+   {
+    "id": "call_01_L3BJIPG9OHmMxLuQLdVb0494",
+    "name": "search_docs",
+    "arguments": "{\"query\": \"薪酬福利制度\", \"reason\": \"检索薪酬类制度目录，确认是否有奖金章节\"}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 2688,
+   "completion_tokens": 118
+  },
+  "latency_ms": 1919
+ },
+ "e3d6c9e15b1bc710": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_1h7dYVSUJwR6yAPxygjq5952",
+    "name": "search_docs",
+    "arguments": "{\"query\": \"工资 发放 日期\", \"reason\": \"确认资料库中是否有薪酬发放类制度\"}"
+   },
+   {
+    "id": "call_01_10p2vIYo8QsWnOwKbUUy5524",
+    "name": "search_docs",
+    "arguments": "{\"query\": \"激励 奖励 方案\", \"reason\": \"换关键词检索奖励方案类资料\"}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 2929,
+   "completion_tokens": 116
+  },
+  "latency_ms": 1758
+ },
+ "21f9c30b19e2b2b7": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_ghmNmRc6YqY3cRkT5cuM9664",
+    "name": "submit_result",
+    "arguments": "{\"status\": \"NO_EVIDENCE\", \"answer\": \"资料中没有找到关于年终奖发放时间的规定。我用了\\\"年终奖 发放时间\\\"\\\"奖金 薪酬 发放\\\"\\\"绩效奖金 年度考核 兑现\\\"\\\"薪酬福利制度\\\"\\\"激励 奖励 方案\\\"等多种说法检索，均未检索到年终奖或年度奖金相关的制度条款。建议向人力资源部（薪酬绩效）咨询具体发放安排。\", \"citations\": [], \"doc_verdicts\": [], \"gaps\": [\"公司年终奖/年度绩效奖金的发放时间、发放条件、计算方式等规定，资料库中未检索到相关制度\"], \"reason\": \"多次换关键词检索均未找到年终奖相关制度，按资料外处理并建议联系人力资源部。\"}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 3339,
+   "completion_tokens": 240
+  },
+  "latency_ms": 2383
+ },
+ "6a7009c3a3d001f3": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_MhgCLAQBYKHQDxNRXUR03064",
+    "name": "submit_review",
+    "arguments": "{\"passed\": true, \"issues\": [], \"confirmed_doc_ids\": []}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 1371,
+   "completion_tokens": 68
+  },
+  "latency_ms": 1240
+ }
+}

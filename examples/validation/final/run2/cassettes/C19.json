@@ -1,0 +1,112 @@
+{
+ "be8f75201abaf91d": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_Ro5qjfq6y7z7FVsH1eYi2535",
+    "name": "search_docs",
+    "arguments": "{\"query\": \"年休假 天数 规定\", \"reason\": \"用户问劳动法规定的年假天数，先查公司资料里是否有相关制度\"}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 2635,
+   "completion_tokens": 70
+  },
+  "latency_ms": 2223
+ },
+ "8dd8ba43e9a4e514": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_bdU6vNSZmMTYXKxBN70s6382",
+    "name": "get_doc_info",
+    "arguments": "{\"doc_ids\": [\"D05\", \"D06\"], \"reason\": \"两份年休假制度天数不同，需查生效状态和替代关系\"}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 3236,
+   "completion_tokens": 71
+  },
+  "latency_ms": 1931
+ },
+ "525d4a3020ebc5b2": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_JANilGzHlBf9LHN92CiY6228",
+    "name": "read_section",
+    "arguments": "{\"doc_id\": \"D05\", \"section_id\": \"§2\", \"reason\": \"读取现行年休假制度的天数条款原文\"}"
+   },
+   {
+    "id": "call_01_gELbnC1be77h8dkUf9ro2228",
+    "name": "read_section",
+    "arguments": "{\"doc_id\": \"D06\", \"section_id\": \"§1\", \"reason\": \"读取修订版说明，确认生效时间和调整内容\"}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 3580,
+   "completion_tokens": 151
+  },
+  "latency_ms": 1956
+ },
+ "34a3d285dc5002e8": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_pPyRskVAkhlj74xQPtVW9204",
+    "name": "read_section",
+    "arguments": "{\"doc_id\": \"D06\", \"section_id\": \"§2\", \"reason\": \"读取修订版年假天数原文，说明2027年起的变化\"}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 3977,
+   "completion_tokens": 81
+  },
+  "latency_ms": 1783
+ },
+ "abd85d4df4015364": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_A5BHHu1qjR3WFxWz8Kfm4655",
+    "name": "submit_result",
+    "arguments": "{\"status\": \"NO_EVIDENCE\", \"answer\": \"公司资料里没有国家《劳动法》或《职工带薪年休假条例》的条文，因此无法回答\\\"劳动法规定年假最少几天\\\"这个问题，建议查阅国家法律法规原文或咨询人力资源部。\\n\\n如果你想知道的是公司自己的年休假天数，可以另外问我。按公司现行制度（《年休假制度（2025版）》）：累计工作满1年不满10年5天，满10年不满20年10天，满20年15天。另需注意《年休假制度（2026修订版）》已发布但自2027年1月1日起才施行，届时前两档调整为7天和12天，满20年仍为15天。\", \"citations\": [{\"doc_id\": \"D05\", \"section_id\": \"§2\", \"quote\": \"员工累计工作已满1年不满10年的，年休假5天；已满10年不满20年的，年休假10天；已满20年的，年休假15天。\"}, {\"doc_id\": \"D06\", \"section_id\": \"§1\", \"quote\": \"本次修订仅调整年假天数，其余条款仍按《年休假制度（2025版）》执行。本修订版自2027年1月1日起施行。\"}, {\"doc_id\": \"D06\", \"section_id\": \"§2\", \"quote\": \"员工累计工作已满1年不满10年的，年休假7天；已满10年不满20年的，年休假12天；已满20年的，年休假15天。\"}], \"doc_verdicts\": [{\"doc_id\": \"D05\", \"verdict\": \"basis\", \"reason\": \"现行有效的公司年休假制度，用于说明公司现行天数\"}, {\"doc_id\": \"D06\", \"verdict\": \"not_applicable\", \"reason\": \"待生效（2027-01-01起施行），今天不适用，仅作未来调整说明\"}], \"gaps\": [\"公司资料中没有国家《劳动法》《职工带薪年休假条例》等法律法规条文，无法回答法定最低年假天数，建议查阅法规原文或咨询人力资源部\"], \"reason\": \"用户问的是国家法律规定，资料中只有公司制度，按规则判为资料外并说明可另问公司制度\"}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 4188,
+   "completion_tokens": 578
+  },
+  "latency_ms": 3552
+ },
+ "601aab243a487297": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_pmqSYqYiGpAU5F6rRzEv8606",
+    "name": "submit_result",
+    "arguments": "{\"answer\": \"公司资料里没有国家《劳动法》《职工带薪年休假条例》等法律法规的条文，因此无法回答\\\"劳动法规定年假最少几天\\\"，建议查阅法规原文或咨询人力资源部。\\n\\n如果你实际想问的是公司自己的年休假天数，公司有《年休假制度（2025版）》（现行）和《年休假制度（2026修订版）》（2027年1月1日起施行），可以另外问我，我再按原文给你具体天数。\", \"citations\": [], \"doc_verdicts\": [{\"doc_id\": \"D05\", \"reason\": \"公司现行年休假制度，但用户问的是国家法律规定，该文档不能作为回答依据\", \"verdict\": \"not_applicable\"}, {\"doc_id\": \"D06\", \"reason\": \"待生效（2027-01-01起施行），且用户问的是国家法律规定，不适用\", \"verdict\": \"not_applicable\"}], \"gaps\": [\"公司资料中没有国家《劳动法》《职工带薪年休假条例》等法律法规条文，无法回答法定最低年假天数，建议查阅法规原文或咨询人力资源部\"], \"reason\": \"按核验意见修正：资料外问题不引用公司条款、不列具体数字\", \"status\": \"NO_EVIDENCE\"}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 4876,
+   "completion_tokens": 357
+  },
+  "latency_ms": 2680
+ },
+ "38a15db24dd9f597": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_vs3ZqCL3hL6HESbuXsnw2136",
+    "name": "submit_review",
+    "arguments": "{\"passed\": true, \"issues\": [], \"confirmed_doc_ids\": []}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 2041,
+   "completion_tokens": 68
+  },
+  "latency_ms": 1258
+ }
+}

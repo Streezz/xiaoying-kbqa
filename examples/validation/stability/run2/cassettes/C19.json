@@ -1,0 +1,97 @@
+{
+ "4b62c3c8f1287b3b": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_XxyvK4OovLnjeCVbKnKC2915",
+    "name": "search_docs",
+    "arguments": "{\"query\": \"年假 天数 规定\", \"reason\": \"用户问劳动法年假天数，先查公司资料里是否有相关制度\"}"
+   },
+   {
+    "id": "call_01_fxay0nPyVYI8tTvPFtSk2137",
+    "name": "search_docs",
+    "arguments": "{\"query\": \"带薪年休假\", \"reason\": \"换书面用语再检索一次年休假制度\"}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 2452,
+   "completion_tokens": 125
+  },
+  "latency_ms": 2384
+ },
+ "5f5da88cad9bbec4": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_Xv5iQkq83BK8KKFuh4mD4978",
+    "name": "read_section",
+    "arguments": "{\"doc_id\": \"D05\", \"section_id\": \"§2\", \"reason\": \"读2025版年假天数原文\"}"
+   },
+   {
+    "id": "call_01_WiNDwxp9N3s9PyU0m5xf7171",
+    "name": "read_section",
+    "arguments": "{\"doc_id\": \"D06\", \"section_id\": \"§2\", \"reason\": \"读2026修订版年假天数原文\"}"
+   },
+   {
+    "id": "call_02_NEYZYzxA4FDLDj6cx1Rg7777",
+    "name": "read_section",
+    "arguments": "{\"doc_id\": \"D06\", \"section_id\": \"§1\", \"reason\": \"读修订说明确认生效时间与替代关系\"}"
+   },
+   {
+    "id": "call_03_mitMYBXmQ0yfOK3wycZX6435",
+    "name": "get_doc_info",
+    "arguments": "{\"doc_ids\": [\"D05\", \"D06\"], \"reason\": \"确认两份年休假制度的状态与生效日期\"}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 3619,
+   "completion_tokens": 284
+  },
+  "latency_ms": 2015
+ },
+ "8737b658ab944e6b": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_3qWV6po4xkY2LF8LPjxx3588",
+    "name": "submit_result",
+    "arguments": "{\"status\": \"NO_EVIDENCE\", \"answer\": \"资料里没有劳动法（国家法律法规）的条文，无法回答\\\"劳动法规定年假最少几天\\\"。公司内部资料只有《年休假制度》，其中规定的是公司年假天数，不是法律条文：\\n\\n- 现行（2025版，2025-01-01 起施行）：累计工作已满1年不满10年的年休假5天；已满10年不满20年的10天；已满20年的15天。\\n- 待生效（2026修订版，2027-01-01 起施行）：已满1年不满10年的7天；已满10年不满20年的12天；已满20年的15天。修订版仅调整天数，其余条款仍按2025版执行。\\n\\n如果你要问的是公司年假天数，按上面现行版本执行；从2027年1月1日起按修订版调整。法律层面的规定建议咨询人力资源部或法务部门。\", \"citations\": [{\"doc_id\": \"D05\", \"section_id\": \"§2\", \"quote\": \"员工累计工作已满1年不满10年的，年休假5天；已满10年不满20年的，年休假10天；已满20年的，年休假15天。\"}, {\"doc_id\": \"D06\", \"section_id\": \"§2\", \"quote\": \"员工累计工作已满1年不满10年的，年休假7天；已满10年不满20年的，年休假12天；已满20年的，年休假15天。\"}, {\"doc_id\": \"D06\", \"section_id\": \"§1\", \"quote\": \"本次修订仅调整年假天数，其余条款仍按《年休假制度（2025版）》执行。本修订版自2027年1月1日起施行。\"}], \"gaps\": [\"资料中没有劳动法或其他国家法律法规的条文，无法回答法律规定的年假最低天数，建议咨询人力资源部或法务部门\"], \"doc_verdicts\": [{\"doc_id\": \"D05\", \"verdict\": \"basis\", \"reason\": \"现行版本，用于说明公司当前年假天数\"}, {\"doc_id\": \"D06\", \"verdict\": \"basis\", \"reason\": \"待生效修订版，用于说明2027年1月1日起的天数调整\"}], \"reason\": \"用户问的是劳动法条文，资料中无法律内容，只能提供公司制度并说明缺口\"}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 4534,
+   "completion_tokens": 606
+  },
+  "latency_ms": 3720
+ },
+ "46af0e6f5ea66251": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_HZqPSflz1qDDW6z6Wb5h9870",
+    "name": "submit_result",
+    "arguments": "{\"answer\": \"资料里没有劳动法（国家法律法规）的条文，无法回答\\\"劳动法规定年假最少几天\\\"，建议咨询人力资源部或法务部门。\\n\\n公司内部有《年休假制度》规定了员工年假天数，如果你要问的是公司年假天数，可以另外问我，我按现行制度给你查。\", \"citations\": [], \"doc_verdicts\": [{\"doc_id\": \"D05\", \"reason\": \"公司年休假制度，与所问的法律条文无关，未作为回答依据\", \"verdict\": \"not_applicable\"}, {\"doc_id\": \"D06\", \"reason\": \"2026修订版自2027-01-01起才生效，今天为待生效状态，且与所问法律条文无关\", \"verdict\": \"not_applicable\"}], \"gaps\": [\"资料中没有劳动法或其他国家法律法规的条文，无法回答法律规定的年假最低天数，建议咨询人力资源部或法务部门\"], \"reason\": \"按核验意见修正：法律条文属资料外内容，不引用公司制度具体数字，仅提示可另问公司制度\", \"status\": \"NO_EVIDENCE\"}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 5297,
+   "completion_tokens": 330
+  },
+  "latency_ms": 2666
+ },
+ "1748f8fc05e933ca": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_qHoIYfyygfNMJGiY84md9825",
+    "name": "submit_review",
+    "arguments": "{\"passed\": true, \"issues\": [], \"confirmed_doc_ids\": []}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 1945,
+   "completion_tokens": 68
+  },
+  "latency_ms": 1593
+ }
+}

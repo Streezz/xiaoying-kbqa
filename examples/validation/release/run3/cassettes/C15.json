@@ -1,0 +1,142 @@
+{
+ "2910871cd4a034e4": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_jQdtkoDXqgzKCQ5y8a688854",
+    "name": "search_docs",
+    "arguments": "{\"query\": \"差旅报销 提交时限 天数\", \"reason\": \"查差旅报销提交时限\"}"
+   },
+   {
+    "id": "call_01_5zl6OCP9ojNS6bFvq07a0358",
+    "name": "search_docs",
+    "arguments": "{\"query\": \"报销款 到账 支付时限\", \"reason\": \"查报销款到账时间\"}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 2733,
+   "completion_tokens": 118
+  },
+  "latency_ms": 2752
+ },
+ "a4df4b1640247513": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_axp8wl3xTIJk4jbu9t7B2445",
+    "name": "read_section",
+    "arguments": "{\"doc_id\": \"D03\", \"section_id\": \"§4\", \"reason\": \"读差旅费报销时限原文\"}"
+   },
+   {
+    "id": "call_01_8ADbZBBfSGAu2tMmAYe06430",
+    "name": "read_section",
+    "arguments": "{\"doc_id\": \"D01\", \"section_id\": \"§3\", \"reason\": \"读通用报销期限原文\"}"
+   },
+   {
+    "id": "call_02_7T9b5FG39nCOZ2idTAy54969",
+    "name": "read_section",
+    "arguments": "{\"doc_id\": \"D02\", \"section_id\": \"§3\", \"reason\": \"读操作指引时限原文\"}"
+   },
+   {
+    "id": "call_03_1e3GU5mYpZ5rdW8ETfGV4892",
+    "name": "read_section",
+    "arguments": "{\"doc_id\": \"D04\", \"section_id\": \"§2\", \"reason\": \"读2024版报销期限原文\"}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 3774,
+   "completion_tokens": 284
+  },
+  "latency_ms": 2112
+ },
+ "46271755ac862d8d": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_lqhksP7urEQ7MnkZXPHr9545",
+    "name": "get_doc_info",
+    "arguments": "{\"doc_ids\": [\"D01\", \"D02\", \"D03\", \"D04\"], \"reason\": \"判断各文档状态、适用范围与替代关系\"}"
+   },
+   {
+    "id": "call_01_WnpWaSKckvIF69IA1YoR6291",
+    "name": "search_docs",
+    "arguments": "{\"query\": \"报销款支付 财务付款 工作日 到账\", \"reason\": \"换书面说法再查报销款到账时限\"}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 4439,
+   "completion_tokens": 138
+  },
+  "latency_ms": 1931
+ },
+ "5be6d030e36448e7": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_NA5e827zQ1OqYhdBMeTR7759",
+    "name": "search_docs",
+    "arguments": "{\"query\": \"报销审批完成后 款项支付 打入工资卡\", \"reason\": \"再次换说法查报销款到账时间\"}"
+   },
+   {
+    "id": "call_01_gmRqeN40uRdTGCLxwMY63486",
+    "name": "read_section",
+    "arguments": "{\"doc_id\": \"D03\", \"section_id\": \"§1\", \"reason\": \"确认差旅费规定适用范围\"}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 5566,
+   "completion_tokens": 136
+  },
+  "latency_ms": 2065
+ },
+ "7c3947f75509a8c4": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_gEA3RcXUxrRwzS5LDYr21042",
+    "name": "read_section",
+    "arguments": "{\"doc_id\": \"D01\", \"section_id\": \"§1\", \"reason\": \"查通用办法总则是否写明与专用制度的关系\"}"
+   },
+   {
+    "id": "call_01_6jvk67oH7IJC1g6tCs3a3348",
+    "name": "read_section",
+    "arguments": "{\"doc_id\": \"D02\", \"section_id\": \"§1\", \"reason\": \"查操作指引目的段是否写明适用范围\"}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 6285,
+   "completion_tokens": 151
+  },
+  "latency_ms": 1728
+ },
+ "5ba1f42edea06a72": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_uJOnN2u2DT5SIWPSEoZX1244",
+    "name": "submit_result",
+    "arguments": "{\"status\": \"ANSWERED\", \"answer\": \"差旅报销提交时限：按《差旅费管理规定》，差旅费用应于出差返回后10日内提交报销。该规定仅适用于因公出差的交通、住宿及出差补助费用；《费用报销管理办法》写明\\\"差旅费用另有专门规定的，从其规定\\\"，故差旅按10日执行（非差旅费用为费用发生后30天内，经分管领导书面批准可延至60天）。《财务部报销操作指引》的\\\"15日内\\\"未写明适用范围，与上述规定的关系资料中未说明。\\n\\n报销款到账时间：资料中没有找到相关规定，建议咨询财务部。\", \"citations\": [{\"doc_id\": \"D03\", \"section_id\": \"§4\", \"quote\": \"差旅费用应于出差返回后10日内提交报销。\"}, {\"doc_id\": \"D03\", \"section_id\": \"§1\", \"quote\": \"本规定仅适用于员工因公出差产生的交通、住宿及出差补助费用。\"}, {\"doc_id\": \"D01\", \"section_id\": \"§1\", \"quote\": \"本办法适用于公司员工因公发生的各类费用报销。差旅费用另有专门规定的，从其规定。\"}, {\"doc_id\": \"D01\", \"section_id\": \"§3\", \"quote\": \"员工原则上应在费用发生后30天内提交报销申请；因特殊情况无法按期提交的，经分管领导书面批准，可延长至60天。\"}], \"doc_verdicts\": [{\"doc_id\": \"D03\", \"verdict\": \"basis\", \"reason\": \"差旅费专用制度，明确差旅报销10日时限及适用范围\"}, {\"doc_id\": \"D01\", \"verdict\": \"basis\", \"reason\": \"通用办法，写明差旅费用另有规定从其规定，用于说明让位关系\"}, {\"doc_id\": \"D02\", \"verdict\": \"not_applicable\", \"reason\": \"其15日时限未写明适用范围，与差旅专用规定的关系资料未说明，不作为差旅依据\"}, {\"doc_id\": \"D04\", \"verdict\": \"not_applicable\", \"reason\": \"已废止，被D01替代\"}], \"gaps\": [\"报销款到账/支付时限：资料中未找到相关规定\", \"《财务部报销操作指引》15日时限的适用范围及其与差旅费规定、费用报销管理办法的优先关系未写明\"], \"reason\": \"差旅时限有专用制度依据，到账时间无资料\"}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 6631,
+   "completion_tokens": 614
+  },
+  "latency_ms": 3969
+ },
+ "41b30e4ffb185915": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_D3guNBNp4txYfNUMfczF5622",
+    "name": "submit_review",
+    "arguments": "{\"passed\": true, \"issues\": [], \"confirmed_doc_ids\": []}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 3260,
+   "completion_tokens": 68
+  },
+  "latency_ms": 1542
+ }
+}

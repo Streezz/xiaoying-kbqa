@@ -1,0 +1,29 @@
+{
+  "id": "C13",
+  "title": "替换文档：D02 写明只管驻外分支机构",
+  "acceptance": [
+    "替换文档",
+    "文档冲突"
+  ],
+  "dataset": "data/docs",
+  "today": "2026-10-28",
+  "turns": [
+    {
+      "question": "报销期限多久？",
+      "dataset": "data/variants/d02_scoped",
+      "expect": {
+        "status": [
+          "ANSWERED"
+        ],
+        "basis_include": [
+          "D01",
+          "D02"
+        ],
+        "answer_contains": [
+          "30",
+          "15"
+        ]
+      }
+    }
+  ]
+}

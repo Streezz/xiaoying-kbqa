@@ -1,0 +1,1573 @@
+[
+  {
+    "case": "C01",
+    "turn": 1,
+    "source": "examples/history/baseline-2026-10-28",
+    "expected_passed": true,
+    "actual_passed": true,
+    "ok": true,
+    "review": {
+      "passed": true,
+      "issues": [],
+      "confirmed_doc_ids": []
+    },
+    "usage": {
+      "prompt_tokens": 1662,
+      "completion_tokens": 68
+    },
+    "input": {
+      "today": "2026-10-28",
+      "question": "星剪会员一个账号最多能在几台设备上同时登录？",
+      "previous_turn": null,
+      "candidate": {
+        "status": "ANSWERED",
+        "answer": "同一星剪会员账号最多可同时在 3 台设备上登录；超出时，最早登录的设备会被强制下线。（依据《星剪会员服务说明》，该文档现行有效，2026-05-20 起生效）",
+        "citations": [
+          {
+            "doc_id": "P01",
+            "section_id": "§1",
+            "title": "星剪会员服务说明",
+            "heading": "登录设备",
+            "version_date": "2026-05-20",
+            "status": "现行",
+            "quote": "同一会员账号最多可同时在3台设备上登录，超出时最早登录的设备将被强制下线。"
+          }
+        ],
+        "conflicts": [],
+        "gaps": [],
+        "clarify_question": "",
+        "doc_verdicts": [
+          {
+            "doc_id": "P01",
+            "verdict": "basis",
+            "reason": "§1 登录设备条款直接规定了同时登录设备数量上限，文档现行有效"
+          }
+        ]
+      },
+      "evidence": [
+        {
+          "doc_id": "P01",
+          "section_id": "§1",
+          "title": "星剪会员服务说明",
+          "heading": "登录设备",
+          "text": "同一会员账号最多可同时在3台设备上登录，超出时最早登录的设备将被强制下线。",
+          "hash": "d5de7799df2c",
+          "version_date": "2026-05-20",
+          "turn_no": 1
+        }
+      ],
+      "documents": [
+        {
+          "doc_id": "P01",
+          "scope": "",
+          "status": "现行",
+          "effective_date": "2026-05-20",
+          "supersedes": ""
+        }
+      ],
+      "tool_observations": [
+        {
+          "tool": "search_docs",
+          "args": {
+            "query": "星剪会员 账号 设备 同时登录",
+            "top_k": 5,
+            "category": null
+          },
+          "ok": true,
+          "error_code": "",
+          "summary": "good｜P01§1 P01§2 P02§1 P02§2 D08§3"
+        },
+        {
+          "tool": "search_docs",
+          "args": {
+            "query": "会员账号登录设备数量上限",
+            "top_k": 5,
+            "category": null
+          },
+          "ok": true,
+          "error_code": "",
+          "summary": "good｜P01§1 D08§3 P01§2 P02§1 P02§2"
+        },
+        {
+          "tool": "read_section",
+          "args": {
+            "doc_id": "P01",
+            "section_id": "§1"
+          },
+          "ok": true,
+          "error_code": "",
+          "summary": "P01§1 登录设备：同一会员账号最多可同时在3台设备上登录，超出时最早登录的设备…"
+        },
+        {
+          "tool": "get_doc_info",
+          "args": {
+            "doc_ids": [
+              "P01"
+            ]
+          },
+          "ok": true,
+          "error_code": "",
+          "summary": "P01 现行 范围:未写明"
+        }
+      ]
+    }
+  },
+  {
+    "case": "C10",
+    "turn": 2,
+    "source": "examples/history/baseline-2026-10-28",
+    "expected_passed": false,
+    "actual_passed": false,
+    "ok": true,
+    "review": {
+      "passed": false,
+      "issues": [
+        "回答称“超期风险由部门自行承担”，原文未规定超期后果的责任归属；D01§4仅规定超期且未获延期批准财务部不予受理，应删除该责任归属表述或改为引用原文规则。",
+        "回答称“依据你确认的《财务部报销操作指引》”，但用户本轮仅说“我们部门以财务部的报销操作指引为准”，未明确选择一般费用场景；上一轮问题区分差旅与其他费用，用户未排除差旅，直接以D02作为一般费用依据并同时保留差旅例外，需说明该确认仅适用于非差旅费用，或就适用范围再确认。"
+      ],
+      "confirmed_doc_ids": [
+        "D02"
+      ]
+    },
+    "usage": {
+      "prompt_tokens": 4051,
+      "completion_tokens": 209
+    },
+    "input": {
+      "today": "2026-10-28",
+      "question": "我们部门以财务部的报销操作指引为准。",
+      "previous_turn": {
+        "turn_no": 1,
+        "question": "报销期限多久？",
+        "result": {
+          "status": "NEED_CONFIRMATION",
+          "answer": "报销期限要分情况看，但一般费用报销的期限目前有两份现行制度说法不一致，需要你确认适用哪份：\n\n1. 差旅费用（有专门规定，明确优先）：出差返回后 10 日内提交报销。依据《差旅费管理规定》，该规定仅适用于因公出差产生的交通、住宿及出差补助费用；《费用报销管理办法》也写明\"差旅费用另有专门规定的，从其规定\"。\n\n2. 一般费用报销：\n- 《费用报销管理办法》（2026-03-01 生效，现行）：原则上费用发生后 30 天内提交；特殊情况经分管领导书面批准可延长至 60 天。超过期限且未获延期批准的，财务部不予受理。\n- 《财务部报销操作指引》（2026-06-15 生效，现行）：费用发生之日起 15 日内完成报销申请。\n\n这两份都现行、都没写适用范围和优先级，无法判断以哪份为准，请确认你所在场景适用哪份制度（或告知是差旅还是其他费用），我再给出确定答案。\n\n另外，《报销管理办法（2024版）》规定的 45 天已废止，被《费用报销管理办法》替代，不再适用。",
+          "citations": [
+            {
+              "doc_id": "D03",
+              "section_id": "§4",
+              "title": "差旅费管理规定",
+              "heading": "报销时限",
+              "version_date": "2026-01-10",
+              "status": "现行",
+              "quote": "差旅费用应于出差返回后10日内提交报销。"
+            },
+            {
+              "doc_id": "D03",
+              "section_id": "§1",
+              "title": "差旅费管理规定",
+              "heading": "适用范围",
+              "version_date": "2026-01-10",
+              "status": "现行",
+              "quote": "本规定仅适用于员工因公出差产生的交通、住宿及出差补助费用。"
+            },
+            {
+              "doc_id": "D01",
+              "section_id": "§1",
+              "title": "费用报销管理办法",
+              "heading": "总则",
+              "version_date": "2026-03-01",
+              "status": "现行",
+              "quote": "本办法适用于公司员工因公发生的各类费用报销。差旅费用另有专门规定的，从其规定。"
+            },
+            {
+              "doc_id": "D01",
+              "section_id": "§3",
+              "title": "费用报销管理办法",
+              "heading": "报销期限",
+              "version_date": "2026-03-01",
+              "status": "现行",
+              "quote": "员工原则上应在费用发生后30天内提交报销申请；因特殊情况无法按期提交的，经分管领导书面批准，可延长至60天。"
+            },
+            {
+              "doc_id": "D01",
+              "section_id": "§4",
+              "title": "费用报销管理办法",
+              "heading": "超期处理",
+              "version_date": "2026-03-01",
+              "status": "现行",
+              "quote": "超过报销期限且未获延期批准的，财务部不予受理。"
+            },
+            {
+              "doc_id": "D02",
+              "section_id": "§3",
+              "title": "财务部报销操作指引",
+              "heading": "时限要求",
+              "version_date": "2026-06-15",
+              "status": "现行",
+              "quote": "员工应于费用发生之日起15日内完成报销申请。"
+            }
+          ],
+          "conflicts": [
+            {
+              "topic": "一般费用报销的提交期限",
+              "positions": [
+                {
+                  "doc_id": "D01",
+                  "section_id": "§3",
+                  "claim": "员工原则上应在费用发生后30天内提交报销申请；因特殊情况无法按期提交的，经分管领导书面批准，可延长至60天。"
+                },
+                {
+                  "doc_id": "D02",
+                  "section_id": "§3",
+                  "claim": "员工应于费用发生之日起15日内完成报销申请。"
+                }
+              ],
+              "note": "两份均现行（D01 2026-03-01 生效，D02 2026-06-15 生效），均未写明适用范围，D02 也未写明替代或优先关系，无法判断优先级。"
+            }
+          ],
+          "gaps": [],
+          "clarify_question": "你的报销属于差旅费用还是其他费用？如果是其他费用，请确认适用《费用报销管理办法》（30天，可批准延长至60天）还是《财务部报销操作指引》（15天）？",
+          "doc_verdicts": [
+            {
+              "doc_id": "D01",
+              "verdict": "conflict",
+              "reason": "现行制度，规定一般费用30天（可延长至60天），与D02的15天冲突；其差旅从其规定的表述用于确定D03优先"
+            },
+            {
+              "doc_id": "D02",
+              "verdict": "conflict",
+              "reason": "现行制度，规定15日内完成报销申请，与D01的30天冲突"
+            },
+            {
+              "doc_id": "D03",
+              "verdict": "basis",
+              "reason": "现行制度，明确仅适用于差旅费用，规定出差返回后10日内报销"
+            },
+            {
+              "doc_id": "D04",
+              "verdict": "not_applicable",
+              "reason": "已废止，被D01替代，其45天规定不再适用"
+            }
+          ],
+          "question": "报销期限多久？",
+          "session_id": "C10",
+          "turn_no": 1,
+          "steps_used": 4,
+          "tool_calls": 11,
+          "gate_rejections": 0,
+          "had_tool_error": false
+        }
+      },
+      "candidate": {
+        "status": "ANSWERED",
+        "answer": "依据你确认的《财务部报销操作指引》：一般费用报销应在费用发生之日起 15 日内完成报销申请。该指引 2026-06-15 生效，现行有效。\n\n需要提醒两点：\n1. 如果是因公出差产生的交通、住宿及出差补助费用，仍按《差旅费管理规定》执行——出差返回后 10 日内提交报销（《费用报销管理办法》也写明差旅费用另有专门规定的从其规定）。\n2. 《费用报销管理办法》规定的是 30 天（经分管领导书面批准可延长至 60 天），与你们部门采用的 15 天不一致；既然你们部门以操作指引为准，请按 15 天执行，超期风险由部门自行承担。",
+        "citations": [
+          {
+            "doc_id": "D02",
+            "section_id": "§3",
+            "title": "财务部报销操作指引",
+            "heading": "时限要求",
+            "version_date": "2026-06-15",
+            "status": "现行",
+            "quote": "员工应于费用发生之日起15日内完成报销申请。"
+          },
+          {
+            "doc_id": "D03",
+            "section_id": "§4",
+            "title": "差旅费管理规定",
+            "heading": "报销时限",
+            "version_date": "2026-01-10",
+            "status": "现行",
+            "quote": "差旅费用应于出差返回后10日内提交报销。"
+          },
+          {
+            "doc_id": "D03",
+            "section_id": "§1",
+            "title": "差旅费管理规定",
+            "heading": "适用范围",
+            "version_date": "2026-01-10",
+            "status": "现行",
+            "quote": "本规定仅适用于员工因公出差产生的交通、住宿及出差补助费用。"
+          },
+          {
+            "doc_id": "D01",
+            "section_id": "§1",
+            "title": "费用报销管理办法",
+            "heading": "总则",
+            "version_date": "2026-03-01",
+            "status": "现行",
+            "quote": "本办法适用于公司员工因公发生的各类费用报销。差旅费用另有专门规定的，从其规定。"
+          },
+          {
+            "doc_id": "D01",
+            "section_id": "§3",
+            "title": "费用报销管理办法",
+            "heading": "报销期限",
+            "version_date": "2026-03-01",
+            "status": "现行",
+            "quote": "员工原则上应在费用发生后30天内提交报销申请；因特殊情况无法按期提交的，经分管领导书面批准，可延长至60天。"
+          }
+        ],
+        "conflicts": [
+          {
+            "topic": "一般费用报销的提交期限",
+            "positions": [
+              {
+                "doc_id": "D01",
+                "section_id": "§3",
+                "claim": "员工原则上应在费用发生后30天内提交报销申请；因特殊情况无法按期提交的，经分管领导书面批准，可延长至60天。"
+              },
+              {
+                "doc_id": "D02",
+                "section_id": "§3",
+                "claim": "员工应于费用发生之日起15日内完成报销申请。"
+              }
+            ],
+            "note": "两份均现行、均未写明适用范围和优先级；用户已明确本部门以《财务部报销操作指引》为准，故按 D02 回答，冲突仍列出。"
+          }
+        ],
+        "gaps": [],
+        "clarify_question": "",
+        "doc_verdicts": [
+          {
+            "doc_id": "D02",
+            "verdict": "basis",
+            "reason": "用户确认以该指引为准，§3 给出15日时限"
+          },
+          {
+            "doc_id": "D01",
+            "verdict": "conflict",
+            "reason": "§3 规定30天（可延长至60天），与 D02 的15天不一致；§1 差旅另有规定从其规定"
+          },
+          {
+            "doc_id": "D03",
+            "verdict": "basis",
+            "reason": "差旅费用专门规定，出差返回后10日内报销，仅适用于差旅费用"
+          }
+        ]
+      },
+      "evidence": [
+        {
+          "doc_id": "D01",
+          "section_id": "§3",
+          "title": "费用报销管理办法",
+          "heading": "报销期限",
+          "text": "员工原则上应在费用发生后30天内提交报销申请；因特殊情况无法按期提交的，经分管领导书面批准，可延长至60天。",
+          "hash": "bc650f1e62d8",
+          "version_date": "2026-03-01",
+          "turn_no": 1
+        },
+        {
+          "doc_id": "D01",
+          "section_id": "§4",
+          "title": "费用报销管理办法",
+          "heading": "超期处理",
+          "text": "超过报销期限且未获延期批准的，财务部不予受理。",
+          "hash": "1f54e6ddf166",
+          "version_date": "2026-03-01",
+          "turn_no": 1
+        },
+        {
+          "doc_id": "D02",
+          "section_id": "§3",
+          "title": "财务部报销操作指引",
+          "heading": "时限要求",
+          "text": "员工应于费用发生之日起15日内完成报销申请。",
+          "hash": "afed94fc9a74",
+          "version_date": "2026-06-15",
+          "turn_no": 2
+        },
+        {
+          "doc_id": "D03",
+          "section_id": "§4",
+          "title": "差旅费管理规定",
+          "heading": "报销时限",
+          "text": "差旅费用应于出差返回后10日内提交报销。",
+          "hash": "a21594782879",
+          "version_date": "2026-01-10",
+          "turn_no": 1
+        },
+        {
+          "doc_id": "D04",
+          "section_id": "§2",
+          "title": "报销管理办法（2024版）",
+          "heading": "报销期限",
+          "text": "员工应在费用发生后45天内提交报销申请。",
+          "hash": "e70dc5112220",
+          "version_date": "2024-01-01",
+          "turn_no": 1
+        },
+        {
+          "doc_id": "D03",
+          "section_id": "§1",
+          "title": "差旅费管理规定",
+          "heading": "适用范围",
+          "text": "本规定仅适用于员工因公出差产生的交通、住宿及出差补助费用。",
+          "hash": "f5f9f57b7dbc",
+          "version_date": "2026-01-10",
+          "turn_no": 1
+        },
+        {
+          "doc_id": "D01",
+          "section_id": "§1",
+          "title": "费用报销管理办法",
+          "heading": "总则",
+          "text": "本办法适用于公司员工因公发生的各类费用报销。差旅费用另有专门规定的，从其规定。",
+          "hash": "d84b6e3858ff",
+          "version_date": "2026-03-01",
+          "turn_no": 1
+        },
+        {
+          "doc_id": "D02",
+          "section_id": "§1",
+          "title": "财务部报销操作指引",
+          "heading": "目的",
+          "text": "为规范报销流程、提高财务处理效率，制定本指引。",
+          "hash": "9bf5975c9f14",
+          "version_date": "2026-06-15",
+          "turn_no": 1
+        }
+      ],
+      "documents": [
+        {
+          "doc_id": "D01",
+          "scope": "",
+          "status": "现行",
+          "effective_date": "2026-03-01",
+          "supersedes": "D04"
+        },
+        {
+          "doc_id": "D02",
+          "scope": "",
+          "status": "现行",
+          "effective_date": "2026-06-15",
+          "supersedes": ""
+        },
+        {
+          "doc_id": "D03",
+          "scope": "差旅费用",
+          "status": "现行",
+          "effective_date": "2026-01-10",
+          "supersedes": ""
+        },
+        {
+          "doc_id": "D04",
+          "scope": "",
+          "status": "废止",
+          "effective_date": "2024-01-01",
+          "supersedes": ""
+        }
+      ],
+      "tool_observations": [
+        {
+          "tool": "get_doc_info",
+          "args": {
+            "doc_ids": [
+              "D02",
+              "D01"
+            ]
+          },
+          "ok": true,
+          "error_code": "",
+          "summary": "D02 现行 范围:未写明；D01 现行 范围:未写明"
+        },
+        {
+          "tool": "read_section",
+          "args": {
+            "doc_id": "D02",
+            "section_id": "§3"
+          },
+          "ok": true,
+          "error_code": "",
+          "summary": "D02§3 时限要求：员工应于费用发生之日起15日内完成报销申请。"
+        }
+      ]
+    }
+  },
+  {
+    "case": "C18",
+    "turn": 2,
+    "source": "examples/history/baseline-2026-10-28",
+    "expected_passed": false,
+    "actual_passed": false,
+    "ok": true,
+    "review": {
+      "passed": false,
+      "issues": [
+        "回答称“建议先在 OA/IT 报修”，但 D08§1 原文只写“由 IT 部评估维修”，未规定报修入口为 OA 或 IT 系统，属无依据补充；应删除具体报修渠道，仅保留“由 IT 部评估维修”，或将其列入 gaps。"
+      ],
+      "confirmed_doc_ids": []
+    },
+    "usage": {
+      "prompt_tokens": 2897,
+      "completion_tokens": 138
+    },
+    "input": {
+      "today": "2026-10-28",
+      "question": "另外，笔记本电脑用了两年坏了，能换新的吗？",
+      "previous_turn": {
+        "turn_no": 1,
+        "question": "我工作3年了，年假有几天？",
+        "result": {
+          "status": "ANSWERED",
+          "answer": "按现行制度，你累计工作满1年不满10年，年休假为5天。另外，公司《年休假制度（2026修订版）》已发布但尚未生效（2027年1月1日起施行），届时同一档（满1年不满10年）将调整为7天。年假需提前3个工作日在OA系统提交申请，经直属上级审批后方可休假。",
+          "citations": [
+            {
+              "doc_id": "D05",
+              "section_id": "§2",
+              "title": "年休假制度（2025版）",
+              "heading": "年假天数",
+              "version_date": "2025-01-01",
+              "status": "现行",
+              "quote": "员工累计工作已满1年不满10年的，年休假5天；已满10年不满20年的，年休假10天；已满20年的，年休假15天。"
+            },
+            {
+              "doc_id": "D06",
+              "section_id": "§2",
+              "title": "年休假制度（2026修订版）",
+              "heading": "年假天数",
+              "version_date": "2026-09-01",
+              "status": "待生效",
+              "quote": "员工累计工作已满1年不满10年的，年休假7天；已满10年不满20年的，年休假12天；已满20年的，年休假15天。"
+            },
+            {
+              "doc_id": "D06",
+              "section_id": "§1",
+              "title": "年休假制度（2026修订版）",
+              "heading": "修订说明",
+              "version_date": "2026-09-01",
+              "status": "待生效",
+              "quote": "本次修订仅调整年假天数，其余条款仍按《年休假制度（2025版）》执行。本修订版自2027年1月1日起施行。"
+            },
+            {
+              "doc_id": "D05",
+              "section_id": "§4",
+              "title": "年休假制度（2025版）",
+              "heading": "申请流程",
+              "version_date": "2025-01-01",
+              "status": "现行",
+              "quote": "员工休年假须提前3个工作日在 OA 系统提交申请，经直属上级审批后方可休假。"
+            }
+          ],
+          "conflicts": [],
+          "gaps": [],
+          "clarify_question": "",
+          "doc_verdicts": [
+            {
+              "doc_id": "D05",
+              "verdict": "basis",
+              "reason": "现行有效的年休假制度，回答依据"
+            },
+            {
+              "doc_id": "D06",
+              "verdict": "not_applicable",
+              "reason": "2026修订版状态为待生效，2027年1月1日起才施行，今天不适用，仅作提示"
+            }
+          ],
+          "question": "我工作3年了，年假有几天？",
+          "session_id": "C18",
+          "turn_no": 1,
+          "steps_used": 5,
+          "tool_calls": 7,
+          "gate_rejections": 1,
+          "had_tool_error": false
+        }
+      },
+      "candidate": {
+        "status": "ANSWERED",
+        "answer": "不能直接换新。按《办公设备申领规定》，笔记本电脑使用满4年才可以申请更换；你的电脑只用了2年，属于未满4年损坏，应由 IT 部评估维修，而不是直接更换。建议先在 OA/IT 报修，由 IT 部评估维修方案。",
+        "citations": [
+          {
+            "doc_id": "D08",
+            "section_id": "§1",
+            "title": "办公设备申领规定",
+            "heading": "笔记本电脑",
+            "version_date": "2025-03-01",
+            "status": "现行",
+            "quote": "新入职员工可申领一台笔记本电脑，使用满4年可申请更换；未满4年损坏的，由 IT 部评估维修。"
+          }
+        ],
+        "conflicts": [],
+        "gaps": [
+          "资料中未写明报修的具体流程、时限和 IT 部评估后的处理标准（如维修不成是否可换新）"
+        ],
+        "clarify_question": "",
+        "doc_verdicts": [
+          {
+            "doc_id": "D08",
+            "verdict": "basis",
+            "reason": "现行制度，明确写了笔记本电脑更换年限和未满年限损坏的处理方式"
+          }
+        ]
+      },
+      "evidence": [
+        {
+          "doc_id": "D05",
+          "section_id": "§2",
+          "title": "年休假制度（2025版）",
+          "heading": "年假天数",
+          "text": "员工累计工作已满1年不满10年的，年休假5天；已满10年不满20年的，年休假10天；已满20年的，年休假15天。",
+          "hash": "a05c10c7e724",
+          "version_date": "2025-01-01",
+          "turn_no": 1
+        },
+        {
+          "doc_id": "D06",
+          "section_id": "§2",
+          "title": "年休假制度（2026修订版）",
+          "heading": "年假天数",
+          "text": "员工累计工作已满1年不满10年的，年休假7天；已满10年不满20年的，年休假12天；已满20年的，年休假15天。",
+          "hash": "bd41f85a43eb",
+          "version_date": "2026-09-01",
+          "turn_no": 1
+        },
+        {
+          "doc_id": "D06",
+          "section_id": "§1",
+          "title": "年休假制度（2026修订版）",
+          "heading": "修订说明",
+          "text": "本次修订仅调整年假天数，其余条款仍按《年休假制度（2025版）》执行。本修订版自2027年1月1日起施行。",
+          "hash": "88315ad5544c",
+          "version_date": "2026-09-01",
+          "turn_no": 1
+        },
+        {
+          "doc_id": "D05",
+          "section_id": "§4",
+          "title": "年休假制度（2025版）",
+          "heading": "申请流程",
+          "text": "员工休年假须提前3个工作日在 OA 系统提交申请，经直属上级审批后方可休假。",
+          "hash": "73fe52094d32",
+          "version_date": "2025-01-01",
+          "turn_no": 1
+        },
+        {
+          "doc_id": "D08",
+          "section_id": "§1",
+          "title": "办公设备申领规定",
+          "heading": "笔记本电脑",
+          "text": "新入职员工可申领一台笔记本电脑，使用满4年可申请更换；未满4年损坏的，由 IT 部评估维修。",
+          "hash": "31e374431418",
+          "version_date": "2025-03-01",
+          "turn_no": 2
+        }
+      ],
+      "documents": [
+        {
+          "doc_id": "D05",
+          "scope": "",
+          "status": "现行",
+          "effective_date": "2025-01-01",
+          "supersedes": ""
+        },
+        {
+          "doc_id": "D06",
+          "scope": "",
+          "status": "待生效",
+          "effective_date": "2027-01-01",
+          "supersedes": "D05"
+        },
+        {
+          "doc_id": "D08",
+          "scope": "",
+          "status": "现行",
+          "effective_date": "2025-03-01",
+          "supersedes": ""
+        }
+      ],
+      "tool_observations": [
+        {
+          "tool": "search_docs",
+          "args": {
+            "query": "笔记本电脑 更换 资产 报废 使用年限",
+            "top_k": 5,
+            "category": null
+          },
+          "ok": true,
+          "error_code": "",
+          "summary": "weak｜D08§1 P01§2 P02§1 D05§3 D07§1"
+        },
+        {
+          "tool": "search_docs",
+          "args": {
+            "query": "办公设备 领用 维修 更换申请",
+            "top_k": 5,
+            "category": null
+          },
+          "ok": true,
+          "error_code": "",
+          "summary": "good｜D08§1 D03§1 D08§2 D08§3 D05§4"
+        },
+        {
+          "tool": "read_section",
+          "args": {
+            "doc_id": "D08",
+            "section_id": "§1"
+          },
+          "ok": true,
+          "error_code": "",
+          "summary": "D08§1 笔记本电脑：新入职员工可申领一台笔记本电脑，使用满4年可申请更换；未满4…"
+        },
+        {
+          "tool": "get_doc_info",
+          "args": {
+            "doc_ids": [
+              "D08"
+            ]
+          },
+          "ok": true,
+          "error_code": "",
+          "summary": "D08 现行 范围:未写明"
+        }
+      ]
+    }
+  },
+  {
+    "case": "C04",
+    "turn": 1,
+    "source": "examples/history/baseline-2026-10-28",
+    "expected_passed": false,
+    "actual_passed": false,
+    "ok": true,
+    "review": {
+      "passed": false,
+      "issues": [
+        "D02《财务部报销操作指引》与D01的15天/30天差异被列为需用户确认的冲突，但D01§1已写明“差旅费用另有专门规定的，从其规定”，差旅部分应直接适用D03，不应把D02与D01并列作为非差旅时限的未决冲突；D02未写scope不构成对D01明确通用范围的推翻，应说明D02与D01的关系（或仅作为需确认的次级指引），而非要求用户裁决制度优先级。",
+        "回答称“一个多月已超期”并推算“超过30天但在60天以内”，但问题只说“发票拿到一个多月”，未给出费用发生日期；D01§3的起算点是“费用发生后”，不能以收票/拿票时间代替，费用日期未知时不应计算是否逾期，应改为条件式表述并追问费用发生日期。",
+        "回答称“未获延期批准的，财务部不予受理”作为对用户的直接结论，但D01§4原文是“超过报销期限且未获延期批准的，财务部不予受理”，在费用发生日期未知、是否超期未定的情况下，该结论缺乏前提，应改为条件式。"
+      ],
+      "confirmed_doc_ids": []
+    },
+    "usage": {
+      "prompt_tokens": 3599,
+      "completion_tokens": 326
+    },
+    "input": {
+      "today": "2026-10-28",
+      "question": "发票拿到一个多月了，还能报账吗？",
+      "previous_turn": null,
+      "candidate": {
+        "status": "NEED_CONFIRMATION",
+        "answer": "结论：能不能报，取决于这笔费用属于哪类、以及适用哪份制度——目前资料里两份现行制度对报销时限的规定不一致，需要你确认。\n\n1）如果是差旅费用：按《差旅费管理规定》，应于出差返回后10日内提交报销，一个多月已超期。\n2）如果是非差旅的普通费用：现行《费用报销管理办法》规定原则上费用发生后30天内提交；因特殊情况无法按期提交的，经分管领导书面批准可延长至60天。你已过一个多月，属于超过30天但在60天以内，需要先取得分管领导的书面延期批准；未获延期批准的，财务部不予受理。\n3）另有一份《财务部报销操作指引》规定\"费用发生之日起15日内完成报销申请\"，与上述30天/60天的规定不一致，两份都是现行、都没写明适用范围和优先级，所以需要你确认以哪份为准。\n\n另外提醒：《报销管理办法（2024版）》中\"45天内提交\"的规定已随该办法废止，不再适用。\n\n请确认：这笔费用是差旅费用还是其他费用？以及是否已有分管领导的书面延期批准？",
+        "citations": [
+          {
+            "doc_id": "D01",
+            "section_id": "§3",
+            "title": "费用报销管理办法",
+            "heading": "报销期限",
+            "version_date": "2026-03-01",
+            "status": "现行",
+            "quote": "员工原则上应在费用发生后30天内提交报销申请；因特殊情况无法按期提交的，经分管领导书面批准，可延长至60天。"
+          },
+          {
+            "doc_id": "D01",
+            "section_id": "§4",
+            "title": "费用报销管理办法",
+            "heading": "超期处理",
+            "version_date": "2026-03-01",
+            "status": "现行",
+            "quote": "超过报销期限且未获延期批准的，财务部不予受理。"
+          },
+          {
+            "doc_id": "D01",
+            "section_id": "§1",
+            "title": "费用报销管理办法",
+            "heading": "总则",
+            "version_date": "2026-03-01",
+            "status": "现行",
+            "quote": "本办法适用于公司员工因公发生的各类费用报销。差旅费用另有专门规定的，从其规定。"
+          },
+          {
+            "doc_id": "D03",
+            "section_id": "§4",
+            "title": "差旅费管理规定",
+            "heading": "报销时限",
+            "version_date": "2026-01-10",
+            "status": "现行",
+            "quote": "差旅费用应于出差返回后10日内提交报销。"
+          },
+          {
+            "doc_id": "D02",
+            "section_id": "§3",
+            "title": "财务部报销操作指引",
+            "heading": "时限要求",
+            "version_date": "2026-06-15",
+            "status": "现行",
+            "quote": "员工应于费用发生之日起15日内完成报销申请。"
+          },
+          {
+            "doc_id": "D01",
+            "section_id": "§5",
+            "title": "费用报销管理办法",
+            "heading": "解释",
+            "version_date": "2026-03-01",
+            "status": "现行",
+            "quote": "本办法由行政部负责解释，自2026年3月1日起施行，《报销管理办法（2024版）》同时废止。"
+          }
+        ],
+        "conflicts": [
+          {
+            "topic": "非差旅费用的报销提交时限",
+            "positions": [
+              {
+                "doc_id": "D01",
+                "section_id": "§3",
+                "claim": "原则上费用发生后30天内提交，特殊情况经分管领导书面批准可延长至60天"
+              },
+              {
+                "doc_id": "D02",
+                "section_id": "§3",
+                "claim": "应于费用发生之日起15日内完成报销申请"
+              }
+            ],
+            "note": "两份均为现行（D01 2026-03-01生效，D02 2026-06-15生效），均未写明适用范围，D02也未写明替代或优先关系，无法判断优先级"
+          }
+        ],
+        "gaps": [],
+        "clarify_question": "这笔费用是差旅费用还是其他费用？另外，是否已取得分管领导的书面延期批准？以及非差旅费用请确认以《费用报销管理办法》（30天/60天）还是《财务部报销操作指引》（15天）为准。",
+        "doc_verdicts": [
+          {
+            "doc_id": "D01",
+            "verdict": "basis",
+            "reason": "现行《费用报销管理办法》，规定30天/60天期限及超期不予受理，并写明差旅另有规定从其规定"
+          },
+          {
+            "doc_id": "D02",
+            "verdict": "conflict",
+            "reason": "现行操作指引规定15日内提交，与D01的30天规定不一致，且未写适用范围"
+          },
+          {
+            "doc_id": "D03",
+            "verdict": "basis",
+            "reason": "现行差旅费管理规定，适用于差旅费用，规定返回后10日内提交"
+          },
+          {
+            "doc_id": "D04",
+            "verdict": "not_applicable",
+            "reason": "已被D01替代并废止，其45天期限不再适用"
+          }
+        ]
+      },
+      "evidence": [
+        {
+          "doc_id": "D01",
+          "section_id": "§1",
+          "title": "费用报销管理办法",
+          "heading": "总则",
+          "text": "本办法适用于公司员工因公发生的各类费用报销。差旅费用另有专门规定的，从其规定。",
+          "hash": "d84b6e3858ff",
+          "version_date": "2026-03-01",
+          "turn_no": 1
+        },
+        {
+          "doc_id": "D01",
+          "section_id": "§5",
+          "title": "费用报销管理办法",
+          "heading": "解释",
+          "text": "本办法由行政部负责解释，自2026年3月1日起施行，《报销管理办法（2024版）》同时废止。",
+          "hash": "9508d5649db5",
+          "version_date": "2026-03-01",
+          "turn_no": 1
+        },
+        {
+          "doc_id": "D02",
+          "section_id": "§3",
+          "title": "财务部报销操作指引",
+          "heading": "时限要求",
+          "text": "员工应于费用发生之日起15日内完成报销申请。",
+          "hash": "afed94fc9a74",
+          "version_date": "2026-06-15",
+          "turn_no": 1
+        },
+        {
+          "doc_id": "D04",
+          "section_id": "§2",
+          "title": "报销管理办法（2024版）",
+          "heading": "报销期限",
+          "text": "员工应在费用发生后45天内提交报销申请。",
+          "hash": "e70dc5112220",
+          "version_date": "2024-01-01",
+          "turn_no": 1
+        },
+        {
+          "doc_id": "D03",
+          "section_id": "§4",
+          "title": "差旅费管理规定",
+          "heading": "报销时限",
+          "text": "差旅费用应于出差返回后10日内提交报销。",
+          "hash": "a21594782879",
+          "version_date": "2026-01-10",
+          "turn_no": 1
+        },
+        {
+          "doc_id": "D01",
+          "section_id": "§3",
+          "title": "费用报销管理办法",
+          "heading": "报销期限",
+          "text": "员工原则上应在费用发生后30天内提交报销申请；因特殊情况无法按期提交的，经分管领导书面批准，可延长至60天。",
+          "hash": "bc650f1e62d8",
+          "version_date": "2026-03-01",
+          "turn_no": 1
+        },
+        {
+          "doc_id": "D01",
+          "section_id": "§4",
+          "title": "费用报销管理办法",
+          "heading": "超期处理",
+          "text": "超过报销期限且未获延期批准的，财务部不予受理。",
+          "hash": "1f54e6ddf166",
+          "version_date": "2026-03-01",
+          "turn_no": 1
+        }
+      ],
+      "documents": [
+        {
+          "doc_id": "D01",
+          "scope": "",
+          "status": "现行",
+          "effective_date": "2026-03-01",
+          "supersedes": "D04"
+        },
+        {
+          "doc_id": "D02",
+          "scope": "",
+          "status": "现行",
+          "effective_date": "2026-06-15",
+          "supersedes": ""
+        },
+        {
+          "doc_id": "D03",
+          "scope": "差旅费用",
+          "status": "现行",
+          "effective_date": "2026-01-10",
+          "supersedes": ""
+        },
+        {
+          "doc_id": "D04",
+          "scope": "",
+          "status": "废止",
+          "effective_date": "2024-01-01",
+          "supersedes": ""
+        }
+      ],
+      "tool_observations": [
+        {
+          "tool": "search_docs",
+          "args": {
+            "query": "发票报销时限 报销期限",
+            "top_k": 5,
+            "category": null
+          },
+          "ok": true,
+          "error_code": "",
+          "summary": "good｜D01§2 D02§4 D04§2 D03§4 D02§3"
+        },
+        {
+          "tool": "search_docs",
+          "args": {
+            "query": "费用报销管理办法 报销流程",
+            "top_k": 5,
+            "category": null
+          },
+          "ok": true,
+          "error_code": "",
+          "summary": "good｜D04§1 D01§1 D04§2 D01§5 D01§2"
+        },
+        {
+          "tool": "read_section",
+          "args": {
+            "doc_id": "D01",
+            "section_id": "§1"
+          },
+          "ok": true,
+          "error_code": "",
+          "summary": "D01§1 总则：本办法适用于公司员工因公发生的各类费用报销。差旅费用另有专门…"
+        },
+        {
+          "tool": "read_section",
+          "args": {
+            "doc_id": "D01",
+            "section_id": "§5"
+          },
+          "ok": true,
+          "error_code": "",
+          "summary": "D01§5 解释：本办法由行政部负责解释，自2026年3月1日起施行，《报销管…"
+        },
+        {
+          "tool": "read_section",
+          "args": {
+            "doc_id": "D02",
+            "section_id": "§3"
+          },
+          "ok": true,
+          "error_code": "",
+          "summary": "D02§3 时限要求：员工应于费用发生之日起15日内完成报销申请。"
+        },
+        {
+          "tool": "read_section",
+          "args": {
+            "doc_id": "D04",
+            "section_id": "§2"
+          },
+          "ok": true,
+          "error_code": "",
+          "summary": "D04§2 报销期限：员工应在费用发生后45天内提交报销申请。"
+        },
+        {
+          "tool": "read_section",
+          "args": {
+            "doc_id": "D03",
+            "section_id": "§4"
+          },
+          "ok": true,
+          "error_code": "",
+          "summary": "D03§4 报销时限：差旅费用应于出差返回后10日内提交报销。"
+        },
+        {
+          "tool": "get_doc_info",
+          "args": {
+            "doc_ids": [
+              "D01",
+              "D02",
+              "D03",
+              "D04"
+            ]
+          },
+          "ok": true,
+          "error_code": "",
+          "summary": "D01 现行 范围:未写明；D02 现行 范围:未写明；D03 现行 范围:差旅费用；D04 废止 范围:未写明"
+        },
+        {
+          "tool": "read_section",
+          "args": {
+            "doc_id": "D01",
+            "section_id": "§3"
+          },
+          "ok": true,
+          "error_code": "",
+          "summary": "D01§3 报销期限：员工原则上应在费用发生后30天内提交报销申请；因特殊情况无法…"
+        },
+        {
+          "tool": "read_section",
+          "args": {
+            "doc_id": "D01",
+            "section_id": "§4"
+          },
+          "ok": true,
+          "error_code": "",
+          "summary": "D01§4 超期处理：超过报销期限且未获延期批准的，财务部不予受理。"
+        }
+      ]
+    }
+  },
+  {
+    "case": "C15",
+    "turn": 1,
+    "source": "examples/history/baseline-2026-10-28",
+    "expected_passed": false,
+    "actual_passed": false,
+    "ok": true,
+    "review": {
+      "passed": false,
+      "issues": [
+        "按项目既定口径，D03原文明确仅适用于差旅费用，属该事项专用制度，D01、D02仅因未写scope不能推翻专用范围，也不构成该事项冲突。回答却将D01、D02列为conflict、在正文称“关系资料里没有说明、是否还要同时满足建议向财务部确认”，并保留gap，属范围表态错误。应改为：差旅报销按D03的10日执行，D01/D02不作为差旅事项的并列冲突（可标not_applicable或仅作背景），删除相应gap与确认建议。",
+        "doc_verdicts中D01、D02标为conflict与上述口径不符，应调整。"
+      ],
+      "confirmed_doc_ids": []
+    },
+    "usage": {
+      "prompt_tokens": 3238,
+      "completion_tokens": 221
+    },
+    "input": {
+      "today": "2026-10-28",
+      "question": "差旅报销要在几天内提交？报销款一般几天能到账？",
+      "previous_turn": null,
+      "candidate": {
+        "status": "ANSWERED",
+        "answer": "一、差旅报销提交时限：按《差旅费管理规定》，差旅费用应于出差返回后10日内提交报销。该规定写明只适用于因公出差产生的交通、住宿及出差补助费用，所以差旅报销按10日执行。\n\n需要提醒的是，公司另有通用报销制度规定了不同的期限：《费用报销管理办法》要求费用发生后30天内提交（经分管领导书面批准可延长至60天）；《财务部报销操作指引》要求费用发生之日起15日内完成报销申请。这两份都没写明只适用于哪类费用，与差旅规定的关系资料里没有说明，差旅报销是否还要同时满足这两份的期限，建议向财务部确认。\n\n二、报销款到账时间：资料中没有找到关于报销款到账/付款时限的规定，建议咨询财务部。",
+        "citations": [
+          {
+            "doc_id": "D03",
+            "section_id": "§4",
+            "title": "差旅费管理规定",
+            "heading": "报销时限",
+            "version_date": "2026-01-10",
+            "status": "现行",
+            "quote": "差旅费用应于出差返回后10日内提交报销。"
+          },
+          {
+            "doc_id": "D03",
+            "section_id": "§1",
+            "title": "差旅费管理规定",
+            "heading": "适用范围",
+            "version_date": "2026-01-10",
+            "status": "现行",
+            "quote": "本规定仅适用于员工因公出差产生的交通、住宿及出差补助费用。"
+          },
+          {
+            "doc_id": "D01",
+            "section_id": "§3",
+            "title": "费用报销管理办法",
+            "heading": "报销期限",
+            "version_date": "2026-03-01",
+            "status": "现行",
+            "quote": "员工原则上应在费用发生后30天内提交报销申请；因特殊情况无法按期提交的，经分管领导书面批准，可延长至60天。"
+          },
+          {
+            "doc_id": "D02",
+            "section_id": "§3",
+            "title": "财务部报销操作指引",
+            "heading": "时限要求",
+            "version_date": "2026-06-15",
+            "status": "现行",
+            "quote": "员工应于费用发生之日起15日内完成报销申请。"
+          }
+        ],
+        "conflicts": [
+          {
+            "topic": "报销提交期限",
+            "positions": [
+              {
+                "doc_id": "D03",
+                "section_id": "§4",
+                "claim": "差旅费用应于出差返回后10日内提交报销"
+              },
+              {
+                "doc_id": "D01",
+                "section_id": "§3",
+                "claim": "员工原则上应在费用发生后30天内提交报销申请；经分管领导书面批准可延长至60天"
+              },
+              {
+                "doc_id": "D02",
+                "section_id": "§3",
+                "claim": "员工应于费用发生之日起15日内完成报销申请"
+              }
+            ],
+            "note": "三份均现行；D03原文写明仅适用于因公出差的交通、住宿及出差补助费用，故差旅按D03的10日；D01、D02未写适用范围，与D03的优先关系资料中未说明"
+          }
+        ],
+        "gaps": [
+          "报销款到账/付款时限：资料中未找到相关规定，建议咨询财务部",
+          "差旅报销是否还需同时满足《费用报销管理办法》30天、《财务部报销操作指引》15日的期限，资料未说明"
+        ],
+        "clarify_question": "",
+        "doc_verdicts": [
+          {
+            "doc_id": "D03",
+            "verdict": "basis",
+            "reason": "现行，原文写明仅适用于差旅费用，其§4给出差旅报销10日时限"
+          },
+          {
+            "doc_id": "D01",
+            "verdict": "conflict",
+            "reason": "现行通用报销办法，规定30天（可延至60天），与差旅规定期限不同且未写适用范围"
+          },
+          {
+            "doc_id": "D02",
+            "verdict": "conflict",
+            "reason": "现行操作指引，规定15日内完成申请，与差旅规定期限不同且未写适用范围"
+          },
+          {
+            "doc_id": "D04",
+            "verdict": "not_applicable",
+            "reason": "已废止，被D01替代，其45天期限不再适用"
+          }
+        ]
+      },
+      "evidence": [
+        {
+          "doc_id": "D03",
+          "section_id": "§4",
+          "title": "差旅费管理规定",
+          "heading": "报销时限",
+          "text": "差旅费用应于出差返回后10日内提交报销。",
+          "hash": "a21594782879",
+          "version_date": "2026-01-10",
+          "turn_no": 1
+        },
+        {
+          "doc_id": "D03",
+          "section_id": "§1",
+          "title": "差旅费管理规定",
+          "heading": "适用范围",
+          "text": "本规定仅适用于员工因公出差产生的交通、住宿及出差补助费用。",
+          "hash": "f5f9f57b7dbc",
+          "version_date": "2026-01-10",
+          "turn_no": 1
+        },
+        {
+          "doc_id": "D01",
+          "section_id": "§3",
+          "title": "费用报销管理办法",
+          "heading": "报销期限",
+          "text": "员工原则上应在费用发生后30天内提交报销申请；因特殊情况无法按期提交的，经分管领导书面批准，可延长至60天。",
+          "hash": "bc650f1e62d8",
+          "version_date": "2026-03-01",
+          "turn_no": 1
+        },
+        {
+          "doc_id": "D02",
+          "section_id": "§3",
+          "title": "财务部报销操作指引",
+          "heading": "时限要求",
+          "text": "员工应于费用发生之日起15日内完成报销申请。",
+          "hash": "afed94fc9a74",
+          "version_date": "2026-06-15",
+          "turn_no": 1
+        },
+        {
+          "doc_id": "D02",
+          "section_id": "§1",
+          "title": "财务部报销操作指引",
+          "heading": "目的",
+          "text": "为规范报销流程、提高财务处理效率，制定本指引。",
+          "hash": "9bf5975c9f14",
+          "version_date": "2026-06-15",
+          "turn_no": 1
+        }
+      ],
+      "documents": [
+        {
+          "doc_id": "D01",
+          "scope": "",
+          "status": "现行",
+          "effective_date": "2026-03-01",
+          "supersedes": "D04"
+        },
+        {
+          "doc_id": "D02",
+          "scope": "",
+          "status": "现行",
+          "effective_date": "2026-06-15",
+          "supersedes": ""
+        },
+        {
+          "doc_id": "D03",
+          "scope": "差旅费用",
+          "status": "现行",
+          "effective_date": "2026-01-10",
+          "supersedes": ""
+        }
+      ],
+      "tool_observations": [
+        {
+          "tool": "search_docs",
+          "args": {
+            "query": "差旅报销 提交时限",
+            "top_k": 5,
+            "category": null
+          },
+          "ok": true,
+          "error_code": "",
+          "summary": "good｜D03§4 D04§2 D01§3 D02§2 D02§3"
+        },
+        {
+          "tool": "search_docs",
+          "args": {
+            "query": "报销款 到账 支付时限",
+            "top_k": 5,
+            "category": null
+          },
+          "ok": true,
+          "error_code": "",
+          "summary": "weak｜D04§2 D03§4 D02§3 D01§3 D01§4"
+        },
+        {
+          "tool": "search_docs",
+          "args": {
+            "query": "报销审批完成后 付款 工作日 打入账户",
+            "top_k": 5,
+            "category": null
+          },
+          "ok": true,
+          "error_code": "",
+          "summary": "weak｜D02§3 D05§4 D01§2 D07§3 P02§2"
+        },
+        {
+          "tool": "get_doc_info",
+          "args": {
+            "doc_ids": [
+              "D01",
+              "D02",
+              "D03",
+              "D04"
+            ]
+          },
+          "ok": true,
+          "error_code": "",
+          "summary": "D01 现行 范围:未写明；D02 现行 范围:未写明；D03 现行 范围:差旅费用；D04 废止 范围:未写明"
+        },
+        {
+          "tool": "read_section",
+          "args": {
+            "doc_id": "D03",
+            "section_id": "§4"
+          },
+          "ok": true,
+          "error_code": "",
+          "summary": "D03§4 报销时限：差旅费用应于出差返回后10日内提交报销。"
+        },
+        {
+          "tool": "read_section",
+          "args": {
+            "doc_id": "D03",
+            "section_id": "§1"
+          },
+          "ok": true,
+          "error_code": "",
+          "summary": "D03§1 适用范围：本规定仅适用于员工因公出差产生的交通、住宿及出差补助费用。"
+        },
+        {
+          "tool": "read_section",
+          "args": {
+            "doc_id": "D01",
+            "section_id": "§3"
+          },
+          "ok": true,
+          "error_code": "",
+          "summary": "D01§3 报销期限：员工原则上应在费用发生后30天内提交报销申请；因特殊情况无法…"
+        },
+        {
+          "tool": "read_section",
+          "args": {
+            "doc_id": "D02",
+            "section_id": "§3"
+          },
+          "ok": true,
+          "error_code": "",
+          "summary": "D02§3 时限要求：员工应于费用发生之日起15日内完成报销申请。"
+        },
+        {
+          "tool": "search_docs",
+          "args": {
+            "query": "报销款支付 财务部 审核通过后 转账",
+            "top_k": 10,
+            "category": null
+          },
+          "ok": true,
+          "error_code": "",
+          "summary": "weak｜D02§2 D02§1 D02§3 D01§4 D02§4 D07§2 D01§2 D04§2 D03§4 D01§3"
+        },
+        {
+          "tool": "read_section",
+          "args": {
+            "doc_id": "D02",
+            "section_id": "§1"
+          },
+          "ok": true,
+          "error_code": "",
+          "summary": "D02§1 目的：为规范报销流程、提高财务处理效率，制定本指引。"
+        }
+      ]
+    }
+  },
+  {
+    "case": "C05",
+    "turn": 1,
+    "source": "examples/validation/final/run1",
+    "expected_passed": false,
+    "actual_passed": false,
+    "ok": true,
+    "review": {
+      "passed": false,
+      "issues": [
+        "回答末尾称“请以人事系统记录为准”，但证据中无任何关于人事系统记录权威性的表述，属无依据补充；应删除该表述或改为不指定权威来源的提示（如“请向人事部门核实累计工作年限”）。"
+      ],
+      "confirmed_doc_ids": []
+    },
+    "usage": {
+      "prompt_tokens": 2709,
+      "completion_tokens": 123
+    },
+    "input": {
+      "today": "2026-10-28",
+      "question": "我工作3年了，年假有几天？",
+      "previous_turn": null,
+      "candidate": {
+        "status": "ANSWERED",
+        "answer": "按今天（2026-10-28）现行有效的《年休假制度（2025版）》，累计工作已满1年不满10年的员工，年休假为5天。你工作3年，属于这一档，即5天。\n\n另外提醒：公司已发布《年休假制度（2026修订版）》，自2027年1月1日起施行，届时同一档（满1年不满10年）的年假天数调整为7天。也就是说，2027年1月1日之后按新标准执行。\n\n（以上天数按\"累计工作年限\"计算，制度原文用的是\"累计工作\"，如你的累计工作年限与在本公司的工作年限不同，请以人事系统记录为准。）",
+        "citations": [
+          {
+            "doc_id": "D05",
+            "section_id": "§2",
+            "title": "年休假制度（2025版）",
+            "heading": "年假天数",
+            "version_date": "2025-01-01",
+            "status": "现行",
+            "quote": "员工累计工作已满1年不满10年的，年休假5天；已满10年不满20年的，年休假10天；已满20年的，年休假15天。"
+          },
+          {
+            "doc_id": "D05",
+            "section_id": "§1",
+            "title": "年休假制度（2025版）",
+            "heading": "适用范围",
+            "version_date": "2025-01-01",
+            "status": "现行",
+            "quote": "本制度适用于与公司签订劳动合同的正式员工，实习生不适用。"
+          },
+          {
+            "doc_id": "D06",
+            "section_id": "§2",
+            "title": "年休假制度（2026修订版）",
+            "heading": "年假天数",
+            "version_date": "2026-09-01",
+            "status": "待生效",
+            "quote": "员工累计工作已满1年不满10年的，年休假7天；已满10年不满20年的，年休假12天；已满20年的，年休假15天。"
+          },
+          {
+            "doc_id": "D06",
+            "section_id": "§1",
+            "title": "年休假制度（2026修订版）",
+            "heading": "修订说明",
+            "version_date": "2026-09-01",
+            "status": "待生效",
+            "quote": "本次修订仅调整年假天数，其余条款仍按《年休假制度（2025版）》执行。本修订版自2027年1月1日起施行。"
+          }
+        ],
+        "conflicts": [],
+        "gaps": [],
+        "clarify_question": "",
+        "doc_verdicts": [
+          {
+            "doc_id": "D05",
+            "verdict": "basis",
+            "reason": "现行有效，按累计工作年限规定年假天数，是本次回答依据"
+          },
+          {
+            "doc_id": "D06",
+            "verdict": "not_applicable",
+            "reason": "状态为待生效，2027年1月1日起才施行，今天不适用，仅作未来调整说明"
+          }
+        ]
+      },
+      "evidence": [
+        {
+          "doc_id": "D05",
+          "section_id": "§2",
+          "title": "年休假制度（2025版）",
+          "heading": "年假天数",
+          "text": "员工累计工作已满1年不满10年的，年休假5天；已满10年不满20年的，年休假10天；已满20年的，年休假15天。",
+          "hash": "a05c10c7e724",
+          "version_date": "2025-01-01",
+          "turn_no": 1
+        },
+        {
+          "doc_id": "D06",
+          "section_id": "§2",
+          "title": "年休假制度（2026修订版）",
+          "heading": "年假天数",
+          "text": "员工累计工作已满1年不满10年的，年休假7天；已满10年不满20年的，年休假12天；已满20年的，年休假15天。",
+          "hash": "bd41f85a43eb",
+          "version_date": "2026-09-01",
+          "turn_no": 1
+        },
+        {
+          "doc_id": "D06",
+          "section_id": "§1",
+          "title": "年休假制度（2026修订版）",
+          "heading": "修订说明",
+          "text": "本次修订仅调整年假天数，其余条款仍按《年休假制度（2025版）》执行。本修订版自2027年1月1日起施行。",
+          "hash": "88315ad5544c",
+          "version_date": "2026-09-01",
+          "turn_no": 1
+        },
+        {
+          "doc_id": "D05",
+          "section_id": "§1",
+          "title": "年休假制度（2025版）",
+          "heading": "适用范围",
+          "text": "本制度适用于与公司签订劳动合同的正式员工，实习生不适用。",
+          "hash": "09277c23de1a",
+          "version_date": "2025-01-01",
+          "turn_no": 1
+        }
+      ],
+      "documents": [
+        {
+          "doc_id": "D05",
+          "scope": "",
+          "status": "现行",
+          "effective_date": "2025-01-01",
+          "supersedes": ""
+        },
+        {
+          "doc_id": "D06",
+          "scope": "",
+          "status": "待生效",
+          "effective_date": "2027-01-01",
+          "supersedes": "D05"
+        }
+      ],
+      "tool_observations": [
+        {
+          "tool": "search_docs",
+          "args": {
+            "query": "年休假 天数 工作年限",
+            "top_k": 5,
+            "offset": 0,
+            "category": null
+          },
+          "ok": true,
+          "error_code": "",
+          "summary": "good｜D05§2 D06§2 D06§1 D05§3 D05§4"
+        },
+        {
+          "tool": "search_docs",
+          "args": {
+            "query": "带薪年假 申请",
+            "top_k": 5,
+            "offset": 0,
+            "category": null
+          },
+          "ok": true,
+          "error_code": "",
+          "summary": "good｜D05§4 D05§2 D06§2 D06§1 D05§3"
+        },
+        {
+          "tool": "read_section",
+          "args": {
+            "doc_id": "D05",
+            "section_id": "§2"
+          },
+          "ok": true,
+          "error_code": "",
+          "summary": "D05§2 年假天数：员工累计工作已满1年不满10年的，年休假5天；已满10年不满…"
+        },
+        {
+          "tool": "read_section",
+          "args": {
+            "doc_id": "D06",
+            "section_id": "§2"
+          },
+          "ok": true,
+          "error_code": "",
+          "summary": "D06§2 年假天数：员工累计工作已满1年不满10年的，年休假7天；已满10年不满…"
+        },
+        {
+          "tool": "read_section",
+          "args": {
+            "doc_id": "D06",
+            "section_id": "§1"
+          },
+          "ok": true,
+          "error_code": "",
+          "summary": "D06§1 修订说明：本次修订仅调整年假天数，其余条款仍按《年休假制度（2025版…"
+        },
+        {
+          "tool": "get_doc_info",
+          "args": {
+            "doc_ids": [
+              "D05",
+              "D06"
+            ]
+          },
+          "ok": true,
+          "error_code": "",
+          "summary": "D05 现行 范围:未写明；D06 待生效 范围:未写明"
+        },
+        {
+          "tool": "read_section",
+          "args": {
+            "doc_id": "D05",
+            "section_id": "§1"
+          },
+          "ok": true,
+          "error_code": "",
+          "summary": "D05§1 适用范围：本制度适用于与公司签订劳动合同的正式员工，实习生不适用。"
+        }
+      ]
+    }
+  }
+]

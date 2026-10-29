@@ -1,0 +1,56 @@
+{
+  "id": "C22",
+  "title": "留出测试：其他公司制度不在企业资料中",
+  "turns": [
+    {
+      "question": "其他公司的会员退款期限是几天？",
+      "dataset": "data\\docs",
+      "fault": null,
+      "result": {
+        "status": "NO_EVIDENCE",
+        "answer": "资料里没有其他公司的会员退款期限信息——公司资料只包含我们自己的产品规则，不涉及其他公司的做法，因此无法回答同业期限是几天。\n\n如果你实际想查的是我们公司产品的会员退款期限，公司有《星剪会员退款规则》可以参考，可以另外问我。",
+        "citations": [],
+        "conflicts": [],
+        "gaps": [
+          "资料中没有其他公司（同业）的会员退款期限信息，公司资料仅涵盖自有产品规则"
+        ],
+        "clarify_question": "",
+        "doc_verdicts": [
+          {
+            "doc_id": "P02",
+            "verdict": "not_applicable",
+            "reason": "公司自有会员退款规则，与“其他公司做法”这一问题无关，不作为回答依据"
+          }
+        ],
+        "grounding": {
+          "passed": true,
+          "method": "model_review"
+        },
+        "question": "其他公司的会员退款期限是几天？",
+        "session_id": "C22",
+        "turn_no": 1,
+        "steps_used": 5,
+        "tool_calls": 4,
+        "gate_rejections": 1,
+        "had_tool_error": false
+      },
+      "checks": [
+        {
+          "check": "status",
+          "ok": true,
+          "detail": "期望 ['NO_EVIDENCE']，实际 NO_EVIDENCE"
+        },
+        {
+          "check": "no_basis",
+          "ok": true,
+          "detail": "不应有作为依据的文档，实际 []"
+        },
+        {
+          "check": "gaps_nonempty",
+          "ok": true,
+          "detail": "gaps 应非空，实际 ['资料中没有其他公司（同业）的会员退款期限信息，公司资料仅涵盖自有产品规则']"
+        }
+      ]
+    }
+  ]
+}

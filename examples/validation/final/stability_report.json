@@ -1,0 +1,461 @@
+{
+  "mode": "record",
+  "repeat": 3,
+  "model": "deepseek-chat",
+  "passed_runs": 64,
+  "total_runs": 69,
+  "cases": [
+    {
+      "id": "C01",
+      "passed": [
+        true,
+        true,
+        true
+      ],
+      "statuses": [
+        [
+          "ANSWERED"
+        ],
+        [
+          "ANSWERED"
+        ],
+        [
+          "ANSWERED"
+        ]
+      ]
+    },
+    {
+      "id": "C02",
+      "passed": [
+        true,
+        true,
+        true
+      ],
+      "statuses": [
+        [
+          "NEED_CONFIRMATION"
+        ],
+        [
+          "NEED_CONFIRMATION"
+        ],
+        [
+          "NEED_CONFIRMATION"
+        ]
+      ]
+    },
+    {
+      "id": "C03",
+      "passed": [
+        true,
+        true,
+        true
+      ],
+      "statuses": [
+        [
+          "NO_EVIDENCE"
+        ],
+        [
+          "NO_EVIDENCE"
+        ],
+        [
+          "NO_EVIDENCE"
+        ]
+      ]
+    },
+    {
+      "id": "C04",
+      "passed": [
+        true,
+        true,
+        true
+      ],
+      "statuses": [
+        [
+          "NEED_CONFIRMATION"
+        ],
+        [
+          "NEED_CONFIRMATION"
+        ],
+        [
+          "NEED_CONFIRMATION"
+        ]
+      ]
+    },
+    {
+      "id": "C05",
+      "passed": [
+        true,
+        true,
+        true
+      ],
+      "statuses": [
+        [
+          "ANSWERED",
+          "ANSWERED"
+        ],
+        [
+          "ANSWERED",
+          "ANSWERED"
+        ],
+        [
+          "ANSWERED",
+          "ANSWERED"
+        ]
+      ]
+    },
+    {
+      "id": "C06",
+      "passed": [
+        true,
+        true,
+        true
+      ],
+      "statuses": [
+        [
+          "ANSWERED"
+        ],
+        [
+          "ANSWERED"
+        ],
+        [
+          "ANSWERED"
+        ]
+      ]
+    },
+    {
+      "id": "C07",
+      "passed": [
+        true,
+        true,
+        true
+      ],
+      "statuses": [
+        [
+          "FAILED"
+        ],
+        [
+          "FAILED"
+        ],
+        [
+          "FAILED"
+        ]
+      ]
+    },
+    {
+      "id": "C08",
+      "passed": [
+        true,
+        true,
+        true
+      ],
+      "statuses": [
+        [
+          "FAILED"
+        ],
+        [
+          "INCOMPLETE"
+        ],
+        [
+          "INCOMPLETE"
+        ]
+      ]
+    },
+    {
+      "id": "C09",
+      "passed": [
+        true,
+        true,
+        true
+      ],
+      "statuses": [
+        [
+          "INCOMPLETE"
+        ],
+        [
+          "INCOMPLETE"
+        ],
+        [
+          "INCOMPLETE"
+        ]
+      ]
+    },
+    {
+      "id": "C10",
+      "passed": [
+        true,
+        false,
+        true
+      ],
+      "statuses": [
+        [
+          "NEED_CONFIRMATION",
+          "ANSWERED"
+        ],
+        [
+          "NEED_CONFIRMATION",
+          "INCOMPLETE"
+        ],
+        [
+          "NEED_CONFIRMATION",
+          "ANSWERED"
+        ]
+      ]
+    },
+    {
+      "id": "C11",
+      "passed": [
+        true,
+        true,
+        true
+      ],
+      "statuses": [
+        [
+          "NEED_CONFIRMATION",
+          "NEED_CONFIRMATION"
+        ],
+        [
+          "NEED_CONFIRMATION",
+          "NEED_CONFIRMATION"
+        ],
+        [
+          "NEED_CONFIRMATION",
+          "NEED_CONFIRMATION"
+        ]
+      ]
+    },
+    {
+      "id": "C12",
+      "passed": [
+        true,
+        true,
+        true
+      ],
+      "statuses": [
+        [
+          "ANSWERED"
+        ],
+        [
+          "ANSWERED"
+        ],
+        [
+          "ANSWERED"
+        ]
+      ]
+    },
+    {
+      "id": "C13",
+      "passed": [
+        true,
+        true,
+        true
+      ],
+      "statuses": [
+        [
+          "ANSWERED"
+        ],
+        [
+          "ANSWERED"
+        ],
+        [
+          "ANSWERED"
+        ]
+      ]
+    },
+    {
+      "id": "C14",
+      "passed": [
+        true,
+        true,
+        true
+      ],
+      "statuses": [
+        [
+          "NEED_CONFIRMATION"
+        ],
+        [
+          "NEED_CONFIRMATION"
+        ],
+        [
+          "NEED_CONFIRMATION"
+        ]
+      ]
+    },
+    {
+      "id": "C15",
+      "passed": [
+        true,
+        false,
+        false
+      ],
+      "statuses": [
+        [
+          "ANSWERED"
+        ],
+        [
+          "INCOMPLETE"
+        ],
+        [
+          "INCOMPLETE"
+        ]
+      ]
+    },
+    {
+      "id": "C16",
+      "passed": [
+        true,
+        true,
+        true
+      ],
+      "statuses": [
+        [
+          "NEED_CONFIRMATION"
+        ],
+        [
+          "NEED_CONFIRMATION"
+        ],
+        [
+          "NEED_CONFIRMATION"
+        ]
+      ]
+    },
+    {
+      "id": "C17",
+      "passed": [
+        true,
+        true,
+        true
+      ],
+      "statuses": [
+        [
+          "NEED_CLARIFICATION"
+        ],
+        [
+          "NEED_CLARIFICATION"
+        ],
+        [
+          "NEED_CLARIFICATION"
+        ]
+      ]
+    },
+    {
+      "id": "C18",
+      "passed": [
+        true,
+        true,
+        true
+      ],
+      "statuses": [
+        [
+          "ANSWERED",
+          "ANSWERED"
+        ],
+        [
+          "ANSWERED",
+          "ANSWERED"
+        ],
+        [
+          "ANSWERED",
+          "ANSWERED"
+        ]
+      ]
+    },
+    {
+      "id": "C19",
+      "passed": [
+        true,
+        true,
+        true
+      ],
+      "statuses": [
+        [
+          "NO_EVIDENCE"
+        ],
+        [
+          "NO_EVIDENCE"
+        ],
+        [
+          "NO_EVIDENCE"
+        ]
+      ]
+    },
+    {
+      "id": "C20",
+      "passed": [
+        true,
+        true,
+        true
+      ],
+      "statuses": [
+        [
+          "NEED_CONFIRMATION",
+          "ANSWERED"
+        ],
+        [
+          "NEED_CONFIRMATION",
+          "ANSWERED"
+        ],
+        [
+          "NEED_CONFIRMATION",
+          "ANSWERED"
+        ]
+      ]
+    },
+    {
+      "id": "C21",
+      "passed": [
+        false,
+        false,
+        true
+      ],
+      "statuses": [
+        [
+          "INCOMPLETE"
+        ],
+        [
+          "INCOMPLETE"
+        ],
+        [
+          "NEED_CONFIRMATION"
+        ]
+      ]
+    },
+    {
+      "id": "C22",
+      "passed": [
+        true,
+        true,
+        true
+      ],
+      "statuses": [
+        [
+          "NO_EVIDENCE"
+        ],
+        [
+          "NO_EVIDENCE"
+        ],
+        [
+          "NO_EVIDENCE"
+        ]
+      ]
+    },
+    {
+      "id": "C23",
+      "passed": [
+        true,
+        true,
+        true
+      ],
+      "statuses": [
+        [
+          "ANSWERED"
+        ],
+        [
+          "ANSWERED"
+        ],
+        [
+          "ANSWERED"
+        ]
+      ]
+    }
+  ]
+}

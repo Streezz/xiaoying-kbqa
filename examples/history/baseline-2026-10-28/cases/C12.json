@@ -1,0 +1,30 @@
+{
+  "id": "C12",
+  "title": "替换文档：只剩 D01，无冲突",
+  "acceptance": [
+    "明确答案",
+    "替换文档"
+  ],
+  "dataset": "data/docs",
+  "today": "2026-10-28",
+  "turns": [
+    {
+      "question": "报销期限多久？",
+      "dataset": "data/variants/d01_only",
+      "expect": {
+        "status": [
+          "ANSWERED"
+        ],
+        "basis_include": [
+          "D01"
+        ],
+        "answer_contains": [
+          "30"
+        ],
+        "answer_not_contains": [
+          "15日"
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,92 @@
+{
+ "b3f6cc289a4e104c": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_nAuJwMPDkmLqeNkSjXm52562",
+    "name": "submit_review",
+    "arguments": "{\"passed\": true, \"issues\": [], \"confirmed_doc_ids\": []}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 1662,
+   "completion_tokens": 68
+  },
+  "latency_ms": 2460
+ },
+ "8023dc5fd5879fe5": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_yIEQT82NprpBBqyxygFz5638",
+    "name": "submit_review",
+    "arguments": "{\"passed\": false, \"issues\": [\"回答称“超期风险由部门自行承担”，原文未规定超期后果的责任归属；D01§4仅规定超期且未获延期批准财务部不予受理，应删除该责任归属表述或改为引用原文规则。\", \"回答称“依据你确认的《财务部报销操作指引》”，但用户本轮仅说“我们部门以财务部的报销操作指引为准”，未明确选择一般费用场景；上一轮问题区分差旅与其他费用，用户未排除差旅，直接以D02作为一般费用依据并同时保留差旅例外，需说明该确认仅适用于非差旅费用，或就适用范围再确认。\"], \"confirmed_doc_ids\": [\"D02\"]}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 4051,
+   "completion_tokens": 209
+  },
+  "latency_ms": 2479
+ },
+ "a874f3955c46820a": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_tIAXc7MDeTFq5EswTj1H0036",
+    "name": "submit_review",
+    "arguments": "{\"passed\": false, \"issues\": [\"回答称“建议先在 OA/IT 报修”，但 D08§1 原文只写“由 IT 部评估维修”，未规定报修入口为 OA 或 IT 系统，属无依据补充；应删除具体报修渠道，仅保留“由 IT 部评估维修”，或将其列入 gaps。\"], \"confirmed_doc_ids\": []}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 2897,
+   "completion_tokens": 138
+  },
+  "latency_ms": 1948
+ },
+ "70215126216191ac": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_pHF2lN2dxgXpuTofxD875388",
+    "name": "submit_review",
+    "arguments": "{\"passed\": false, \"issues\": [\"D02《财务部报销操作指引》与D01的15天/30天差异被列为需用户确认的冲突，但D01§1已写明“差旅费用另有专门规定的，从其规定”，差旅部分应直接适用D03，不应把D02与D01并列作为非差旅时限的未决冲突；D02未写scope不构成对D01明确通用范围的推翻，应说明D02与D01的关系（或仅作为需确认的次级指引），而非要求用户裁决制度优先级。\", \"回答称“一个多月已超期”并推算“超过30天但在60天以内”，但问题只说“发票拿到一个多月”，未给出费用发生日期；D01§3的起算点是“费用发生后”，不能以收票/拿票时间代替，费用日期未知时不应计算是否逾期，应改为条件式表述并追问费用发生日期。\", \"回答称“未获延期批准的，财务部不予受理”作为对用户的直接结论，但D01§4原文是“超过报销期限且未获延期批准的，财务部不予受理”，在费用发生日期未知、是否超期未定的情况下，该结论缺乏前提，应改为条件式。\"], \"confirmed_doc_ids\": []}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 3599,
+   "completion_tokens": 326
+  },
+  "latency_ms": 3477
+ },
+ "5e37e94e06410d11": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_YoFgavQDHMWZfXVjY48P9967",
+    "name": "submit_review",
+    "arguments": "{\"passed\": false, \"issues\": [\"按项目既定口径，D03原文明确仅适用于差旅费用，属该事项专用制度，D01、D02仅因未写scope不能推翻专用范围，也不构成该事项冲突。回答却将D01、D02列为conflict、在正文称“关系资料里没有说明、是否还要同时满足建议向财务部确认”，并保留gap，属范围表态错误。应改为：差旅报销按D03的10日执行，D01/D02不作为差旅事项的并列冲突（可标not_applicable或仅作背景），删除相应gap与确认建议。\", \"doc_verdicts中D01、D02标为conflict与上述口径不符，应调整。\"], \"confirmed_doc_ids\": []}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 3238,
+   "completion_tokens": 221
+  },
+  "latency_ms": 2468
+ },
+ "64a9091403f96f7a": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_r8E4donJAgi49zVIvoVy1312",
+    "name": "submit_review",
+    "arguments": "{\"passed\": false, \"issues\": [\"回答末尾称“请以人事系统记录为准”，但证据中无任何关于人事系统记录权威性的表述，属无依据补充；应删除该表述或改为不指定权威来源的提示（如“请向人事部门核实累计工作年限”）。\"], \"confirmed_doc_ids\": []}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 2709,
+   "completion_tokens": 123
+  },
+  "latency_ms": 1878
+ }
+}

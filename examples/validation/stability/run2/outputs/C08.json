@@ -1,0 +1,76 @@
+{
+  "id": "C08",
+  "title": "工具失败：冲突一方读取失败",
+  "turns": [
+    {
+      "question": "报销期限多久？",
+      "dataset": "data\\docs",
+      "fault": "read:not_found@D02",
+      "result": {
+        "status": "INCOMPLETE",
+        "answer": "已达到步数上限（12 步），本轮没有得到通过核验的结果，以下只列出已读过的资料，未经核验。",
+        "citations": [],
+        "conflicts": [],
+        "gaps": [
+          "本轮未完成，资料是否充分未经核验"
+        ],
+        "clarify_question": "",
+        "doc_verdicts": [],
+        "evidence_found": [
+          {
+            "doc_id": "D01",
+            "section_id": "§3",
+            "title": "费用报销管理办法",
+            "heading": "报销期限"
+          },
+          {
+            "doc_id": "D01",
+            "section_id": "§4",
+            "title": "费用报销管理办法",
+            "heading": "超期处理"
+          },
+          {
+            "doc_id": "D03",
+            "section_id": "§4",
+            "title": "差旅费管理规定",
+            "heading": "报销时限"
+          },
+          {
+            "doc_id": "D04",
+            "section_id": "§2",
+            "title": "报销管理办法（2024版）",
+            "heading": "报销期限"
+          },
+          {
+            "doc_id": "D03",
+            "section_id": "§1",
+            "title": "差旅费管理规定",
+            "heading": "适用范围"
+          }
+        ],
+        "last_gate_problems": [
+          "NEED_CONFIRMATION 需要在 conflicts 里列出冲突。"
+        ],
+        "question": "报销期限多久？",
+        "session_id": "C08",
+        "turn_no": 1,
+        "steps_used": 12,
+        "tool_calls": 13,
+        "gate_rejections": 6,
+        "had_tool_error": true
+      },
+      "checks": [
+        {
+          "check": "status",
+          "ok": true,
+          "detail": "期望 ['FAILED', 'INCOMPLETE']，实际 INCOMPLETE"
+        },
+        {
+          "check": "tool_error_seen",
+          "ok": true,
+          "detail": "Trace 里应出现失败的工具调用"
+        }
+      ]
+    }
+  ]
+}

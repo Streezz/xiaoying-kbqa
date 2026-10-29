@@ -14,7 +14,7 @@ TODAY = "2026-10-28"
 
 @pytest.fixture(scope="session")
 def settings():
-    return load_settings().with_overrides(data_dir=ROOT / "data" / "docs", today=TODAY)
+    return load_settings().with_overrides(data_dir=ROOT / "data" / "docs", today=TODAY, api_key="")
 
 
 @pytest.fixture(scope="session")

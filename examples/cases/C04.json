@@ -20,6 +20,12 @@
         ],
         "basis_exclude": [
           "D04"
+        ],
+        "answer_contains": [
+          "费用发生"
+        ],
+        "answer_not_contains": [
+          "事先获批"
         ]
       }
     }

@@ -1,0 +1,55 @@
+{
+  "id": "C03",
+  "title": "资料外问题：年终奖",
+  "turns": [
+    {
+      "question": "公司年终奖什么时候发？",
+      "dataset": "data\\docs",
+      "fault": null,
+      "result": {
+        "status": "NO_EVIDENCE",
+        "answer": "资料中没有找到关于年终奖发放时间的规定。已用\"年终奖\"\"奖金发放\"\"年度奖金\"\"薪酬福利\"\"绩效考核\"等说法检索，均未命中相关制度条款。建议向人力资源部（薪酬）咨询确认。",
+        "citations": [],
+        "conflicts": [],
+        "gaps": [
+          "公司制度资料中缺少年终奖（年度奖金）的发放时间、发放条件等规定，需向人力资源部/薪酬部门确认"
+        ],
+        "clarify_question": "",
+        "doc_verdicts": [],
+        "grounding": {
+          "passed": true,
+          "method": "model_review"
+        },
+        "question": "公司年终奖什么时候发？",
+        "session_id": "C03",
+        "turn_no": 1,
+        "steps_used": 5,
+        "tool_calls": 6,
+        "gate_rejections": 0,
+        "had_tool_error": false
+      },
+      "checks": [
+        {
+          "check": "status",
+          "ok": true,
+          "detail": "期望 ['NO_EVIDENCE']，实际 NO_EVIDENCE"
+        },
+        {
+          "check": "no_basis",
+          "ok": true,
+          "detail": "不应有作为依据的文档，实际 []"
+        },
+        {
+          "check": "min_calls:search_docs",
+          "ok": true,
+          "detail": "search_docs 至少 2 次，实际 6 次"
+        },
+        {
+          "check": "gaps_nonempty",
+          "ok": true,
+          "detail": "gaps 应非空，实际 ['公司制度资料中缺少年终奖（年度奖金）的发放时间、发放条件等规定，需向人力资源部/薪酬部门确认']"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+ "c81a1b5e6203f130": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_ITyBf4vusFrGRiBXrLCf1427",
+    "name": "search_docs",
+    "arguments": "{\"query\": \"报销期限\", \"reason\": \"查找公司制度中关于报销期限的规定\"}"
+   },
+   {
+    "id": "call_01_iwDODgKwQHwmrMgguKk42485",
+    "name": "search_docs",
+    "arguments": "{\"query\": \"费用报销 提交时限 天数\", \"reason\": \"换用制度书面用语检索报销时限\"}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 2631,
+   "completion_tokens": 115
+  },
+  "latency_ms": 2545
+ },
+ "acc676e0978fd7c3": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_D46JyGzwH0selyJQVr8z0161",
+    "name": "read_section",
+    "arguments": "{\"doc_id\": \"D01\", \"section_id\": \"§3\", \"reason\": \"读取费用报销管理办法的报销期限原文\"}"
+   },
+   {
+    "id": "call_01_wMTtH7shn1jSSCtD3gIX1857",
+    "name": "read_section",
+    "arguments": "{\"doc_id\": \"D02\", \"section_id\": \"§3\", \"reason\": \"读取财务部报销操作指引的时限要求原文\"}"
+   },
+   {
+    "id": "call_02_jIUTpTveycBBzv4eWEyo0769",
+    "name": "read_section",
+    "arguments": "{\"doc_id\": \"D03\", \"section_id\": \"§4\", \"reason\": \"读取差旅费管理规定的报销时限原文\"}"
+   },
+   {
+    "id": "call_03_4A17C7ESlUGmx4Jh5xc41235",
+    "name": "read_section",
+    "arguments": "{\"doc_id\": \"D04\", \"section_id\": \"§2\", \"reason\": \"读取报销管理办法（2024版）的报销期限原文\"}"
+   },
+   {
+    "id": "call_04_Wseywo1mKRL1W4vgkNmt0516",
+    "name": "get_doc_info",
+    "arguments": "{\"doc_ids\": [\"D01\", \"D02\", \"D03\", \"D04\"], \"reason\": \"查四份文档的生效状态、适用范围和替代关系以判断优先顺序\"}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 3670,
+   "completion_tokens": 376
+  },
+  "latency_ms": 2540
+ }
+}

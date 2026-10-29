@@ -1,0 +1,118 @@
+{
+  "id": "C23",
+  "title": "留出测试：带薪休假口语问法",
+  "turns": [
+    {
+      "question": "累计参加工作三年，每年能休多少天带薪假？",
+      "dataset": "data\\docs",
+      "fault": null,
+      "result": {
+        "status": "ANSWERED",
+        "answer": "按今天（2026-10-28）现行的《年休假制度（2025版）》，累计工作满1年不满10年的员工，每年年休假为5天。你累计工作三年，属于\"满1年不满10年\"这一档，因此目前每年可休5天带薪年假。\n\n需要提醒：公司已发布《年休假制度（2026修订版）》，该版本自2027年1月1日起施行，届时同一档（满1年不满10年）的年假天数调整为7天。也就是说，从2027年1月1日起，你的年假将变为7天。\n\n另外，该制度适用于与公司签订劳动合同的正式员工，实习生不适用。",
+        "citations": [
+          {
+            "doc_id": "D05",
+            "section_id": "§2",
+            "title": "年休假制度（2025版）",
+            "heading": "年假天数",
+            "version_date": "2025-01-01",
+            "status": "现行",
+            "quote": "员工累计工作已满1年不满10年的，年休假5天；已满10年不满20年的，年休假10天；已满20年的，年休假15天。"
+          },
+          {
+            "doc_id": "D06",
+            "section_id": "§2",
+            "title": "年休假制度（2026修订版）",
+            "heading": "年假天数",
+            "version_date": "2026-09-01",
+            "status": "待生效",
+            "quote": "员工累计工作已满1年不满10年的，年休假7天；已满10年不满20年的，年休假12天；已满20年的，年休假15天。"
+          },
+          {
+            "doc_id": "D06",
+            "section_id": "§1",
+            "title": "年休假制度（2026修订版）",
+            "heading": "修订说明",
+            "version_date": "2026-09-01",
+            "status": "待生效",
+            "quote": "本次修订仅调整年假天数，其余条款仍按《年休假制度（2025版）》执行。本修订版自2027年1月1日起施行。"
+          },
+          {
+            "doc_id": "D05",
+            "section_id": "§1",
+            "title": "年休假制度（2025版）",
+            "heading": "适用范围",
+            "version_date": "2025-01-01",
+            "status": "现行",
+            "quote": "本制度适用于与公司签订劳动合同的正式员工，实习生不适用。"
+          }
+        ],
+        "conflicts": [
+          {
+            "topic": "累计工作满1年不满10年的年假天数",
+            "positions": [
+              {
+                "doc_id": "D05",
+                "section_id": "§2",
+                "claim": "年休假5天"
+              },
+              {
+                "doc_id": "D06",
+                "section_id": "§2",
+                "claim": "年休假7天"
+              }
+            ],
+            "note": "D06为待生效版本（2027-01-01起施行），D05现行且被D06替代；按规则以现行版本回答并说明调整时间"
+          }
+        ],
+        "gaps": [],
+        "clarify_question": "",
+        "doc_verdicts": [
+          {
+            "doc_id": "D05",
+            "verdict": "basis",
+            "reason": "现行版本，回答当前年假天数与适用范围的依据"
+          },
+          {
+            "doc_id": "D06",
+            "verdict": "conflict",
+            "reason": "待生效版本，天数与现行版不同，2027-01-01起施行"
+          }
+        ],
+        "grounding": {
+          "passed": true,
+          "method": "model_review"
+        },
+        "question": "累计参加工作三年，每年能休多少天带薪假？",
+        "session_id": "C23",
+        "turn_no": 1,
+        "steps_used": 6,
+        "tool_calls": 7,
+        "gate_rejections": 1,
+        "had_tool_error": false
+      },
+      "checks": [
+        {
+          "check": "status",
+          "ok": true,
+          "detail": "期望 ['ANSWERED']，实际 ANSWERED"
+        },
+        {
+          "check": "basis_include",
+          "ok": true,
+          "detail": "依据应包含 ['D05']，实际 ['D05']"
+        },
+        {
+          "check": "basis_exclude",
+          "ok": true,
+          "detail": "依据不应包含 ['D06']，实际 ['D05']"
+        },
+        {
+          "check": "answer_contains:5",
+          "ok": true,
+          "detail": "回答应包含「5」"
+        }
+      ]
+    }
+  ]
+}

@@ -8,31 +8,34 @@
       "fault": "read:timeout@*",
       "result": {
         "status": "FAILED",
-        "answer": "抱歉，暂时无法给出住宿标准的具体数字。检索到《差旅费管理规定》（D03，现行，2026-01-10 生效）设有\"§3 住宿标准\"一节，但读取该段原文时工具连续超时（已重试多次），拿不到原文就无法确认具体标准，因此不能凭检索预览作答。请稍后重试，或直接联系行政部确认。",
+        "answer": "抱歉，本次未能给出住宿标准：检索到《差旅费管理规定》§3「住宿标准」段落，但读取该段完整原文时工具连续超时（重试后仍失败），按规则不能仅凭检索预览作答。请稍后重试，或联系行政部确认。",
         "citations": [],
         "conflicts": [],
         "gaps": [
-          "《差旅费管理规定》§3 住宿标准原文未能读取（工具超时），住宿费限额的具体数字无法确认",
-          "《差旅费管理规定》§1 适用范围原文未能读取，无法确认适用对象"
+          "《差旅费管理规定》§3 住宿标准段落原文未能读取（工具超时），无法确认具体金额与适用条件"
         ],
         "clarify_question": "",
         "doc_verdicts": [
           {
             "doc_id": "D03",
             "verdict": "not_applicable",
-            "reason": "检索命中住宿标准段落，但 read_section 多次超时，未能读到原文，无法作为回答依据"
+            "reason": "检索命中住宿标准段落，但 read_section 两次超时，未取得原文，不能作为回答依据"
           },
           {
             "doc_id": "D01",
             "verdict": "not_applicable",
-            "reason": "仅查到文档信息（现行，替代 D04），未读到原文，且与住宿标准无直接关系"
+            "reason": "仅查到总则与超期处理预览，未读取原文，且与住宿标准问题无直接关系"
           }
         ],
+        "grounding": {
+          "passed": true,
+          "method": "model_review"
+        },
         "question": "差旅住宿标准是多少？",
         "session_id": "C07",
         "turn_no": 1,
-        "steps_used": 6,
-        "tool_calls": 9,
+        "steps_used": 7,
+        "tool_calls": 8,
         "gate_rejections": 0,
         "had_tool_error": true
       },

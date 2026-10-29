@@ -19,6 +19,9 @@
         ],
         "answer_not_contains": [
           "90"
+        ],
+        "must_read": [
+          "D09§2"
         ]
       }
     }

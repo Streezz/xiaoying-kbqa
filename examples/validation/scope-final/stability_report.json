@@ -1,0 +1,28 @@
+{
+  "mode": "record",
+  "repeat": 3,
+  "model": "deepseek-chat",
+  "passed_runs": 3,
+  "total_runs": 3,
+  "cases": [
+    {
+      "id": "C15",
+      "passed": [
+        true,
+        true,
+        true
+      ],
+      "statuses": [
+        [
+          "ANSWERED"
+        ],
+        [
+          "ANSWERED"
+        ],
+        [
+          "ANSWERED"
+        ]
+      ]
+    }
+  ]
+}

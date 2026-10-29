@@ -1,0 +1,72 @@
+{
+ "793d6e0937528f65": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_XkknrzuARF36A1HVINeC5977",
+    "name": "search_docs",
+    "arguments": "{\"query\": \"加班调休有效期\", \"reason\": \"查找加班调休使用期限的规定\"}"
+   },
+   {
+    "id": "call_01_PjvXtyKa2aOekTZ86Cp22465",
+    "name": "search_docs",
+    "arguments": "{\"query\": \"加班 调休 补休 期限\", \"reason\": \"换一种书面说法再检索调休期限\"}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 2453,
+   "completion_tokens": 119
+  },
+  "latency_ms": 2649
+ },
+ "a368b81db730ce5d": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_ItFFlP7AdJwi5FGzzSLo2978",
+    "name": "read_section",
+    "arguments": "{\"doc_id\": \"D07\", \"section_id\": \"§1\", \"reason\": \"读取调休期限原文\"}"
+   },
+   {
+    "id": "call_01_vy1R0skcTolHo66ccepU9942",
+    "name": "get_doc_info",
+    "arguments": "{\"doc_ids\": [\"D07\"], \"reason\": \"确认该办法是否现行及适用范围\"}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 3077,
+   "completion_tokens": 129
+  },
+  "latency_ms": 1710
+ },
+ "da81262f6094d10d": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_ib8QWrViqdTMu0d2fqZq8236",
+    "name": "submit_result",
+    "arguments": "{\"status\": \"ANSWERED\", \"answer\": \"工作日延时加班产生的调休，须在加班发生后 3 个月内使用，逾期不再保留。依据《加班与调休管理办法》（现行，2025-07-01 生效）。\", \"citations\": [{\"doc_id\": \"D07\", \"section_id\": \"§1\", \"quote\": \"工作日延时加班可申请调休，调休须在加班发生后3个月内使用，逾期不再保留。\"}], \"doc_verdicts\": [{\"doc_id\": \"D07\", \"verdict\": \"basis\", \"reason\": \"《加班与调休管理办法》§1 明确规定了调休使用期限，且该办法现行有效\"}], \"gaps\": [\"休息日加班产生的调休是否有单独的使用期限，资料中未写明（§2 只规定优先安排调休、无法安排时按200%支付加班费）\"], \"reason\": \"已读到调休期限原文并确认文档现行，提交回答\"}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 3459,
+   "completion_tokens": 293
+  },
+  "latency_ms": 2376
+ },
+ "70928f1d1646be4f": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_4r7sbFYB6Lb7ZQKW5RDn8187",
+    "name": "submit_review",
+    "arguments": "{\"passed\": true, \"issues\": [], \"confirmed_doc_ids\": []}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 1505,
+   "completion_tokens": 68
+  },
+  "latency_ms": 1169
+ }
+}

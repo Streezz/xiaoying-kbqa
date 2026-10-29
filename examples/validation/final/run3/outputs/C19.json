@@ -1,0 +1,56 @@
+{
+  "id": "C19",
+  "title": "资料外问题：法律常识",
+  "turns": [
+    {
+      "question": "劳动法规定年假最少几天？",
+      "dataset": "data\\docs",
+      "fault": null,
+      "result": {
+        "status": "NO_EVIDENCE",
+        "answer": "资料里没有国家《劳动法》或法定年休假天数的内容，无法回答\"劳动法规定最少几天\"，建议咨询人力资源部或查阅法规原文。\n\n公司资料中只有本公司的《年休假制度》，如果你需要了解公司自己的年假天数，可以另外提问。",
+        "citations": [],
+        "conflicts": [],
+        "gaps": [
+          "国家法律法规（《劳动法》《职工带薪年休假条例》）规定的法定年假最低天数，公司资料中没有相关内容，建议咨询人力资源部或查阅法规原文"
+        ],
+        "clarify_question": "",
+        "doc_verdicts": [
+          {
+            "doc_id": "D05",
+            "verdict": "not_applicable",
+            "reason": "公司内部年休假制度，与“国家劳动法规定”这一资料外问题无关"
+          },
+          {
+            "doc_id": "D06",
+            "verdict": "not_applicable",
+            "reason": "公司内部年休假制度修订版（待生效），与“国家劳动法规定”这一资料外问题无关"
+          }
+        ],
+        "grounding": {
+          "passed": true,
+          "method": "model_review"
+        },
+        "question": "劳动法规定年假最少几天？",
+        "session_id": "C19",
+        "turn_no": 1,
+        "steps_used": 6,
+        "tool_calls": 5,
+        "gate_rejections": 1,
+        "had_tool_error": false
+      },
+      "checks": [
+        {
+          "check": "status",
+          "ok": true,
+          "detail": "期望 ['NO_EVIDENCE']，实际 NO_EVIDENCE"
+        },
+        {
+          "check": "no_basis",
+          "ok": true,
+          "detail": "不应有作为依据的文档，实际 []"
+        }
+      ]
+    }
+  ]
+}

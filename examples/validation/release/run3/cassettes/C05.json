@@ -1,0 +1,182 @@
+{
+ "8f35b07bd4133c36": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_nn3PQZ2LTUCPe0EpxX8x1446",
+    "name": "search_docs",
+    "arguments": "{\"query\": \"年休假 天数 工作年限\", \"reason\": \"查公司年休假制度中按工作年限确定的天数\"}"
+   },
+   {
+    "id": "call_01_uYLpIsU1JoKwop4beZ189048",
+    "name": "search_docs",
+    "arguments": "{\"query\": \"带薪年假 申请\", \"reason\": \"补充检索年假相关制度\"}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 2727,
+   "completion_tokens": 121
+  },
+  "latency_ms": 2325
+ },
+ "dab30c05b298cf16": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_PM9amtv6EXk46w1BJGHJ7983",
+    "name": "read_section",
+    "arguments": "{\"doc_id\": \"D05\", \"section_id\": \"§2\", \"reason\": \"读2025版年假天数原文\"}"
+   },
+   {
+    "id": "call_01_HmyL4vvQO5UBB9Fp557J9084",
+    "name": "read_section",
+    "arguments": "{\"doc_id\": \"D06\", \"section_id\": \"§2\", \"reason\": \"读2026修订版年假天数原文\"}"
+   },
+   {
+    "id": "call_02_DX9C4KapoNZpZhgEonwP3053",
+    "name": "read_section",
+    "arguments": "{\"doc_id\": \"D06\", \"section_id\": \"§1\", \"reason\": \"读修订说明确认生效时间与替代关系\"}"
+   },
+   {
+    "id": "call_03_AzhT6xSzBzBnxuvLbS6G6616",
+    "name": "get_doc_info",
+    "arguments": "{\"doc_ids\": [\"D05\", \"D06\"], \"reason\": \"确认两版年休假制度的状态与生效日期\"}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 3901,
+   "completion_tokens": 285
+  },
+  "latency_ms": 2193
+ },
+ "bcc7deadfa1f5cfd": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_v7PC0VN3iRd8WEfLASvr8151",
+    "name": "read_section",
+    "arguments": "{\"doc_id\": \"D05\", \"section_id\": \"§1\", \"reason\": \"确认2025版适用范围，判断是否适用于该员工\"}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 4817,
+   "completion_tokens": 79
+  },
+  "latency_ms": 1540
+ },
+ "b38f4521db5ccb7d": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_Ul3UiAeZq8lANAwDhQIJ9526",
+    "name": "submit_result",
+    "arguments": "{\"status\": \"ANSWERED\", \"answer\": \"按今天（2026-10-28）现行有效的《年休假制度（2025版）》，累计工作已满1年不满10年的员工年休假为5天。你工作3年，属于这一档，即5天/年。\\n\\n另需注意：《年休假制度（2026修订版）》已发布但尚未生效，自2027年1月1日起施行，届时同一档（满1年不满10年）调整为7天。该修订版仅调整天数，其余条款仍按2025版执行。\", \"citations\": [{\"doc_id\": \"D05\", \"section_id\": \"§2\", \"quote\": \"员工累计工作已满1年不满10年的，年休假5天；已满10年不满20年的，年休假10天；已满20年的，年休假15天。\"}, {\"doc_id\": \"D06\", \"section_id\": \"§2\", \"quote\": \"员工累计工作已满1年不满10年的，年休假7天；已满10年不满20年的，年休假12天；已满20年的，年休假15天。\"}, {\"doc_id\": \"D06\", \"section_id\": \"§1\", \"quote\": \"本次修订仅调整年假天数，其余条款仍按《年休假制度（2025版）》执行。本修订版自2027年1月1日起施行。\"}], \"doc_verdicts\": [{\"doc_id\": \"D05\", \"verdict\": \"basis\", \"reason\": \"现行有效版本，回答依据其§2天数规定\"}, {\"doc_id\": \"D06\", \"verdict\": \"not_applicable\", \"reason\": \"状态为待生效，2027-01-01起才施行，仅作未来调整说明\"}], \"reason\": \"依据现行2025版回答天数，并说明2026修订版待生效\"}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 4999,
+   "completion_tokens": 480
+  },
+  "latency_ms": 3608
+ },
+ "ee6d2b2775297aa8": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_vzvh7xj28DVbSyHg5YOC7349",
+    "name": "submit_review",
+    "arguments": "{\"passed\": true, \"issues\": [], \"confirmed_doc_ids\": []}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 2508,
+   "completion_tokens": 68
+  },
+  "latency_ms": 1339
+ },
+ "cf4aaa88041a1ac1": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_dAzTsgLIiasOB7LeuZLe2580",
+    "name": "search_docs",
+    "arguments": "{\"query\": \"年休假 未休完 结转 次年\", \"reason\": \"查年假未休完能否结转到明年的规定\"}"
+   },
+   {
+    "id": "call_01_78HxVXAXCVwPMH3V7cY04224",
+    "name": "search_docs",
+    "arguments": "{\"query\": \"年休假 跨年度安排 顺延\", \"reason\": \"换书面说法再查一次年假跨年安排\"}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 3065,
+   "completion_tokens": 132
+  },
+  "latency_ms": 1770
+ },
+ "5eea037d104fcc76": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_u4xx63QACYxASicjz25a0543",
+    "name": "read_section",
+    "arguments": "{\"doc_id\": \"D05\", \"section_id\": \"§3\", \"reason\": \"读结转规则原文\"}"
+   },
+   {
+    "id": "call_01_AadtaVpSxMMqGFpJ3ALM1830",
+    "name": "get_doc_info",
+    "arguments": "{\"doc_ids\": [\"D05\", \"D06\"], \"reason\": \"确认两份年假制度的状态与生效关系\"}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 4252,
+   "completion_tokens": 134
+  },
+  "latency_ms": 1601
+ },
+ "498ce487bfa3d1cb": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_ykrnOIsZPIsXuSlPmevO0193",
+    "name": "submit_result",
+    "arguments": "{\"status\": \"ANSWERED\", \"answer\": \"可以，但有期限。按现行《年休假制度（2025版）》：当年未休完的年假可结转至次年3月31日前使用，逾期作废，不折算工资。也就是说，你2026年没休完的年假，最晚要在2027年3月31日前休完，过期不再补休、也不折现。\\n\\n《年休假制度（2026修订版）》自2027年1月1日起施行，但该修订版只调整年假天数，结转规则仍按2025版执行。\", \"citations\": [{\"doc_id\": \"D05\", \"section_id\": \"§3\", \"quote\": \"当年未休完的年假可结转至次年3月31日前使用，逾期作废，不折算工资。\"}, {\"doc_id\": \"D06\", \"section_id\": \"§1\", \"quote\": \"本次修订仅调整年假天数，其余条款仍按《年休假制度（2025版）》执行。本修订版自2027年1月1日起施行。\"}], \"doc_verdicts\": [{\"doc_id\": \"D05\", \"verdict\": \"basis\", \"reason\": \"现行有效，§3 结转规则直接回答本问题\"}, {\"doc_id\": \"D06\", \"verdict\": \"basis\", \"reason\": \"待生效，§1 说明仅调整天数、其余条款仍按2025版执行，用于说明结转规则不变\"}], \"gaps\": [], \"reason\": \"依据现行2025版结转规则回答，并说明待生效修订版不改变结转规则\"}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 4763,
+   "completion_tokens": 429
+  },
+  "latency_ms": 2636
+ },
+ "46b94b60c3611971": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_quuyZFRBTqH0UCMr3ejW0983",
+    "name": "submit_result",
+    "arguments": "{\"answer\": \"可以，但有期限。按现行《年休假制度（2025版）》：当年未休完的年假可结转至次年3月31日前使用，逾期作废，不折算工资。也就是说，你2026年没休完的年假，最晚要在2027年3月31日前休完，过期不再补休、也不折现。\\n\\n另：《年休假制度（2026修订版）》自2027年1月1日起施行，该修订版只调整年假天数，结转规则仍按2025版执行。\", \"citations\": [{\"doc_id\": \"D05\", \"quote\": \"当年未休完的年假可结转至次年3月31日前使用，逾期作废，不折算工资。\", \"section_id\": \"§3\"}, {\"doc_id\": \"D06\", \"quote\": \"本次修订仅调整年假天数，其余条款仍按《年休假制度（2025版）》执行。本修订版自2027年1月1日起施行。\", \"section_id\": \"§1\"}], \"doc_verdicts\": [{\"doc_id\": \"D05\", \"reason\": \"现行有效，§3 结转规则直接回答本问题\", \"verdict\": \"basis\"}, {\"doc_id\": \"D06\", \"reason\": \"待生效（2027-01-01起施行），仅用于说明将来结转规则不变，不作为现行依据\", \"verdict\": \"not_applicable\"}], \"gaps\": [], \"reason\": \"按现行2025版结转规则回答，D06 标为待生效不适用\", \"status\": \"ANSWERED\"}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 5300,
+   "completion_tokens": 430
+  },
+  "latency_ms": 2701
+ },
+ "de0879b2339a3104": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_ucwBQYDHIiQkUnrSi1tD6823",
+    "name": "submit_review",
+    "arguments": "{\"passed\": true, \"issues\": [], \"confirmed_doc_ids\": []}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 2924,
+   "completion_tokens": 68
+  },
+  "latency_ms": 1146
+ }
+}

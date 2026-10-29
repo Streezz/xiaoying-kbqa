@@ -1,0 +1,112 @@
+{
+ "2d0f4dd72c42e101": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_3d4CTWAsuA1Uc2DtJjkZ0425",
+    "name": "search_docs",
+    "arguments": "{\"query\": \"带薪年休假 天数 累计工作年限\", \"reason\": \"查年休假天数与工作年限的对应规定\"}"
+   },
+   {
+    "id": "call_01_XaPOez52noTrbShPlCHd9066",
+    "name": "search_docs",
+    "arguments": "{\"query\": \"年假 休假申请 制度\", \"reason\": \"补充检索年假相关制度\"}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 2457,
+   "completion_tokens": 123
+  },
+  "latency_ms": 2369
+ },
+ "1617dab2da1209fd": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_OMwInt9Gb1fJJF9222v57109",
+    "name": "read_section",
+    "arguments": "{\"doc_id\": \"D05\", \"section_id\": \"§2\", \"reason\": \"读2025版年假天数原文\"}"
+   },
+   {
+    "id": "call_01_2mcot2tRCSQZXePZoCTE8117",
+    "name": "read_section",
+    "arguments": "{\"doc_id\": \"D06\", \"section_id\": \"§2\", \"reason\": \"读2026修订版年假天数原文\"}"
+   },
+   {
+    "id": "call_02_v1bHHYthEkh3cUeCgqcL9777",
+    "name": "read_section",
+    "arguments": "{\"doc_id\": \"D06\", \"section_id\": \"§1\", \"reason\": \"读修订说明确认生效时间与替代关系\"}"
+   },
+   {
+    "id": "call_03_lY2J5RYeKXhU0093e5kq0543",
+    "name": "get_doc_info",
+    "arguments": "{\"doc_ids\": [\"D05\", \"D06\"], \"reason\": \"确认两份年休假制度的状态与生效日期\"}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 3660,
+   "completion_tokens": 284
+  },
+  "latency_ms": 2655
+ },
+ "f9403d05c879578c": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_L2tbtiKq1f7mvS06nsVx2400",
+    "name": "submit_result",
+    "arguments": "{\"status\": \"ANSWERED\", \"answer\": \"按今天（2026-10-28）现行的《年休假制度（2025版）》，累计工作满1年不满10年的员工，每年年休假为5天。你累计工作三年，属于\\\"满1年不满10年\\\"这一档，因此目前每年可休5天带薪年假。\\n\\n需要提醒：公司已发布《年休假制度（2026修订版）》，该版本自2027年1月1日起施行，届时同一档（满1年不满10年）的年假天数调整为7天。也就是说，从2027年1月1日起，你的年假将变为7天。\\n\\n另外，该制度适用于与公司签订劳动合同的正式员工，实习生不适用。\", \"citations\": [{\"doc_id\": \"D05\", \"section_id\": \"§2\", \"quote\": \"员工累计工作已满1年不满10年的，年休假5天；已满10年不满20年的，年休假10天；已满20年的，年休假15天。\"}, {\"doc_id\": \"D06\", \"section_id\": \"§2\", \"quote\": \"员工累计工作已满1年不满10年的，年休假7天；已满10年不满20年的，年休假12天；已满20年的，年休假15天。\"}, {\"doc_id\": \"D06\", \"section_id\": \"§1\", \"quote\": \"本次修订仅调整年假天数，其余条款仍按《年休假制度（2025版）》执行。本修订版自2027年1月1日起施行。\"}, {\"doc_id\": \"D05\", \"section_id\": \"§1\", \"quote\": \"本制度适用于与公司签订劳动合同的正式员工，实习生不适用。\"}], \"conflicts\": [{\"topic\": \"累计工作满1年不满10年的年假天数\", \"positions\": [{\"doc_id\": \"D05\", \"section_id\": \"§2\", \"claim\": \"年休假5天\"}, {\"doc_id\": \"D06\", \"section_id\": \"§2\", \"claim\": \"年休假7天\"}], \"note\": \"D06为待生效版本（2027-01-01起施行），D05现行且被D06替代；按规则以现行版本回答并说明调整时间\"}], \"doc_verdicts\": [{\"doc_id\": \"D05\", \"verdict\": \"basis\", \"reason\": \"现行版本，回答当前年假天数的依据\"}, {\"doc_id\": \"D06\", \"verdict\": \"conflict\", \"reason\": \"待生效版本，天数与现行版不同，2027-01-01起施行\"}], \"reason\": \"已读两份年休假制度原文并核对状态，按现行版本作答并说明待生效调整\"}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 4575,
+   "completion_tokens": 681
+  },
+  "latency_ms": 3821
+ },
+ "1f11ea2960e7158b": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_XqYH2dAOMbQ66NTB0Obs4018",
+    "name": "read_section",
+    "arguments": "{\"doc_id\": \"D05\", \"section_id\": \"§1\", \"reason\": \"补读适用范围原文以支持引用\"}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 5339,
+   "completion_tokens": 75
+  },
+  "latency_ms": 1684
+ },
+ "698f2b7a9cb9a8a4": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_8llb7ziBCsqgBDpOjXMa8470",
+    "name": "submit_result",
+    "arguments": "{\"answer\": \"按今天（2026-10-28）现行的《年休假制度（2025版）》，累计工作满1年不满10年的员工，每年年休假为5天。你累计工作三年，属于\\\"满1年不满10年\\\"这一档，因此目前每年可休5天带薪年假。\\n\\n需要提醒：公司已发布《年休假制度（2026修订版）》，该版本自2027年1月1日起施行，届时同一档（满1年不满10年）的年假天数调整为7天。也就是说，从2027年1月1日起，你的年假将变为7天。\\n\\n另外，该制度适用于与公司签订劳动合同的正式员工，实习生不适用。\", \"citations\": [{\"doc_id\": \"D05\", \"quote\": \"员工累计工作已满1年不满10年的，年休假5天；已满10年不满20年的，年休假10天；已满20年的，年休假15天。\", \"section_id\": \"§2\"}, {\"doc_id\": \"D06\", \"quote\": \"员工累计工作已满1年不满10年的，年休假7天；已满10年不满20年的，年休假12天；已满20年的，年休假15天。\", \"section_id\": \"§2\"}, {\"doc_id\": \"D06\", \"quote\": \"本次修订仅调整年假天数，其余条款仍按《年休假制度（2025版）》执行。本修订版自2027年1月1日起施行。\", \"section_id\": \"§1\"}, {\"doc_id\": \"D05\", \"quote\": \"本制度适用于与公司签订劳动合同的正式员工，实习生不适用。\", \"section_id\": \"§1\"}], \"conflicts\": [{\"note\": \"D06为待生效版本（2027-01-01起施行），D05现行且被D06替代；按规则以现行版本回答并说明调整时间\", \"positions\": [{\"claim\": \"年休假5天\", \"doc_id\": \"D05\", \"section_id\": \"§2\"}, {\"claim\": \"年休假7天\", \"doc_id\": \"D06\", \"section_id\": \"§2\"}], \"topic\": \"累计工作满1年不满10年的年假天数\"}], \"doc_verdicts\": [{\"doc_id\": \"D05\", \"reason\": \"现行版本，回答当前年假天数与适用范围的依据\", \"verdict\": \"basis\"}, {\"doc_id\": \"D06\", \"reason\": \"待生效版本，天数与现行版不同，2027-01-01起施行\", \"verdict\": \"conflict\"}], \"reason\": \"补读D05§1原文后重新提交\", \"status\": \"ANSWERED\"}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 5517,
+   "completion_tokens": 674
+  },
+  "latency_ms": 3288
+ },
+ "eed9253739b881ee": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_3oKdM9UCzbuaGPFPc23E8317",
+    "name": "submit_review",
+    "arguments": "{\"passed\": true, \"issues\": [], \"confirmed_doc_ids\": []}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 2626,
+   "completion_tokens": 68
+  },
+  "latency_ms": 1310
+ }
+}

@@ -1,0 +1,38 @@
+{
+  "id": "C20",
+  "title": "会话中途文档被更新：旧证据作废",
+  "acceptance": [
+    "替换文档",
+    "上下文追问"
+  ],
+  "dataset": "data/docs",
+  "today": "2026-10-28",
+  "turns": [
+    {
+      "question": "报销期限多久？",
+      "expect": {
+        "status": [
+          "NEED_CONFIRMATION"
+        ]
+      }
+    },
+    {
+      "question": "财务部说报销指引刚更新了，现在报销期限到底是多久？",
+      "dataset": "data/variants/d02_updated",
+      "expect": {
+        "status": [
+          "ANSWERED"
+        ],
+        "basis_include": [
+          "D02"
+        ],
+        "must_call": [
+          "read_section"
+        ],
+        "answer_contains": [
+          "30"
+        ]
+      }
+    }
+  ]
+}

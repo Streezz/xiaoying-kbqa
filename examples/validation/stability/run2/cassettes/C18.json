@@ -1,0 +1,152 @@
+{
+ "1e0d87b322ee5fee": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_6CAYUxSy1kfGRquIL1aq6712",
+    "name": "search_docs",
+    "arguments": "{\"query\": \"年休假 天数 工作年限\", \"reason\": \"查公司年休假制度中按工作年限确定天数的规定\"}"
+   },
+   {
+    "id": "call_01_Z3nrVVQOO1zUuku1p6Bd7924",
+    "name": "search_docs",
+    "arguments": "{\"query\": \"带薪年假 申请\", \"reason\": \"补充检索年假相关制度\"}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 2454,
+   "completion_tokens": 122
+  },
+  "latency_ms": 2280
+ },
+ "e40fcbd401ebf791": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_9cbe8arixjDOvDh28Ozx8923",
+    "name": "read_section",
+    "arguments": "{\"doc_id\": \"D05\", \"section_id\": \"§2\", \"reason\": \"读2025版年假天数原文\"}"
+   },
+   {
+    "id": "call_01_GWKu6U6mkUpwMcWEsaT02691",
+    "name": "read_section",
+    "arguments": "{\"doc_id\": \"D06\", \"section_id\": \"§2\", \"reason\": \"读2026修订版年假天数原文\"}"
+   },
+   {
+    "id": "call_02_XsKwBiJwGrhTvhKaZF1l0858",
+    "name": "read_section",
+    "arguments": "{\"doc_id\": \"D06\", \"section_id\": \"§1\", \"reason\": \"读修订说明确认生效时间与替代关系\"}"
+   },
+   {
+    "id": "call_03_KJSYX4uyxwXQmpIMF2vo7946",
+    "name": "get_doc_info",
+    "arguments": "{\"doc_ids\": [\"D05\", \"D06\"], \"reason\": \"确认两份年休假制度的状态、生效日期和替代关系\"}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 3629,
+   "completion_tokens": 287
+  },
+  "latency_ms": 2076
+ },
+ "825baf901d18c4f5": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_mM07espfL0sB9lNO0xT87616",
+    "name": "submit_result",
+    "arguments": "{\"status\": \"ANSWERED\", \"answer\": \"按今天（2026-10-28）现行有效的《年休假制度（2025版）》，你累计工作满1年不满10年，年休假为5天。\\n\\n另外提醒：公司已发布《年休假制度（2026修订版）》，自2027年1月1日起施行，届时同一档（满1年不满10年）的年假天数将调整为7天。2027年1月1日之前仍按5天执行。\\n\\n（说明：制度按\\\"累计工作年限\\\"分档，你说的\\\"工作3年\\\"若指累计工作年限，即适用上述档位；如你的累计工作年限与3年不同，请告知，我再帮你核对对应档位。）\", \"citations\": [{\"doc_id\": \"D05\", \"section_id\": \"§2\", \"quote\": \"员工累计工作已满1年不满10年的，年休假5天；已满10年不满20年的，年休假10天；已满20年的，年休假15天。\"}, {\"doc_id\": \"D06\", \"section_id\": \"§2\", \"quote\": \"员工累计工作已满1年不满10年的，年休假7天；已满10年不满20年的，年休假12天；已满20年的，年休假15天。\"}, {\"doc_id\": \"D06\", \"section_id\": \"§1\", \"quote\": \"本次修订仅调整年假天数，其余条款仍按《年休假制度（2025版）》执行。本修订版自2027年1月1日起施行。\"}], \"doc_verdicts\": [{\"doc_id\": \"D05\", \"verdict\": \"basis\", \"reason\": \"现行有效版本，回答当前年假天数的依据\"}, {\"doc_id\": \"D06\", \"verdict\": \"not_applicable\", \"reason\": \"状态为待生效，2027年1月1日起才施行，仅用于说明后续调整\"}], \"reason\": \"依据现行2025版回答当前天数，并说明2026修订版待生效的调整\"}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 4547,
+   "completion_tokens": 520
+  },
+  "latency_ms": 3382
+ },
+ "f154cbc3ce6cffff": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_qZTLHwygFcQ4wBY7HVGY2773",
+    "name": "submit_review",
+    "arguments": "{\"passed\": true, \"issues\": [], \"confirmed_doc_ids\": []}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 2287,
+   "completion_tokens": 68
+  },
+  "latency_ms": 1303
+ },
+ "ec17dd5906d41150": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_cLPcdO9y2oaSVCVZUDAL2626",
+    "name": "search_docs",
+    "arguments": "{\"query\": \"笔记本电脑 更换 资产 报废\", \"reason\": \"查找公司关于笔记本电脑损坏更换的规定\"}"
+   },
+   {
+    "id": "call_01_RT8YJs89MXMGro9XE2uV9236",
+    "name": "search_docs",
+    "arguments": "{\"query\": \"办公设备 使用年限 更新\", \"reason\": \"换一种说法检索设备更新年限规定\"}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 2831,
+   "completion_tokens": 119
+  },
+  "latency_ms": 1614
+ },
+ "0c72c04283d1b7e0": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_TCehL1LO5k1dDbyWfFGE7979",
+    "name": "read_section",
+    "arguments": "{\"doc_id\": \"D08\", \"section_id\": \"§1\", \"reason\": \"读取笔记本电脑更换的完整原文\"}"
+   },
+   {
+    "id": "call_01_hNfIG9aGpMj4k1SEgLi53011",
+    "name": "get_doc_info",
+    "arguments": "{\"doc_ids\": [\"D08\"], \"reason\": \"确认该规定是否现行有效及适用范围\"}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 3557,
+   "completion_tokens": 131
+  },
+  "latency_ms": 1443
+ },
+ "922c40a842d7008c": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_T6AugcU6YS2hyEyCyKQN5032",
+    "name": "submit_result",
+    "arguments": "{\"status\": \"ANSWERED\", \"answer\": \"按现行《办公设备申领规定》，笔记本电脑使用满4年才可以申请更换；你的电脑只用了2年，未满4年就损坏，规定是由 IT 部评估维修，不能直接换新。\\n\\n建议你把电脑交给 IT 部做维修评估，看评估结果再决定后续处理。\", \"citations\": [{\"doc_id\": \"D08\", \"section_id\": \"§1\", \"quote\": \"新入职员工可申领一台笔记本电脑，使用满4年可申请更换；未满4年损坏的，由 IT 部评估维修。\"}], \"doc_verdicts\": [{\"doc_id\": \"D08\", \"verdict\": \"basis\", \"reason\": \"现行有效的办公设备申领规定，明确写了笔记本电脑更换年限和未满年限损坏的处理方式\"}], \"gaps\": [\"资料中未写明 IT 部评估维修的具体流程、时限和维修期间是否提供备用机，如需了解可联系 IT 部或行政部\"], \"reason\": \"依据现行《办公设备申领规定》原文回答笔记本更换条件\"}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 3944,
+   "completion_tokens": 319
+  },
+  "latency_ms": 2732
+ },
+ "cb70d14b95a3d646": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_gVwC6Ht749eRQuDoZTWp1419",
+    "name": "submit_review",
+    "arguments": "{\"passed\": true, \"issues\": [], \"confirmed_doc_ids\": []}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 2618,
+   "completion_tokens": 68
+  },
+  "latency_ms": 1281
+ }
+}

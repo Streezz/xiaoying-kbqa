@@ -1,0 +1,112 @@
+{
+ "6ba3ffba26a31798": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_HnMCdYxYU1oNNZQPFclO1301",
+    "name": "search_docs",
+    "arguments": "{\"query\": \"年终奖 发放时间\", \"reason\": \"查找年终奖发放时间的规定\"}"
+   },
+   {
+    "id": "call_01_JT2W6FbRySuvfdttgl4R2869",
+    "name": "search_docs",
+    "arguments": "{\"query\": \"奖金 薪酬 发放\", \"reason\": \"换用制度书面用语检索奖金发放相关制度\"}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 2633,
+   "completion_tokens": 116
+  },
+  "latency_ms": 2584
+ },
+ "c712c6d0116df1ce": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_iKccV08Dvx4EaYk0Lsj92318",
+    "name": "search_docs",
+    "arguments": "{\"query\": \"薪酬福利制度\", \"reason\": \"检索薪酬类制度，确认是否有奖金相关章节\"}"
+   },
+   {
+    "id": "call_01_Sty2oVitemB0QW3DhSod3019",
+    "name": "search_docs",
+    "arguments": "{\"query\": \"绩效奖金 年度考核 兑现\", \"reason\": \"换关键词检索年度奖金兑现规定\"}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 2871,
+   "completion_tokens": 117
+  },
+  "latency_ms": 1779
+ },
+ "f21ba7428c9acfa8": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_RE5G1taNhhOZMa2DizBi5730",
+    "name": "search_docs",
+    "arguments": "{\"query\": \"工资\", \"reason\": \"用最基础关键词确认资料库是否有薪酬类文档\"}"
+   },
+   {
+    "id": "call_01_eFhyr0fyJBca36O4KsWF4736",
+    "name": "search_docs",
+    "arguments": "{\"query\": \"员工手册\", \"reason\": \"确认是否有员工手册类综合制度涉及奖金\"}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 3111,
+   "completion_tokens": 113
+  },
+  "latency_ms": 1496
+ },
+ "02bb0212e5eda6fb": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_k1Hu7a5u0ZrfLaOsyuvR3930",
+    "name": "search_docs",
+    "arguments": "{\"query\": \"年终奖\", \"reason\": \"单独用“年终奖”一词再确认一次是否有相关文档\", \"top_k\": 10}"
+   },
+   {
+    "id": "call_01_CVpUlzkA5zsViUnSSWKk5274",
+    "name": "search_docs",
+    "arguments": "{\"query\": \"奖金发放\", \"reason\": \"用“奖金发放”再确认一次\", \"top_k\": 10}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 3875,
+   "completion_tokens": 149
+  },
+  "latency_ms": 2003
+ },
+ "c48cd780f710a871": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_ZJgkuc6JrYAQoHxYNpnx8742",
+    "name": "submit_result",
+    "arguments": "{\"status\": \"NO_EVIDENCE\", \"answer\": \"资料里没有找到关于年终奖发放时间的规定。我用\\\"年终奖\\\"\\\"奖金发放\\\"\\\"绩效奖金/年度考核兑现\\\"\\\"薪酬福利制度\\\"等说法多次检索，均未命中任何相关制度或产品资料，因此无法告知具体发放时间。建议向人力资源部（薪酬）咨询确认。\", \"citations\": [], \"doc_verdicts\": [], \"gaps\": [\"缺少年终奖（年度奖金）相关制度：发放时间、发放条件、计算方式等均未在资料中找到\", \"资料库中未检索到薪酬类制度文档，建议联系人力资源部确认\"], \"reason\": \"多次换关键词检索均无年终奖相关文档，按资料外处理\"}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 4137,
+   "completion_tokens": 239
+  },
+  "latency_ms": 2472
+ },
+ "7b31ab1a2c02c47d": {
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "call_00_pqbvvLklFQ8Qd2hBsFnq2528",
+    "name": "submit_review",
+    "arguments": "{\"passed\": true, \"issues\": [], \"confirmed_doc_ids\": []}"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 1631,
+   "completion_tokens": 68
+  },
+  "latency_ms": 1388
+ }
+}

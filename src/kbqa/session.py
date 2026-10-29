@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import json
 import sqlite3
-from datetime import datetime
+from datetime import datetime, timezone
 from pathlib import Path
 
 from .ledger import Ledger
@@ -21,6 +21,13 @@ CREATE TABLE IF NOT EXISTS turns (
 CREATE TABLE IF NOT EXISTS ledgers (
     session_id TEXT PRIMARY KEY,
     data       TEXT NOT NULL
+);
+CREATE TABLE IF NOT EXISTS confirmations (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    session_id TEXT NOT NULL,
+    turn_no INTEGER NOT NULL,
+    data TEXT NOT NULL,
+    created_at TEXT NOT NULL
 );
 """
 
@@ -50,6 +57,16 @@ class SessionStore:
                 "INSERT OR REPLACE INTO ledgers VALUES (?, ?)",
                 (session_id, json.dumps(ledger.to_dict(), ensure_ascii=False)),
             )
+            if result.get('confirmation'):
+                self.conn.execute("INSERT INTO confirmations (session_id, turn_no, data, created_at) VALUES (?, ?, ?, ?)",
+                                  (session_id, turn_no, json.dumps(result['confirmation'], ensure_ascii=False),
+                                   datetime.now(timezone.utc).isoformat()))
+
+    def confirmations(self, session_id: str) -> list[dict]:
+        rows = self.conn.execute("SELECT id, turn_no, data, created_at FROM confirmations WHERE session_id=? ORDER BY id",
+                                 (session_id,)).fetchall()
+        return [{'id': i, 'session_id': session_id, 'turn_no': n, 'confirmation': json.loads(d), 'created_at': at}
+                for i, n, d, at in rows]
 
     def reset(self, session_id: str) -> None:
         with self.conn:

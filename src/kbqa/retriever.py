@@ -82,7 +82,8 @@ class Retriever:
             out.append(self.canon.get(tok, tok))
         return out
 
-    def search(self, query: str, top_k: int = 5, category: str | None = None) -> tuple[list[Hit], str, list[str]]:
+    def search(self, query: str, top_k: int = 5, category: str | None = None,
+               offset: int = 0) -> tuple[list[Hit], str, list[str]]:
         q_terms = list(dict.fromkeys(self.tokenize(query)))
         if not q_terms:
             return [], "none", []
@@ -104,7 +105,7 @@ class Retriever:
                     score=round(score, 3), matched=matched, coverage=round(len(matched) / len(q_terms), 2),
                 ))
         hits.sort(key=lambda h: (-h.score, h.doc_id, h.section_id))
-        hits = hits[:top_k]
+        hits = hits[offset:offset + top_k]
         best = max((h.coverage for h in hits), default=0.0)
         top_score = hits[0].score if hits else 0.0
         if best >= GOOD_COVERAGE and top_score >= GOOD_MIN_SCORE:

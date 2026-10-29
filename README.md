@@ -1,137 +1,89 @@
 # 企业知识问答 Agent
 
-小影校招 AI Agent 开发岗考核，第 3 题。
+小影校招 AI Agent 开发岗考核，**第 3 题**。
 
-员工问制度或产品问题，Agent 自己决定搜什么、读哪段原文、要不要查版本和适用范围、什么时候结束，最后给出带原文引用的回答。
-资料冲突时列出冲突让员工确认；资料里没有就说没有；工具失败或步数用完时返回明确的未完成状态。
+员工提出制度或产品问题，模型自主选择检索、读取原文、查证版本与范围，观察结果后调整下一步。回答包含引用、资料缺口和任务状态；未解决冲突需要确认，无法完成时明确说明。
 
-核心机制是证据账本 + 结束前核验：模型读过的每段原文都记进账本，模型想结束时，程序检查引用是否真读过、是否一字不差、文档是否被改过、读过的文档是否都表了态、冲突是否查证过。不过关就退回让模型修正。
-
-## 环境
-
-- Python 3.10 及以上（开发用 3.13.3，Windows 11）
-- DeepSeek API Key（OpenAI 兼容协议）。没有 Key 也能跑：测试用录制回放，CLI 可以用离线 Mock。
+核心是 **证据账本 + 原文校验 + 独立回答依据检查**。既查引用是否真实，也检查回答有没有增加原文没有的条件。检查仍有模型误差，验证范围和真实结果见 [评估](docs/03-evaluation.md)。
 
 ## 安装
 
-```bash
+Python 3.10 及以上。Windows PowerShell：
+
+```powershell
 python -m venv .venv
+.\.venv\Scripts\python.exe -m pip install -r requirements.txt
+.\.venv\Scripts\python.exe -m pip install -e .
 ```
 
-```bash
-.venv/Scripts/activate
+以下命令使用已激活环境中的 python；也可替换为 .\.venv\Scripts\python.exe。macOS/Linux 的解释器路径为 .venv/bin/python。
+
+离线测试和回放无需密钥。调用真实模型时，复制 .env.example 为 .env，再填写 DEEPSEEK_API_KEY：
+
+```powershell
+Copy-Item .env.example .env
 ```
 
-（macOS / Linux 用 `source .venv/bin/activate`）
-
-```bash
-pip install -r requirements.txt
-```
-
-```bash
-pip install -e .
-```
-
-```bash
-cp .env.example .env
-```
-
-然后在 `.env` 里填 `DEEPSEEK_API_KEY`。其他变量的含义见 `.env.example` 里的注释。
+.env 不提交。默认每轮最多 12 次模型调用（含核验）、15 次工具调用，日期固定为 2026-10-28 以复现制度生效判断；交互演示可用 --today 指定日期。
 
 ## 评审入口
 
-### 1. 不联网跑全部测试（推荐先跑）
-
 ```bash
-pytest
-```
-
-包括单元测试、脚本 Mock 的流程测试，以及用 `examples/cassettes/` 回放真实 DeepSeek 录制结果的测试。不需要 Key。
-
-### 2. 看 20 个用例的真实运行结果
-
-- 汇总：[examples/eval_report.md](examples/eval_report.md)
-- 每个用例的 Trace（表格）：`examples/traces/C01.md` … `C20.md`
-- 每个用例的完整输出：`examples/outputs/C01.json` …
-- 输入：`examples/cases/C01.json` …
-
-离线重放一遍（不联网，只打印每个用例是否满足预期，不改动 examples 下的文件）：
-
-```bash
+python -m pytest -v
 python -m kbqa eval --mode replay
+python -m kbqa.verify_regressions --mode replay
 ```
 
-用真实模型重跑并重新录制（会调用 DeepSeek，覆盖 examples 下的文件）：
+- [用例运行汇总](examples/eval_report.md)
+- [评估与实际结果](docs/03-evaluation.md)
+- [AI 使用与个人贡献](docs/04-ai-usage.md)
+- [复盘](docs/05-retrospective.md)
+- [业务判断初学者版](docs/06-business-decisions.md)
+- 输入 examples/cases/，实际输出 examples/outputs/，Trace examples/traces/，真实模型录像 examples/cassettes/。
+- 正常路径 [C01](examples/traces/C01.md)、冲突路径 [C02](examples/traces/C02.md)、工具失败后调整 [C06](examples/traces/C06.md)、无法完成 [C07](examples/traces/C07.md)。
 
-```bash
-python -m kbqa eval --mode record
-```
+回放只复现已记录响应，不证明新增真实决策。examples/history/ 是历史版本，examples/validation/ 保存本次试跑、重复运行和反例检查，不能把各版本运行次数混成一个通过率。
 
-### 3. 自己提问
+## 自己运行
 
 ```bash
 python -m kbqa ask "报销期限多久？" --session demo --new
-```
-
-接着追问（同一个 `--session` 就是多轮对话）：
-
-```bash
 python -m kbqa ask "我们部门以财务部的报销操作指引为准。" --session demo
+python -m kbqa confirmations --session demo
+python -m kbqa ask "年假几天？" --session annual --new --today 2027-02-01
+python -m kbqa ask "报销期限多久？" --new --data data/variants/d01_only
+python -m kbqa ask "报销期限多久？" --new --fault "read:not_found@D02"
+python -m kbqa ask "报销期限多久？" --new --max-steps 2
+python -m kbqa ask "星剪会员最多同时登录几台设备？" --llm mock --new
 ```
 
-换一套资料，看答案和动作是否跟着变：
+--llm mock 是离线规则演示，只验证流程，不代表真实模型决策或语义判断。--json 输出完整结果。交互 Trace 保存在 var/traces/；确认审计保存在本地 SQLite，清空会话不删除审计记录，也不会将确认写回制度库。
+
+## 重新验证
+
+调用真实模型会产生 API 用量。推荐写入新目录：
 
 ```bash
-python -m kbqa ask "报销期限多久？" --session demo2 --new --data data/variants/d01_only
+python -m kbqa eval --mode record --output var/my-evaluation --jobs 4 --repeat 3
+python -m kbqa eval --mode replay --output var/my-evaluation --jobs 4 --repeat 3
 ```
 
-注入工具失败：
+每个 runN 目录都有输出、Trace 和录像，汇总在 stability_report.json。任何验收失败返回非零退出码。直接使用 record 且不指定 --output 会覆盖 examples 中的当前录制。
 
-```bash
-python -m kbqa ask "加班之后调休要在多久内用完？" --session demo3 --new --fault "search:timeout@1,2"
+修改 data/docs 下的原文后，下一轮启动重新加载，内容哈希变化的旧证据作废。可以用 C12/C13/C20 的变体验证答案和动作随资料变化。
+
+## 目录与交付
+
+```text
+src/kbqa/    Agent、工具、核验、检索、会话、评估
+tests/      可执行测试
+examples/   输入、实际输出、Trace、录像、历史与重复验证
+data/       合成制度、FAQ、同义词与资料变体
+docs/       需求、方案、评估、AI使用、复盘、业务判断、提交说明
 ```
 
-限制步数：
+选题 3；GitHub 仓库：[Streezz/xiaoying-kbqa](https://github.com/Streezz/xiaoying-kbqa)。最终 commit SHA 在实际提交后用 git rev-parse HEAD 获取。[提交与推送步骤](docs/07-submission.md)。
 
-```bash
-python -m kbqa ask "报销期限多久？" --session demo4 --new --max-steps 2
-```
+## 验证范围
 
-没有 Key 时用离线规则 Mock（只验证流程能走通，不代表真实模型的决策）：
-
-```bash
-python -m kbqa ask "星剪会员一个账号最多能在几台设备上同时登录？" --llm mock --new
-```
-
-列出资料库：
-
-```bash
-python -m kbqa docs
-```
-
-每次 `ask` 的运行记录写在 `var/traces/<会话>_t<轮次>.jsonl` 和同名 `.md`。加 `--json` 输出完整结果。
-
-### 4. 改资料试试
-
-资料在 `data/docs/*.md`，每份开头是元数据（版本日期、生效日期、状态、适用范围、替代关系），正文按 `## §N 标题` 分段。
-直接改文件内容再提问即可；同一会话里改过的段落，旧证据会自动作废，模型需要重读。
-
-## 目录
-
-```
-src/kbqa/        代码（agent / tools / gate / ledger / docstore / retriever / llm / prompts / session / trace / faults / evaluate / cli）
-tests/           测试
-examples/        用例输入、实际输出、Trace、录像、汇总报告
-data/            合成资料、变体、同义词表
-docs/            01 需求 / 02 方案 / 03 评估 / 04 AI 使用 / 05 复盘
-设计草案.md       开工前的设计草案（和实现的差异见 docs/02-solution.md 第 9 节）
-```
-
-## 已知限制
-
-详见 [docs/03-evaluation.md](docs/03-evaluation.md)。主要几条：
-
-- 核验只检查引用是否真实、是否一字不差，不判断回答的意思是否被原文支持。
-- 检索是 BM25 + 人工同义词表，没有向量检索；同义词表没覆盖的口语说法靠模型改写。
-- 真实模型的结果来自一次录制，没有统计多次运行的稳定性。
-- `hit_quality` 的阈值是按这套合成资料定的，换语料要重看。
+当前是小型合成资料库，检索质量阈值未在真实制度库校准；语义检查不能保证零误判。确认审计记录的是会话原话，不是经认证的员工授权。权限控制、线上部署和跨员工冲突处理不在本次实现范围。

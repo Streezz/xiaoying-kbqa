@@ -1,0 +1,27 @@
+{
+  "id": "C06",
+  "title": "工具失败后换路：检索连续超时",
+  "acceptance": [
+    "工具失败"
+  ],
+  "dataset": "data/docs",
+  "today": "2026-10-28",
+  "turns": [
+    {
+      "question": "加班之后调休要在多久内用完？",
+      "fault": "search:timeout@1,2",
+      "expect": {
+        "status": [
+          "ANSWERED"
+        ],
+        "basis_include": [
+          "D07"
+        ],
+        "answer_contains": [
+          "3个月"
+        ],
+        "tool_error_seen": true
+      }
+    }
+  ]
+}
